@@ -8,14 +8,14 @@ class AccountCreateArea extends Component {
                 <div className="container account-create-content">
                     <div className="row align-items-center">
                         <div className="col-lg-8">
-                            <h2>Apply for an account in minutes</h2>
-                            <p>Get your Haiper account today!</p>
+                            <h2>Make your first transaction now!</h2>
+                            {/* <p>Get your Haiper account today!</p> */}
                         </div>
                         
                         <div className="col-lg-4">
                             <div className="create-account">
-                                <Link href="/sign-up">
-                                    <a className="btn btn-primary">Get Your Account</a>
+                                <Link href="#">
+                                    <a className="btn btn-primary">Send Now</a>
                                 </Link>
                             </div>
                         </div>
