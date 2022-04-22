@@ -8,23 +8,26 @@ class Rates extends Component {
         APIKEY: '658af92787955c43f78e4e899c439181'
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get(`http://api.exchangeratesapi.io/v1/latest?access_key=${this.state.APIKEY}&format=1`)
-        .then((res) => {
-            // console.log(res.data);
-            this.setState({
-                rates: res.data.rates,
-                updateDate: res.data.date
-            })
-        });
+            .then((res) => {
+                // console.log(res.data);
+                this.setState({
+                    rates: res.data.rates,
+                    updateDate: res.data.date
+                })
+            });
     }
     render() {
         let { rates, updateDate } = this.state;
         let tablHead = [];
         let tableData = [];
         Object.keys(rates).forEach(function (rate) {
-            tablHead.push(rate); // key
-            tableData.push(rates[rate])
+            if (rate == 'USD' || rate == 'GBP' || rate == 'EUR') {
+
+                tablHead.push(rate); // key
+                tableData.push(rates[rate])
+            }
         });
         return (
             <section className="currency-rates-area pt-70">
@@ -57,7 +60,7 @@ class Rates extends Component {
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div className="row currency-rates-info">
                         {/* <div className="col-lg-6 col-md-6 col-6">
                             <a href="https://exchangeratesapi.io/" target="_blank">Source</a>

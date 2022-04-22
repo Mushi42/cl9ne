@@ -16,7 +16,7 @@ class Footer extends Component {
                                     </Link>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
                                 </div>
-                                
+
                                 <ul className="social-links">
                                     <li>
                                         <a href="https://www.facebook.com/" target="_blank">
@@ -31,12 +31,12 @@ class Footer extends Component {
                                     <li>
                                         <a href="https://www.instagram.com/" target="_blank">
                                             <i className="fab fa-instagram"></i>
-                                        </a> 
+                                        </a>
                                     </li>
-                                    <li> 
+                                    <li>
                                         <a href="https://www.linkedin.com/" target="_blank">
                                             <i className="fab fa-linkedin-in"></i>
-                                        </a> 
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -113,22 +113,22 @@ class Footer extends Component {
                         <div className="col-lg-3 col-sm-6 col-md-6">
                             <div className="single-footer-widget">
                                 <h3>Address</h3>
-                                
+
                                 <ul className="footer-contact-info">
                                     <li>
-                                        <span className="mr-1">Location:</span> 
-                                    Nigeria, <br /> South Africa
+                                        <span className="mr-1">Location:</span>
+                                        Nigeria, <br /> South Africa
                                     </li>
                                     <li>
-                                        <span className="mr-1">Email:</span> 
+                                        <span className="mr-1">Email:</span>
                                         info@cl9ne.com
                                     </li>
                                     <li>
-                                        <span className="mr-1">Phone:</span> 
+                                        <span className="mr-1">Phone:</span>
                                         --
                                     </li>
                                     <li>
-                                        <span className="mr-1">Fax:</span> 
+                                        <span className="mr-1">Fax:</span>
                                         --
                                     </li>
                                 </ul>
