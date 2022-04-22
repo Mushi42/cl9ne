@@ -54,7 +54,7 @@ class CustomersFeedback extends Component {
                                 </p>
 
                                 <div className="client-img">
-                                    <img src="/images/clients/client1.jpg" alt="image" />
+                                    <img src="/images/dummy-profile.jpg" alt="image" />
                                     <h3>John Lucy</h3>
                                     <span>Founder & Consultant</span>
                                 </div>
@@ -69,7 +69,7 @@ class CustomersFeedback extends Component {
                                 </p>
 
                                 <div className="client-img">
-                                    <img src="/images/clients/client2.jpg" alt="image" />
+                                    <img src="/images/dummy-profile.jpg" alt="image" />
                                     <h3>John Smith</h3>
                                     <span>CTO  & Consultant</span>
                                 </div>
@@ -84,7 +84,7 @@ class CustomersFeedback extends Component {
                                 </p>
 
                                 <div className="client-img">
-                                    <img src="/images/clients/client3.jpg" alt="image" />
+                                    <img src="/images/dummy-profile.jpg" alt="image" />
                                     <h3>Maxwel Warner</h3>
                                     <span>Chief Manager</span>
                                 </div>
@@ -99,7 +99,7 @@ class CustomersFeedback extends Component {
                                 </p>
 
                                 <div className="client-img">
-                                    <img src="/images/clients/client4.jpg" alt="image" />
+                                    <img src="/images/dummy-profile.jpg" alt="image" />
                                     <h3>Ross Taylor</h3>
                                     <span>Web Developer</span>
                                 </div>
@@ -114,7 +114,7 @@ class CustomersFeedback extends Component {
                                 </p>
 
                                 <div className="client-img">
-                                    <img src="/images/clients/client5.jpg" alt="image" />
+                                    <img src="/images/dummy-profile.jpg" alt="image" />
                                     <h3>James Anderson</h3>
                                     <span>Web Developer</span>
                                 </div>

@@ -15,7 +15,7 @@ class AccountCreateArea extends Component {
                         <div className="col-lg-4">
                             <div className="create-account">
                                 <Link href="/sign-up">
-                                    <a className="btn btn-primary">Get Your Account</a>
+                                    <a className="btn btn-primary" style={{border:"none"}}>Get Your Account</a>
                                 </Link>
                             </div>
                         </div>

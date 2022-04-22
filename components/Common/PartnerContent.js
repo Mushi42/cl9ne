@@ -5,7 +5,7 @@ class PartnerContent extends Component {
     render() {
         return (
             <div className="partner-area ptb-70">
-                {/* <div className="container">
+                <div className="container">
                     <div className="section-title">
                         <h2>Our trusted partner</h2>
                         <div className="bar"></div>
@@ -85,7 +85,7 @@ class PartnerContent extends Component {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         );
     }

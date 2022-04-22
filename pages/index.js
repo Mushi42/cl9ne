@@ -42,7 +42,7 @@ class Index3 extends Component {
 
                 <CustomersFeedback />
 
-                <PartnerContent />
+                {/* <PartnerContent /> */}
 
                 {/* <AppDownloadContent /> */}
 

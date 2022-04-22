@@ -137,7 +137,7 @@ class Footer extends Component {
                     </div>
 
                     <div className="copyright-area">
-                        <p>© {currentYear} CL9NE- All rights Reserved <a href="http://envytheme.com/" target="_blank">CL9NE.com</a></p>
+                        <p>© {currentYear} CL9NE- All rights Reserved <a href="http://envytheme.com/" target="_blank">cl9ne.com</a></p>
                     </div>
                 </div>
             </footer>

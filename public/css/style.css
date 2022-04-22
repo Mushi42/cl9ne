@@ -150,6 +150,7 @@ p:last-child {
   background-color: transparent;
   color: #ffffff;
   margin-right: 15px;
+  border: none;
 }
 
 .btn-primary::before {
@@ -161,7 +162,7 @@ p:last-child {
   height: 100%;
   z-index: -1;
   background: -webkit-gradient(linear, left top, right top, from(#D7A520), to(#ff6a00));
-  background: linear-gradient(135deg, gold 0%, yellow 100%);
+  background:  #D7A520;
   border-radius: 4px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -735,7 +736,7 @@ Navbar Area CSS
   z-index: 999;
   -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
           box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
-  background-color: black !important;
+  background-color: #070d13 !important;
   -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
           animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
   -webkit-transition: 0.5s;
@@ -751,7 +752,7 @@ Navbar Area CSS
 }
 
 .navbar-area.is-sticky .luvion-nav {
-  background-color: black;
+  background-color: #070d13;
 }
 
 .navbar-area.is-sticky .luvion-nav .navbar .navbar-nav .nav-item a {
@@ -1030,7 +1031,7 @@ Navbar Area CSS
 @media only screen and (max-width: 991px) {
   .navbar-area {
     border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-    background-color: #fff;
+    background-color: #070d13;
     padding-top: 15px;
     padding-bottom: 15px;
   }
@@ -1045,7 +1046,7 @@ Navbar Area CSS
     display: block;
   }
   .navbar-area .luvion-nav .navbar .navbar-nav .nav-item a {
-    color: #212529;
+    color: #fff;
   }
   .navbar-area .luvion-nav .navbar .others-options .login-btn {
     color: #212529;
@@ -1170,27 +1171,27 @@ Main Banner Area CSS
   border-radius: 3px;
 }
 
-.money-transfer-form form {
+.money-transfer-form {
   text-align: center;
 }
 
-.money-transfer-form form .form-group {
+.money-transfer-form .form-group {
   margin-bottom: 15px;
   position: relative;
   background: -webkit-gradient(linear, left top, right top, from(#D7A520), to(#ff6a00));
   background: linear-gradient(135deg, #D7A520 0%, #bababa 100%);
-  padding: 36px 10px 12px 15px;
+  padding: 30px 10px 6px 15px;
   border-radius: 5px;
 }
 
-.money-transfer-form form .form-group .amount-currency-select {
+.money-transfer-form .form-group .amount-currency-select {
   right: 0;
   top: 0;
   position: absolute;
   height: 100%;
 }
 
-.money-transfer-form form .form-group .amount-currency-select i {
+.money-transfer-form .form-group .amount-currency-select i {
   position: absolute;
   top: 50%;
   right: 18px;
@@ -1201,7 +1202,7 @@ Main Banner Area CSS
   margin-top: 2px;
 }
 
-.money-transfer-form form .form-group .amount-currency-select select {
+.money-transfer-form .form-group .amount-currency-select select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1217,11 +1218,11 @@ Main Banner Area CSS
   color: #ffffff;
 }
 
-.money-transfer-form form .form-group .amount-currency-select select:focus {
+.money-transfer-form .form-group .amount-currency-select select:focus {
   outline: 0;
 }
 
-.money-transfer-form form .form-group .amount-currency-select select option {
+.money-transfer-form .form-group .amount-currency-select select option {
   font-size: 14px;
   margin: 9px 0;
   display: block;
@@ -1231,7 +1232,7 @@ Main Banner Area CSS
   white-space: inherit;
 }
 
-.money-transfer-form form .form-group label {
+.money-transfer-form .form-group label {
   position: absolute;
   left: 15px;
   top: 10px;
@@ -1242,7 +1243,7 @@ Main Banner Area CSS
   font-size: 13.5px;
 }
 
-.money-transfer-form form .form-group .form-control {
+.money-transfer-form .form-group .form-control {
   background-color: transparent;
   border: none;
   padding-left: 0;
@@ -1254,23 +1255,23 @@ Main Banner Area CSS
   font-weight: 500;
 }
 
-.money-transfer-form form .form-group .form-control::-webkit-input-placeholder {
+.money-transfer-form .form-group .form-control::-webkit-input-placeholder {
   color: #ffffff;
 }
 
-.money-transfer-form form .form-group .form-control:-ms-input-placeholder {
+.money-transfer-form .form-group .form-control:-ms-input-placeholder {
   color: #ffffff;
 }
 
-.money-transfer-form form .form-group .form-control::-ms-input-placeholder {
+.money-transfer-form .form-group .form-control::-ms-input-placeholder {
   color: #ffffff;
 }
 
-.money-transfer-form form .form-group .form-control::placeholder {
+.money-transfer-form .form-group .form-control::placeholder {
   color: #ffffff;
 }
 
-.money-transfer-form form .currency-info {
+.money-transfer-form .currency-info {
   margin-bottom: 25px;
   margin-top: 25px;
   text-align: left;
@@ -1280,7 +1281,7 @@ Main Banner Area CSS
   padding-left: 20px;
 }
 
-.money-transfer-form form .currency-info .bar {
+.money-transfer-form .currency-info .bar {
   height: 100%;
   width: 2px;
   background: -webkit-gradient(linear, left top, right top, from(#D7A520), to(#ff6a00));
@@ -1292,7 +1293,7 @@ Main Banner Area CSS
           transform: translateY(-50%);
 }
 
-.money-transfer-form form .currency-info .bar::before {
+.money-transfer-form .currency-info .bar::before {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1304,7 +1305,7 @@ Main Banner Area CSS
   background: linear-gradient(90deg, #D7A520 0%, #ff6a00 100%);
 }
 
-.money-transfer-form form .currency-info .bar::after {
+.money-transfer-form .currency-info .bar::after {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1316,59 +1317,56 @@ Main Banner Area CSS
   background: linear-gradient(90deg, #D7A520 0%, #ff6a00 100%);
 }
 
-.money-transfer-form form .currency-info span {
+.money-transfer-form .currency-info span {
   display: inline-block;
   color: #57647c;
   font-size: 14px;
 }
 
-.money-transfer-form form .currency-info span strong {
+.money-transfer-form .currency-info span strong {
   color: #212529;
 }
 
-.money-transfer-form form .currency-info span:last-child {
+.money-transfer-form .currency-info span:last-child {
   margin-left: 15px;
 }
 
-.money-transfer-form form .money-transfer-info {
+.money-transfer-form .money-transfer-info {
   color: #57647c;
   font-size: 14px;
 }
 
-.money-transfer-form form .money-transfer-info strong {
+.money-transfer-form .money-transfer-info strong {
   display: block;
   margin-top: 3px;
   color: #212529;
   font-size: 16px;
 }
 
-.money-transfer-form form button {
+.money-transfer-form button {
   margin-top: 15px;
+  border: none;
 }
 
-.money-transfer-form form .btn::before {
-  /* background: linear-gradient(135deg, #D7A520 0%, #bababa 100%) */
-}
-
-.money-transfer-form form .btn::after {
+.money-transfer-form .btn::after {
   background: -webkit-gradient(linear, left top, right top, from(#D7A520), to(#ff6a00));
-  background: linear-gradient(135deg, #D7A520 0%, #bababa 100%);
+  background:  #c59b28;
 }
 
-.money-transfer-form form .terms-info {
+.money-transfer-form .terms-info {
   margin-top: 15px;
 }
 
-.money-transfer-form form .terms-info p {
+.money-transfer-form .terms-info p {
   font-size: 14px;
 }
 
-.money-transfer-form form .terms-info p a {
+.money-transfer-form .terms-info p a {
   display: inline-block;
   color: #212529;
 }
 
-.money-transfer-form form .terms-info p a:hover {
+.money-transfer-form .terms-info p a:hover {
   color: #D7A520;
 }
 
@@ -3259,6 +3257,7 @@ FunFacts Area CSS
   position: absolute;
   right: 30px;
   top: 50%;
+  border: none;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
@@ -3764,6 +3763,7 @@ Account Create Area CSS
 
 .account-create-content .btn-primary:hover, .account-create-content .btn-primary:focus {
   color: #212529 !important;
+  border: none;
 }
 
 /*================================================
@@ -4576,20 +4576,20 @@ Widget Sidebar Area CSS
   padding: 15px;
 }
 
-.widget-area .widget_search form {
+.widget-area .widget_search {
   position: relative;
 }
 
-.widget-area .widget_search form label {
+.widget-area .widget_search label {
   display: block;
   margin-bottom: 0;
 }
 
-.widget-area .widget_search form .screen-reader-text {
+.widget-area .widget_search .screen-reader-text {
   display: none;
 }
 
-.widget-area .widget_search form .search-field {
+.widget-area .widget_search .search-field {
   background-color: transparent;
   height: 50px;
   padding: 6px 15px;
@@ -4601,11 +4601,11 @@ Widget Sidebar Area CSS
   transition: 0.5s;
 }
 
-.widget-area .widget_search form .search-field:focus {
+.widget-area .widget_search .search-field:focus {
   border-color: #D7A520;
 }
 
-.widget-area .widget_search form button {
+.widget-area .widget_search button {
   position: absolute;
   right: 0;
   outline: 0;
@@ -4618,7 +4618,7 @@ Widget Sidebar Area CSS
   background-color: transparent;
 }
 
-.widget-area .widget_search form button::before {
+.widget-area .widget_search button::before {
   content: '';
   position: absolute;
   left: 0;
@@ -4632,7 +4632,7 @@ Widget Sidebar Area CSS
   transition: 0.5s;
 }
 
-.widget-area .widget_search form button::after {
+.widget-area .widget_search button::after {
   content: '';
   position: absolute;
   left: 0;
@@ -4647,12 +4647,12 @@ Widget Sidebar Area CSS
   visibility: hidden;
 }
 
-.widget-area .widget_search form button:hover::before {
+.widget-area .widget_search button:hover::before {
   opacity: 0;
   visibility: hidden;
 }
 
-.widget-area .widget_search form button:hover::after {
+.widget-area .widget_search button:hover::after {
   opacity: 1;
   visibility: visible;
 }
@@ -5105,11 +5105,11 @@ FAQ Area CSS
   text-align: center;
 }
 
-.faq-contact-form form .form-group {
+.faq-contact-form .form-group {
   margin-bottom: 20px;
 }
 
-.faq-contact-form form .form-control {
+.faq-contact-form .form-control {
   background-color: #ffffff;
   border: none;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
@@ -5119,46 +5119,46 @@ FAQ Area CSS
   font-size: 14.5px;
 }
 
-.faq-contact-form form .row {
+.faq-contact-form .row {
   margin-left: -7px;
   margin-right: -7px;
 }
 
-.faq-contact-form form .row .col-lg-12, .faq-contact-form form .row .col-lg-6 {
+.faq-contact-form .row .col-lg-12, .faq-contact-form .row .col-lg-6 {
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.faq-contact-form form textarea.form-control {
+.faq-contact-form textarea.form-control {
   height: auto;
   padding-top: 15px;
   line-height: initial;
 }
 
-.faq-contact-form form .btn {
+.faq-contact-form .btn {
   margin-top: 8px;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
           box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
 }
 
-.faq-contact-form form .help-block ul {
+.faq-contact-form .help-block ul {
   padding-left: 0;
   list-style-type: none;
   margin-top: 5px;
   margin-bottom: 0;
 }
 
-.faq-contact-form form .help-block ul li {
+.faq-contact-form .help-block ul li {
   color: red;
   font-weight: 300;
 }
 
-.faq-contact-form form #msgSubmit {
+.faq-contact-form #msgSubmit {
   margin-bottom: 0;
   text-align: left !important;
 }
 
-.faq-contact-form form #msgSubmit.text-danger, .faq-contact-form form #msgSubmit.text-success {
+.faq-contact-form #msgSubmit.text-danger, .faq-contact-form #msgSubmit.text-success {
   margin-top: 8px;
   font-size: 22px;
   font-weight: 300;
@@ -5215,15 +5215,15 @@ Login Area CSS
   margin-bottom: 0;
 }
 
-.login-content .login-form form {
+.login-content .login-form {
   margin-top: 35px;
 }
 
-.login-content .login-form form .form-group {
+.login-content .login-form .form-group {
   margin-bottom: 20px;
 }
 
-.login-content .login-form form .form-control {
+.login-content .login-form .form-control {
   background-color: #ffffff;
   color: #212529;
   border: none;
@@ -5234,30 +5234,30 @@ Login Area CSS
   font-size: 14px;
 }
 
-.login-content .login-form form .btn {
+.login-content .login-form .btn {
   display: block;
   width: 100%;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
           box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
 }
 
-.login-content .login-form form .forgot-password {
+.login-content .login-form .forgot-password {
   text-align: right;
   margin-top: 15px;
 }
 
-.login-content .login-form form .forgot-password a {
+.login-content .login-form .forgot-password a {
   display: inline-block;
   color: #D7A520;
   text-decoration: underline;
   font-size: 14px;
 }
 
-.login-content .login-form form .connect-with-social {
+.login-content .login-form .connect-with-social {
   margin-top: 15px;
 }
 
-.login-content .login-form form .connect-with-social button {
+.login-content .login-form .connect-with-social button {
   display: block;
   width: 100%;
   position: relative;
@@ -5272,7 +5272,7 @@ Login Area CSS
   font-weight: 500;
 }
 
-.login-content .login-form form .connect-with-social button i {
+.login-content .login-form .connect-with-social button i {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -5281,30 +5281,30 @@ Login Area CSS
   font-size: 20px;
 }
 
-.login-content .login-form form .connect-with-social button.facebook {
+.login-content .login-form .connect-with-social button.facebook {
   border-color: #3b5998;
   color: #3b5998;
 }
 
-.login-content .login-form form .connect-with-social button.facebook:hover {
+.login-content .login-form .connect-with-social button.facebook:hover {
   background-color: #3b5998;
   color: #ffffff;
   border-color: #3b5998;
 }
 
-.login-content .login-form form .connect-with-social button.google {
+.login-content .login-form .connect-with-social button.google {
   margin-top: 10px;
   border-color: #EA4335;
   color: #EA4335;
 }
 
-.login-content .login-form form .connect-with-social button.google:hover {
+.login-content .login-form .connect-with-social button.google:hover {
   background-color: #EA4335;
   color: #ffffff;
   border-color: #EA4335;
 }
 
-.login-content .login-form form .connect-with-social button:hover {
+.login-content .login-form .connect-with-social button:hover {
   background-color: #D7A520;
   color: #ffffff;
   border-color: #D7A520;
@@ -5356,15 +5356,15 @@ Signup Area CSS
   margin-bottom: 0;
 }
 
-.signup-content .signup-form form {
+.signup-content .signup-form {
   margin-top: 35px;
 }
 
-.signup-content .signup-form form .form-group {
+.signup-content .signup-form .form-group {
   margin-bottom: 20px;
 }
 
-.signup-content .signup-form form .form-control {
+.signup-content .signup-form .form-control {
   background-color: #ffffff;
   color: #212529;
   border: none;
@@ -5375,18 +5375,18 @@ Signup Area CSS
   font-size: 14px;
 }
 
-.signup-content .signup-form form .btn {
+.signup-content .signup-form .btn {
   display: block;
   width: 100%;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
           box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
 }
 
-.signup-content .signup-form form .connect-with-social {
+.signup-content .signup-form .connect-with-social {
   margin-top: 20px;
 }
 
-.signup-content .signup-form form .connect-with-social span {
+.signup-content .signup-form .connect-with-social span {
   display: block;
   text-transform: uppercase;
   color: #57647c;
@@ -5394,7 +5394,7 @@ Signup Area CSS
   font-size: 15px;
 }
 
-.signup-content .signup-form form .connect-with-social button {
+.signup-content .signup-form .connect-with-social button {
   display: block;
   width: 100%;
   position: relative;
@@ -5410,7 +5410,7 @@ Signup Area CSS
   font-weight: 500;
 }
 
-.signup-content .signup-form form .connect-with-social button i {
+.signup-content .signup-form .connect-with-social button i {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -5419,30 +5419,30 @@ Signup Area CSS
   font-size: 20px;
 }
 
-.signup-content .signup-form form .connect-with-social button.facebook {
+.signup-content .signup-form .connect-with-social button.facebook {
   border-color: #3b5998;
   color: #3b5998;
 }
 
-.signup-content .signup-form form .connect-with-social button.facebook:hover {
+.signup-content .signup-form .connect-with-social button.facebook:hover {
   background-color: #3b5998;
   color: #ffffff;
   border-color: #3b5998;
 }
 
-.signup-content .signup-form form .connect-with-social button.google {
+.signup-content .signup-form .connect-with-social button.google {
   margin-top: 10px;
   border-color: #EA4335;
   color: #EA4335;
 }
 
-.signup-content .signup-form form .connect-with-social button.google:hover {
+.signup-content .signup-form .connect-with-social button.google:hover {
   background-color: #EA4335;
   color: #ffffff;
   border-color: #EA4335;
 }
 
-.signup-content .signup-form form .connect-with-social button:hover {
+.signup-content .signup-form .connect-with-social button:hover {
   background-color: #D7A520;
   color: #ffffff;
   border-color: #D7A520;
@@ -5456,11 +5456,11 @@ Contact Area CSS
   z-index: 1;
 }
 
-.contact-form form .form-group {
+.contact-form .form-group {
   margin-bottom: 20px;
 }
 
-.contact-form form .form-control {
+.contact-form .form-control {
   background-color: #ffffff;
   border: none;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
@@ -5470,47 +5470,47 @@ Contact Area CSS
   font-size: 14.5px;
 }
 
-.contact-form form .row {
+.contact-form .row {
   margin-left: -10px;
   margin-right: -10px;
 }
 
-.contact-form form .row .col-lg-12, .contact-form form .row .col-lg-6 {
+.contact-form .row .col-lg-12, .contact-form .row .col-lg-6 {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.contact-form form textarea.form-control {
+.contact-form textarea.form-control {
   height: auto;
   padding-top: 15px;
   padding-bottom: 15px;
   line-height: 1.5;
 }
 
-.contact-form form .btn {
+.contact-form .btn {
   margin-top: 8px;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
           box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
 }
 
-.contact-form form .help-block ul {
+.contact-form .help-block ul {
   padding-left: 0;
   list-style-type: none;
   margin-top: 5px;
   margin-bottom: 0;
 }
 
-.contact-form form .help-block ul li {
+.contact-form .help-block ul li {
   color: red;
   font-weight: 300;
 }
 
-.contact-form form #msgSubmit {
+.contact-form #msgSubmit {
   margin-bottom: 0;
   text-align: left !important;
 }
 
-.contact-form form #msgSubmit.text-danger, .contact-form form #msgSubmit.text-success {
+.contact-form #msgSubmit.text-danger, .contact-form #msgSubmit.text-success {
   margin-top: 8px;
   font-size: 22px;
   font-weight: 300;
