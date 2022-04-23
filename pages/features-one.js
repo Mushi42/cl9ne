@@ -3,7 +3,7 @@ import Navbar from '../components/Layouts/Navbar';
 import PageBannerContent from '../components/Common/PageBannerContent';
 import ServicesCard from '../components/Common/ServicesCard';
 import PartnerContent from '../components/Common/PartnerContent';
-import AppDownloadContent from '../components/HomeOne/AppDownloadContent';
+import AppDownloadContent from '../components/HomeThree/AppDownloadContent';
 import AccountCreateArea from '../components/Common/AccountCreateArea';
 import Footer from '../components/Layouts/Footer';
  

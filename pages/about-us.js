@@ -4,7 +4,7 @@ import PageBannerContent from '../components/Common/PageBannerContent';
 import AboutContent from '../components/AboutUs/AboutContent';
 import TeamMember from '../components/AboutUs/TeamMember';
 import PartnerContent from '../components/Common/PartnerContent';
-import AppDownloadContent from '../components/HomeOne/AppDownloadContent';
+import AppDownloadContent from '../components/HomeThree/AppDownloadContent';
 import AccountCreateArea from '../components/Common/AccountCreateArea';
 import Footer from '../components/Layouts/Footer';
 
