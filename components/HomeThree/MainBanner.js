@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
 import Modal from "react-bootstrap/Modal";
-import ModalBody from "react-bootstrap/ModalBody";
-import ModalHeader from "react-bootstrap/ModalHeader";
-import ModalFooter from "react-bootstrap/ModalFooter";
-import ModalTitle from "react-bootstrap/ModalTitle";
+import { Card } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
+// import './styles.scss'
 
 class MainBanner extends Component {
     state = {
-        modal: false
+        modal: false,
+        mobileModal: false,
+        bankModal: false
     }
 
     setModalShow = (e) => {
-        // e.preventDefault();
         this.setState({
+            modal: !this.state.modal
+        })
+    }
+    setMobileModalShow = (e) => {
+        this.setState({
+            mobileModal: !this.state.mobileModal,
+            modal: !this.state.modal
+        })
+    }
+    setBankModalShow = (e) => {
+        this.setState({
+            bankModal: !this.state.bankModal,
             modal: !this.state.modal
         })
     }
@@ -34,61 +45,75 @@ class MainBanner extends Component {
                                             <h1>Lorem ipsum dolor sit amet, consectetur</h1>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-                                            {/* <Link href="/about-us">
-                                                <a className="btn btn-primary">Learn More</a>
-                                            </Link> */}
                                         </div>
                                     </div>
 
                                     <div className="col-lg-5 col-md-12">
                                         <div className="money-transfer-form">
                                             {/* <form> */}
-                                                <div className="form-group">
-                                                    <label>You Send</label>
-                                                    <div className="money-transfer-field">
-                                                        <input type="text" className="form-control" placeholder="1,000" />
-                                                        <div className="amount-currency-select">
-                                                            <i className="fas fa-chevron-down"></i>
-                                                            <select>
-                                                                <option>USD</option>
-                                                                <option>EUR</option>
-                                                                <option>GBP</option>
-                                                            </select>
+                                            <div className="form-group">
+                                                <label>You Send</label>
+                                                <div className="money-transfer-field">
+                                                    <input type="text" className="form-control" placeholder="1,000" />
+                                                    <div className="amount-currency-select dropdown">
+                                                        <button className="dropbtn">
+                                                            Currency
+                                                        </button>
+
+                                                        <div className="dropdown-content">
+                                                            <a href="#">
+                                                                <img src=
+                                                                    "https://media.geeksforgeeks.org/wp-content/uploads/20200630132504/uflag.jpg"
+                                                                    width="20" height="15" /></a>
+                                                            <a href="#">
+                                                                <img src=
+                                                                    "https://media.geeksforgeeks.org/wp-content/uploads/20200630132502/eflag.jpg"
+                                                                    width="20" height="15" /></a>
+                                                            <a href="#">
+                                                                <img src=
+                                                                    "https://media.geeksforgeeks.org/wp-content/uploads/20200630132500/bflag.jpg"
+                                                                    width="20" height="15" /> </a>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div className="currency-info">
-                                                    <div className="bar"></div>
-                                                    <span><strong>415.3</strong> Exchange Rate</span>
-                                                    {/* <span><strong>$4.50</strong> Transition Fees</span> */}
-                                                </div>
+                                            <div className="currency-info">
+                                                <div className="bar"></div>
+                                                <span><strong>415.3</strong> Exchange Rate</span>
+                                                {/* <span><strong>$4.50</strong> Transition Fees</span> */}
+                                            </div>
 
-                                                <div className="form-group">
-                                                    <label>Recipient gets</label>
-                                                    <div className="money-transfer-field">
-                                                        <input type="text" className="form-control" placeholder="1,000" />
-                                                        <div className="amount-currency-select">
-                                                            <i className="fas fa-chevron-down"></i>
-                                                            <select>
-                                                                <option>NGN</option>
-                                                            </select>
-                                                            
+                                            <div className="form-group">
+                                                <label>Recipient gets</label>
+                                                <div className="money-transfer-field">
+                                                    <input type="text" className="form-control" placeholder="1,000" />
+                                                    <div className="amount-currency-select dropdown">
+                                                        <button className="dropbtn">
+                                                            Currency
+                                                        </button>
+
+                                                        <div className="dropdown-content">
+                                                            <a href="#">
+                                                                <img src=
+                                                                    "https://media.geeksforgeeks.org/wp-content/uploads/20200630132504/uflag.jpg"
+                                                                    width="20" height="15" /></a>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div className="money-transfer-info">
-                                                    <span>You could save vs banks <strong>1,010.32 USD</strong></span>
-                                                </div>
+                                            <div className="money-transfer-info">
+                                                <span>You could save vs banks <strong>1,010.32 USD</strong></span>
+                                            </div>
 
-                                                <button className="btn btn-primary" onClick={this.setModalShow}>Send Money</button>
+                                            <button className="btn btn-primary" onClick={this.setModalShow}>Send Money</button>
 
-                                                <button type="submit" className="btn btn-success calculate"> Calculate </button>
+                                            <button type="submit" className="btn btn-success calculate"> Calculate </button>
 
-                                                <div className="terms-info">
-                                                    <p>By clicking continue, I agree with <Link href="/terms-policy"><a>Terms & Policy</a></Link></p>
-                                                </div>
+                                            <div className="terms-info">
+                                                <p>By clicking continue, I agree with <Link href="/terms-policy"><a>Terms & Policy</a></Link></p>
+                                            </div>
                                             {/* </form> */}
                                         </div>
                                     </div>
@@ -98,14 +123,31 @@ class MainBanner extends Component {
                     </div>
                 </div>
 
-                <Modal show={this.state.modal} onHide={this.setModalShow}>
+                <Modal show={this.state.modal} onHide={this.setModalShow} centered>
                     <Modal.Header closeButton>
-                        <Modal.Title>Lorem Epsem</Modal.Title>
+                        <Modal.Title>Transfer Option</Modal.Title>
                     </Modal.Header>
 
+                    <Modal.Footer style={{ display: 'flex', margin: 10 }}>
+                        <Button style={{ border: "none", padding: 50 }} variant="secondary" onClick={this.setMobileModalShow}>Mobile Top-up</Button>
+                        <Button style={{ border: "none", padding: 50 }} variant="primary" onClick={this.setBankModalShow}>Bank Transfer</Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal show={this.state.mobileModal} onHide={this.setMobileModalShow} centered>
+                    <Modal.Header closeButton>
+                        Mobile Top Up - Sender Information
+                    </Modal.Header>
                     <Modal.Footer>
-                        <Button style={{border:"none"}} variant="secondary" onClick={this.setModalShow}>Mobile Top-up</Button>
-                        <Button variant="primary">Bank Transfer</Button>
+                        <input placeholder='name' />
+                    </Modal.Footer>
+                </Modal>
+                <Modal show={this.state.bankModal} onHide={this.setBankModalShow} centered>
+                    <Modal.Header closeButton>
+                        Bank - Sender Information
+                    </Modal.Header>
+                    <Modal.Footer>
+
+                        <input placeholder='name' />
                     </Modal.Footer>
                 </Modal>
             </>

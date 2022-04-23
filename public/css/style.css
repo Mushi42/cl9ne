@@ -162,7 +162,7 @@ p:last-child {
   height: 100%;
   z-index: -1;
   background: -webkit-gradient(linear, left top, right top, from(#D7A520), to(#ff6a00));
-  background:  #D7A520;
+  background: #D7A520;
   border-radius: 4px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -188,7 +188,7 @@ p:last-child {
   background-color: transparent !important;
   color: #ffffff !important;
   -webkit-box-shadow: unset !important;
-          box-shadow: unset !important;
+  box-shadow: unset !important;
 }
 
 .btn-primary:hover::before, .btn-primary:focus::before {
@@ -235,13 +235,13 @@ p:last-child {
   border-radius: 50%;
   background: #44ce6f;
   -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  animation-duration: 3s;
   -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   -webkit-animation-name: MOVE-BG;
-          animation-name: MOVE-BG;
+  animation-name: MOVE-BG;
 }
 
 .section-title p {
@@ -267,8 +267,52 @@ p:last-child {
 
 .form-control:focus {
   -webkit-box-shadow: unset !important;
-          box-shadow: unset !important;
+  box-shadow: unset !important;
   border-color: #D7A520;
+}
+
+.dropbtn {
+  background-color: #0e314c;
+  color: white;
+  padding: 16px;
+  height: 100%;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #0e314c;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #547b9a
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #0e314c;
 }
 
 /*================================================
@@ -291,7 +335,7 @@ Preloader Area CSS
   left: 0;
   right: 0;
   -webkit-transform: translateY(-43%);
-          transform: translateY(-43%);
+  transform: translateY(-43%);
   text-align: center;
   margin: 0 auto;
   width: 50px;
@@ -303,7 +347,7 @@ Preloader Area CSS
   height: 100%;
   background: #ffffff;
   -webkit-animation: animate .5s linear infinite;
-          animation: animate .5s linear infinite;
+  animation: animate .5s linear infinite;
   position: absolute;
   top: 0;
   left: 0;
@@ -320,13 +364,14 @@ Preloader Area CSS
   left: 0;
   border-radius: 50%;
   -webkit-animation: shadow .5s linear infinite;
-          animation: shadow .5s linear infinite;
+  animation: shadow .5s linear infinite;
 }
 
 @-webkit-keyframes loader {
   0% {
     left: -100px;
   }
+
   100% {
     left: 110%;
   }
@@ -336,6 +381,7 @@ Preloader Area CSS
   0% {
     left: -100px;
   }
+
   100% {
     left: 110%;
   }
@@ -345,22 +391,26 @@ Preloader Area CSS
   17% {
     border-bottom-right-radius: 3px;
   }
+
   25% {
     -webkit-transform: translateY(9px) rotate(22.5deg);
-            transform: translateY(9px) rotate(22.5deg);
+    transform: translateY(9px) rotate(22.5deg);
   }
+
   50% {
     -webkit-transform: translateY(18px) scale(1, 0.9) rotate(45deg);
-            transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
     border-bottom-right-radius: 40px;
   }
+
   75% {
     -webkit-transform: translateY(9px) rotate(67.5deg);
-            transform: translateY(9px) rotate(67.5deg);
+    transform: translateY(9px) rotate(67.5deg);
   }
+
   100% {
     -webkit-transform: translateY(0) rotate(90deg);
-            transform: translateY(0) rotate(90deg);
+    transform: translateY(0) rotate(90deg);
   }
 }
 
@@ -368,36 +418,40 @@ Preloader Area CSS
   17% {
     border-bottom-right-radius: 3px;
   }
+
   25% {
     -webkit-transform: translateY(9px) rotate(22.5deg);
-            transform: translateY(9px) rotate(22.5deg);
+    transform: translateY(9px) rotate(22.5deg);
   }
+
   50% {
     -webkit-transform: translateY(18px) scale(1, 0.9) rotate(45deg);
-            transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
     border-bottom-right-radius: 40px;
   }
+
   75% {
     -webkit-transform: translateY(9px) rotate(67.5deg);
-            transform: translateY(9px) rotate(67.5deg);
+    transform: translateY(9px) rotate(67.5deg);
   }
+
   100% {
     -webkit-transform: translateY(0) rotate(90deg);
-            transform: translateY(0) rotate(90deg);
+    transform: translateY(0) rotate(90deg);
   }
 }
 
 @-webkit-keyframes shadow {
   50% {
     -webkit-transform: scale(1.2, 1);
-            transform: scale(1.2, 1);
+    transform: scale(1.2, 1);
   }
 }
 
 @keyframes shadow {
   50% {
     -webkit-transform: scale(1.2, 1);
-            transform: scale(1.2, 1);
+    transform: scale(1.2, 1);
   }
 }
 
@@ -735,10 +789,10 @@ Navbar Area CSS
   width: 100%;
   z-index: 999;
   -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
-          box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   background-color: #070d13 !important;
   -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-          animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -976,7 +1030,7 @@ Navbar Area CSS
 
 .navbar-toggler:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .navbar-toggler .icon-bar {
@@ -991,9 +1045,9 @@ Navbar Area CSS
 
 .navbar-toggler .top-bar {
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   -webkit-transform-origin: 10% 10%;
-          transform-origin: 10% 10%;
+  transform-origin: 10% 10%;
   left: 4px;
   position: relative;
 }
@@ -1005,16 +1059,16 @@ Navbar Area CSS
 
 .navbar-toggler .bottom-bar {
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   -webkit-transform-origin: 10% 90%;
-          transform-origin: 10% 90%;
+  transform-origin: 10% 90%;
   left: 4px;
   position: relative;
 }
 
 .navbar-toggler.collapsed .top-bar {
   -webkit-transform: rotate(0);
-          transform: rotate(0);
+  transform: rotate(0);
   left: 0;
 }
 
@@ -1024,7 +1078,7 @@ Navbar Area CSS
 
 .navbar-toggler.collapsed .bottom-bar {
   -webkit-transform: rotate(0);
-          transform: rotate(0);
+  transform: rotate(0);
   left: 0;
 }
 
@@ -1036,25 +1090,30 @@ Navbar Area CSS
     padding-bottom: 15px;
   }
 
-    .navbar-area .headerLogo {
-      color: black;
-    }
+  .navbar-area .headerLogo {
+    color: black;
+  }
+
   .navbar-area .navbar-brand img:nth-child(1) {
     display: none;
   }
+
   .navbar-area .navbar-brand img:nth-child(2) {
     display: block;
   }
+
   .navbar-area .luvion-nav .navbar .navbar-nav .nav-item a {
     color: #fff;
   }
+
   .navbar-area .luvion-nav .navbar .others-options .login-btn {
     color: #212529;
   }
+
   .navbar-area.is-sticky {
     border-bottom: none;
     -webkit-box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.1);
-            box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -1133,7 +1192,7 @@ Main Banner Area CSS
 .money-transfer-form {
   background-color: #ffffff;
   -webkit-box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
-          box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 1;
   padding: 30px;
@@ -1197,7 +1256,7 @@ Main Banner Area CSS
   right: 18px;
   color: #ffffff;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   font-size: 12px;
   margin-top: 2px;
 }
@@ -1290,7 +1349,7 @@ Main Banner Area CSS
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .money-transfer-form .currency-info .bar::before {
@@ -1344,13 +1403,13 @@ Main Banner Area CSS
 }
 
 .money-transfer-form button {
-  margin-top: 15px;
+  /* margin-top: 15px; */
   border: none;
 }
 
 .money-transfer-form .btn::after {
   background: -webkit-gradient(linear, left top, right top, from(#D7A520), to(#ff6a00));
-  background:  #c59b28;
+  background: #c59b28;
 }
 
 .money-transfer-form .terms-info {
@@ -1443,7 +1502,7 @@ Main Banner Area CSS
   bottom: 55px;
   left: 50%;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   cursor: pointer;
   font-family: "Raleway", sans-serif;
   font-weight: 500;
@@ -1530,7 +1589,7 @@ Main Banner Area CSS
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   background-color: #fff !important;
   color: #D7A520 !important;
   width: 40px;
@@ -1555,7 +1614,7 @@ Main Banner Area CSS
   right: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   background-color: #fff !important;
   color: #D7A520 !important;
   width: 40px;
@@ -1612,7 +1671,7 @@ About Area CSS
   left: 50%;
   top: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
   width: 60px;
   height: 60px;
   line-height: 61px;
@@ -1635,7 +1694,7 @@ About Area CSS
   width: 60px;
   height: 60px;
   -webkit-animation: ripple 1.9s ease-out infinite;
-          animation: ripple 1.9s ease-out infinite;
+  animation: ripple 1.9s ease-out infinite;
   opacity: 0;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
@@ -1664,36 +1723,40 @@ About Area CSS
 @-webkit-keyframes ripple {
   0%, 35% {
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     opacity: 1;
   }
+
   50% {
     -webkit-transform: scale(1.5);
-            transform: scale(1.5);
+    transform: scale(1.5);
     opacity: 0.8;
   }
+
   100% {
     opacity: 0;
     -webkit-transform: scale(2);
-            transform: scale(2);
+    transform: scale(2);
   }
 }
 
 @keyframes ripple {
   0%, 35% {
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     opacity: 1;
   }
+
   50% {
     -webkit-transform: scale(1.5);
-            transform: scale(1.5);
+    transform: scale(1.5);
     opacity: 0.8;
   }
+
   100% {
     opacity: 0;
     -webkit-transform: scale(2);
-            transform: scale(2);
+    transform: scale(2);
   }
 }
 
@@ -1710,7 +1773,7 @@ Featured Boxes Area CSS
   background-color: #ffffff;
   border-radius: 5px;
   -webkit-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .featured-boxes-inner .col-lg-3 {
@@ -1736,7 +1799,7 @@ Featured Boxes Area CSS
   top: 40px;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   margin-top: -12px;
 }
 
@@ -1777,7 +1840,7 @@ Featured Boxes Area CSS
   bottom: 0;
   left: 50%;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   opacity: 0;
   visibility: hidden;
   -webkit-transition: .6;
@@ -1807,17 +1870,17 @@ Featured Boxes Area CSS
 .single-featured-box:hover .icon {
   top: 23px;
   -webkit-animation: iconTop 0.4s ease-in-out;
-          animation: iconTop 0.4s ease-in-out;
+  animation: iconTop 0.4s ease-in-out;
 }
 
 .single-featured-box:hover h3 {
   -webkit-transform: translateY(-20px);
-          transform: translateY(-20px);
+  transform: translateY(-20px);
 }
 
 .single-featured-box:hover p {
   -webkit-transform: translateY(-20px);
-          transform: translateY(-20px);
+  transform: translateY(-20px);
 }
 
 .single-featured-box:hover .read-more-btn {
@@ -1829,44 +1892,50 @@ Featured Boxes Area CSS
 @-webkit-keyframes iconTop {
   0% {
     -webkit-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
+
   25% {
     opacity: 0;
     -webkit-transform: translate(-50%, -70%);
-            transform: translate(-50%, -70%);
+    transform: translate(-50%, -70%);
   }
+
   50% {
     opacity: 0;
     -webkit-transform: translate(-50%, -40%);
-            transform: translate(-50%, -40%);
+    transform: translate(-50%, -40%);
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
 }
 
 @keyframes iconTop {
   0% {
     -webkit-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
+
   25% {
     opacity: 0;
     -webkit-transform: translate(-50%, -70%);
-            transform: translate(-50%, -70%);
+    transform: translate(-50%, -70%);
   }
+
   50% {
     opacity: 0;
     -webkit-transform: translate(-50%, -40%);
-            transform: translate(-50%, -40%);
+    transform: translate(-50%, -40%);
   }
+
   100% {
     opacity: 1;
     -webkit-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
 }
 
@@ -1891,13 +1960,13 @@ Services Area CSS
   flex-wrap: wrap;
   -ms-flex-align: center !important;
   -webkit-box-align: center !important;
-          align-items: center !important;
+  align-items: center !important;
 }
 
 .overview-box .overview-content {
   -ms-flex: 0 0 50%;
   -webkit-box-flex: 0;
-          flex: 0 0 50%;
+  flex: 0 0 50%;
   max-width: 50%;
 }
 
@@ -1946,13 +2015,13 @@ Services Area CSS
   border-radius: 50%;
   background: #44ce6f;
   -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  animation-duration: 3s;
   -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   -webkit-animation-name: MOVE-BG;
-          animation-name: MOVE-BG;
+  animation-name: MOVE-BG;
 }
 
 .overview-box .overview-content .content .services-list {
@@ -1963,7 +2032,7 @@ Services Area CSS
   flex-wrap: wrap;
   -ms-flex-align: center !important;
   -webkit-box-align: center !important;
-          align-items: center !important;
+  align-items: center !important;
   padding-left: 0;
   list-style-type: none;
   margin-left: -15px;
@@ -1975,7 +2044,7 @@ Services Area CSS
 .overview-box .overview-content .content .services-list li {
   -ms-flex: 0 0 50%;
   -webkit-box-flex: 0;
-          flex: 0 0 50%;
+  flex: 0 0 50%;
   max-width: 50%;
   padding-top: 20px;
   padding-left: 15px;
@@ -1987,7 +2056,7 @@ Services Area CSS
   position: relative;
   background-color: #ffffff;
   -webkit-box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
-          box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
   color: #57647c;
   z-index: 1;
   border-radius: 5px;
@@ -2049,7 +2118,7 @@ Services Area CSS
   flex-wrap: wrap;
   -ms-flex-align: center !important;
   -webkit-box-align: center !important;
-          align-items: center !important;
+  align-items: center !important;
   padding-left: 0;
   list-style-type: none;
   margin-left: -15px;
@@ -2061,7 +2130,7 @@ Services Area CSS
 .overview-box .overview-content .content .features-list li {
   -ms-flex: 0 0 50%;
   -webkit-box-flex: 0;
-          flex: 0 0 50%;
+  flex: 0 0 50%;
   max-width: 50%;
   padding-top: 15px;
   padding-left: 15px;
@@ -2103,7 +2172,7 @@ Services Area CSS
 .overview-box .overview-image {
   -ms-flex: 0 0 50%;
   -webkit-box-flex: 0;
-          flex: 0 0 50%;
+  flex: 0 0 50%;
   max-width: 50%;
 }
 
@@ -2118,7 +2187,7 @@ Services Area CSS
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: -1;
   right: 0;
   margin: 0 auto;
@@ -2126,56 +2195,60 @@ Services Area CSS
 
 .overview-box .overview-image .image .circle-img img {
   -webkit-animation-name: rotateMe;
-          animation-name: rotateMe;
+  animation-name: rotateMe;
   -webkit-animation-duration: 35s;
-          animation-duration: 35s;
+  animation-duration: 35s;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 
 @-webkit-keyframes MOVE-BG {
   from {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
+
   to {
     -webkit-transform: translateX(88px);
-            transform: translateX(88px);
+    transform: translateX(88px);
   }
 }
 
 @keyframes MOVE-BG {
   from {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
+
   to {
     -webkit-transform: translateX(88px);
-            transform: translateX(88px);
+    transform: translateX(88px);
   }
 }
 
 @-webkit-keyframes rotateMe {
   from {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes rotateMe {
   from {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -2185,7 +2258,7 @@ Comparisons Area CSS
 .comparisons-table {
   background-color: #ffffff;
   -webkit-box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.05);
-          box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .comparisons-table table {
@@ -2364,7 +2437,7 @@ Features Area CSS
 
 .single-features-box:hover {
   -webkit-transform: translateY(-10px);
-          transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .single-features-box:hover::before {
@@ -2373,7 +2446,7 @@ Features Area CSS
 
 .single-features-box:hover .icon {
   -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
+  transform: rotate(360deg);
   color: #D7A520;
   background-color: #ffffff;
 }
@@ -2486,7 +2559,7 @@ Features Area CSS
 
 .features-box:hover {
   -webkit-transform: translateY(-10px);
-          transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .features-box:hover::before {
@@ -2495,7 +2568,7 @@ Features Area CSS
 
 .features-box:hover .icon {
   -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
+  transform: rotate(360deg);
   color: #D7A520;
   background-color: #ffffff;
 }
@@ -2528,7 +2601,7 @@ How It Works Area CSS
   background-color: #ffffff;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 7px 20px rgba(0, 0, 0, 0.03);
-          box-shadow: 0 7px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.03);
   padding: 35px 25px;
   border-radius: 5px;
   -webkit-transition: 0.5s;
@@ -2553,9 +2626,9 @@ How It Works Area CSS
 
 .single-how-it-works:hover {
   -webkit-transform: translateY(-10px);
-          transform: translateY(-10px);
+  transform: translateY(-10px);
   -webkit-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 /*================================================
@@ -2563,7 +2636,7 @@ Team Area CSS
 =================================================*/
 .single-team-member {
   -webkit-box-shadow: 0 5px 40px 0 rgba(0, 0, 0, 0.07);
-          box-shadow: 0 5px 40px 0 rgba(0, 0, 0, 0.07);
+  box-shadow: 0 5px 40px 0 rgba(0, 0, 0, 0.07);
   text-align: center;
   border-radius: 5px;
   margin-bottom: 30px;
@@ -2693,13 +2766,13 @@ Invoicing Area CSS
   border-radius: 50%;
   background: #44ce6f;
   -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  animation-duration: 3s;
   -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   -webkit-animation-name: MOVE-BG;
-          animation-name: MOVE-BG;
+  animation-name: MOVE-BG;
 }
 
 .invoicing-content .btn {
@@ -2751,73 +2824,81 @@ Invoicing Area CSS
   top: -30px;
   left: 50px;
   -webkit-animation: moveLeftBounce 5s linear infinite;
-          animation: moveLeftBounce 5s linear infinite;
+  animation: moveLeftBounce 5s linear infinite;
 }
 
 .invoicing-image .circle-image img:nth-child(2) {
   right: 50px;
   bottom: -30px;
   -webkit-animation: moveBounce 5s linear infinite;
-          animation: moveBounce 5s linear infinite;
+  animation: moveBounce 5s linear infinite;
 }
 
 @-webkit-keyframes moveBounce {
   0% {
     -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    transform: translateY(0px);
   }
+
   50% {
     -webkit-transform: translateY(20px);
-            transform: translateY(20px);
+    transform: translateY(20px);
   }
+
   100% {
     -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    transform: translateY(0px);
   }
 }
 
 @keyframes moveBounce {
   0% {
     -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    transform: translateY(0px);
   }
+
   50% {
     -webkit-transform: translateY(20px);
-            transform: translateY(20px);
+    transform: translateY(20px);
   }
+
   100% {
     -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    transform: translateY(0px);
   }
 }
 
 @-webkit-keyframes moveLeftBounce {
   0% {
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
+
   50% {
     -webkit-transform: translateX(20px);
-            transform: translateX(20px);
+    transform: translateX(20px);
   }
+
   100% {
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
 @keyframes moveLeftBounce {
   0% {
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
+
   50% {
     -webkit-transform: translateX(20px);
-            transform: translateX(20px);
+    transform: translateX(20px);
   }
+
   100% {
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
@@ -2882,7 +2963,7 @@ Information Area CSS
   left: 8px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .single-information-box .btn-box .app-store-btn i::before {
@@ -2956,7 +3037,7 @@ Information Area CSS
   left: 8px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .single-information-box .btn-box .play-store-btn i::before {
@@ -3021,7 +3102,7 @@ Pricing Area CSS
   background-color: #ffffff;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 11px 60px 0 rgba(0, 0, 0, 0.1);
-          box-shadow: 0 11px 60px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 11px 60px 0 rgba(0, 0, 0, 0.1);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   border-radius: 5px;
@@ -3136,7 +3217,7 @@ Pricing Area CSS
   right: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .single-pricing-box .pricing-features li i::before {
@@ -3259,7 +3340,7 @@ FunFacts Area CSS
   top: 50%;
   border: none;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 /*================================================
@@ -3329,7 +3410,7 @@ Feedback Area CSS
   left: -40px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   background-color: #fff !important;
   color: #44ce6f !important;
   width: 40px;
@@ -3354,7 +3435,7 @@ Feedback Area CSS
   right: -40px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   background-color: #fff !important;
   color: #44ce6f !important;
   width: 40px;
@@ -3420,7 +3501,7 @@ Partner Area CSS
   margin-bottom: 10px;
   -ms-flex: 0 0 20%;
   -webkit-box-flex: 0;
-          flex: 0 0 20%;
+  flex: 0 0 20%;
   max-width: 20%;
   padding-left: 5px;
   padding-right: 5px;
@@ -3450,7 +3531,7 @@ Partner Area CSS
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, 200%);
-          transform: translate(-50%, 200%);
+  transform: translate(-50%, 200%);
   -webkit-transition: -webkit-transform .4s ease;
   transition: -webkit-transform .4s ease;
   transition: transform .4s ease;
@@ -3461,12 +3542,12 @@ Partner Area CSS
 
 .single-partner-item a:hover img:nth-child(1) {
   -webkit-transform: translateY(-200%);
-          transform: translateY(-200%);
+  transform: translateY(-200%);
 }
 
 .single-partner-item a:hover img:nth-child(2) {
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 /*================================================
@@ -3497,7 +3578,7 @@ App Download Area CSS
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-55%);
-          transform: translateY(-55%);
+  transform: translateY(-55%);
   z-index: -1;
   right: 0;
   margin: 0 auto;
@@ -3505,13 +3586,13 @@ App Download Area CSS
 
 .app-image .circle-img img {
   -webkit-animation-name: rotateMe;
-          animation-name: rotateMe;
+  animation-name: rotateMe;
   -webkit-animation-duration: 35s;
-          animation-duration: 35s;
+  animation-duration: 35s;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 
 .app-download-content {
@@ -3543,13 +3624,13 @@ App Download Area CSS
   border-radius: 50%;
   background: #44ce6f;
   -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  animation-duration: 3s;
   -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   -webkit-animation-name: MOVE-BG;
-          animation-name: MOVE-BG;
+  animation-name: MOVE-BG;
 }
 
 .app-download-content .btn-box {
@@ -3571,7 +3652,7 @@ App Download Area CSS
   left: 16px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .app-download-content .btn-box .app-store-btn i::before {
@@ -3645,7 +3726,7 @@ App Download Area CSS
   left: 16px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .app-download-content .btn-box .play-store-btn i::before {
@@ -3776,7 +3857,7 @@ Blog Area CSS
   transition: 0.5s;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
-          box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
 }
 
 .single-blog-post .blog-image {
@@ -3810,9 +3891,9 @@ Blog Area CSS
 
 .single-blog-post:hover {
   -webkit-transform: translateY(-7px);
-          transform: translateY(-7px);
+  transform: translateY(-7px);
   -webkit-box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
-          box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
   background-color: #ffffff;
 }
 
@@ -3944,7 +4025,7 @@ Blog Details Area CSS
 .blog-details .article-content .wp-block-gallery.columns-3 li {
   -ms-flex: 0 0 33.3333%;
   -webkit-box-flex: 0;
-          flex: 0 0 33.3333%;
+  flex: 0 0 33.3333%;
   max-width: 33.3333%;
   padding-right: 10px;
   padding-left: 10px;
@@ -3977,7 +4058,7 @@ Blog Details Area CSS
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   border-radius: 50%;
   position: absolute;
 }
@@ -4445,7 +4526,7 @@ Page Title Area CSS
   right: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   margin-bottom: 0;
 }
 
@@ -4503,7 +4584,7 @@ Pagination Area CSS
   line-height: 42px;
   color: #212529;
   -webkit-box-shadow: 0 2px 10px 0 #d8dde6;
-          box-shadow: 0 2px 10px 0 #d8dde6;
+  box-shadow: 0 2px 10px 0 #d8dde6;
   position: relative;
   z-index: 1;
   font-size: 16px;
@@ -4571,7 +4652,7 @@ Widget Sidebar Area CSS
 
 .widget-area .widget_search {
   -webkit-box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.1);
-          box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.1);
+  box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.1);
   background-color: #ffffff;
   padding: 15px;
 }
@@ -4918,7 +4999,7 @@ Widget Sidebar Area CSS
   -webkit-transition: 0.5s;
   transition: 0.5s;
   -webkit-transform: scale(0.8);
-          transform: scale(0.8);
+  transform: scale(0.8);
 }
 
 .widget-area .tagcloud a:hover, .widget-area .tagcloud a:focus {
@@ -4930,7 +5011,7 @@ Widget Sidebar Area CSS
   opacity: 1;
   visibility: visible;
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 /*================================================
@@ -4985,13 +5066,13 @@ FAQ Area CSS
   border-radius: 50%;
   background: #44ce6f;
   -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  animation-duration: 3s;
   -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   -webkit-animation-name: MOVE-BG;
-          animation-name: MOVE-BG;
+  animation-name: MOVE-BG;
 }
 
 .faq-content .faq-image {
@@ -5008,7 +5089,7 @@ FAQ Area CSS
 .faq-accordion .accordion .accordion-item {
   display: block;
   -webkit-box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
-          box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
+  box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
   background: #ffffff;
   margin-bottom: 10px;
 }
@@ -5046,7 +5127,7 @@ FAQ Area CSS
   top: 50%;
   right: 0;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   font-size: 13px;
 }
 
@@ -5071,7 +5152,7 @@ FAQ Area CSS
 .faq-accordion .accordion .accordion__item {
   margin-bottom: 20px;
   -webkit-box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
-          box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
+  box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
   font-family: "Raleway", sans-serif;
   border: none;
 }
@@ -5113,7 +5194,7 @@ FAQ Area CSS
   background-color: #ffffff;
   border: none;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
-          box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
+  box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
   height: 50px;
   font-family: "Raleway", sans-serif;
   font-size: 14.5px;
@@ -5138,7 +5219,7 @@ FAQ Area CSS
 .faq-contact-form .btn {
   margin-top: 8px;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
-          box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
+  box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
 }
 
 .faq-contact-form .help-block ul {
@@ -5228,7 +5309,7 @@ Login Area CSS
   color: #212529;
   border: none;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
-          box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
+  box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
   height: 50px;
   font-family: "Raleway", sans-serif;
   font-size: 14px;
@@ -5238,7 +5319,7 @@ Login Area CSS
   display: block;
   width: 100%;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
-          box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
+  box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
 }
 
 .login-content .login-form .forgot-password {
@@ -5276,7 +5357,7 @@ Login Area CSS
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   left: 15px;
   font-size: 20px;
 }
@@ -5369,7 +5450,7 @@ Signup Area CSS
   color: #212529;
   border: none;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
-          box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
+  box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
   height: 50px;
   font-family: "Raleway", sans-serif;
   font-size: 14px;
@@ -5379,7 +5460,7 @@ Signup Area CSS
   display: block;
   width: 100%;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
-          box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
+  box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
 }
 
 .signup-content .signup-form .connect-with-social {
@@ -5414,7 +5495,7 @@ Signup Area CSS
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   left: 15px;
   font-size: 20px;
 }
@@ -5464,7 +5545,7 @@ Contact Area CSS
   background-color: #ffffff;
   border: none;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
-          box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
+  box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2) !important;
   height: 50px;
   font-family: "Raleway", sans-serif;
   font-size: 14.5px;
@@ -5490,7 +5571,7 @@ Contact Area CSS
 .contact-form .btn {
   margin-top: 8px;
   -webkit-box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
-          box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
+  box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, 0.2);
 }
 
 .contact-form .help-block ul {
@@ -5633,7 +5714,7 @@ Contact Area CSS
   right: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: -1;
   text-align: center;
   margin: 0 auto;
@@ -5869,7 +5950,7 @@ Footer Area CSS
   right: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   margin: 0 auto;
   text-align: center;
   z-index: -1;
@@ -5965,7 +6046,7 @@ Main Banner Area CSS
   bottom: 0;
   z-index: -1;
   background: linear-gradient(151.59deg, #ff2f2f 10.43%, #000460 92.78%), radial-gradient(100% 246.94% at 100% 0, #fff 0, #020063 100%), linear-gradient(143.18deg, #1400ff 0.45%, #3a0000), linear-gradient(167.55deg, #ff002e, #ff003d 74.04%), linear-gradient(351.18deg, #b25bba 7.52%, #1700a7 77.98%), linear-gradient(202.44deg, #a90000 12.99%, #00ffe0 87.21%), linear-gradient(165.77deg, #b7d500 15.35%, #20a 89.57%);
-  background-blend-mode: overlay,color-burn,screen,overlay,difference,difference,normal;
+  background-blend-mode: overlay, color-burn, screen, overlay, difference, difference, normal;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
   clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
 }
@@ -6188,7 +6269,7 @@ Support Area CSS
   right: 50px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .support-content h2 {
@@ -6248,7 +6329,7 @@ Testimonials Area CSS
 
 .single-testimonials-box {
   -webkit-box-shadow: 5px 5px #8b98b5;
-          box-shadow: 5px 5px #8b98b5;
+  box-shadow: 5px 5px #8b98b5;
   margin-bottom: 30px;
   padding: 30px;
   -webkit-transition: 0.5s;
@@ -6289,7 +6370,7 @@ Testimonials Area CSS
 
 .single-testimonials-box:hover {
   -webkit-box-shadow: 5px 5px #212529;
-          box-shadow: 5px 5px #212529;
+  box-shadow: 5px 5px #212529;
 }
 
 /*================================================
@@ -6383,7 +6464,7 @@ Success Story Area CSS
   right: -90px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .success-story-inner .owl-theme .owl-nav [class*=owl-] {
@@ -6462,10 +6543,10 @@ Payment Features Area CSS
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center !important;
-      -ms-flex-align: center !important;
-          align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
   margin-top: 70px;
@@ -6473,8 +6554,8 @@ Payment Features Area CSS
 
 .payment-features-overview .payment-features-content {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
   max-width: 50%;
   padding-left: 15px;
   padding-right: 15px;
@@ -6518,8 +6599,8 @@ Payment Features Area CSS
 
 .payment-features-overview .payment-features-image {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
   max-width: 50%;
   padding-left: 15px;
   padding-right: 15px;
@@ -6768,7 +6849,7 @@ Main Banner Woman Area CSS
   width: 35px;
   line-height: 35px;
   -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
-          box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
   background-color: #ffffff;
   color: #DD2476;
   font-size: 16px;
@@ -6778,7 +6859,7 @@ Main Banner Woman Area CSS
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -6872,7 +6953,7 @@ Main Banner Woman Area CSS
   bottom: -20px;
   right: 1.2%;
   -webkit-transform: translateX(-1.2%);
-          transform: translateX(-1.2%);
+  transform: translateX(-1.2%);
 }
 
 /*================================================
@@ -6944,7 +7025,7 @@ About Us Area CSS
   width: 30px;
   line-height: 31.8px;
   -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
-          box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
   background-color: #ffffff;
   color: #DD2476;
   font-size: 10px;
@@ -6954,7 +7035,7 @@ About Us Area CSS
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -7074,7 +7155,7 @@ Flexibility Area CSS
   width: 30px;
   line-height: 31.8px;
   -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
-          box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
   background-color: #ffffff;
   color: #DD2476;
   font-size: 10px;
@@ -7084,7 +7165,7 @@ Flexibility Area CSS
   left: 20px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -7280,7 +7361,7 @@ Awesome Features Area CSS
   width: 30px;
   line-height: 31.8px;
   -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
-          box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.13);
   background-color: #ffffff;
   color: #DD2476;
   font-size: 10px;
@@ -7290,7 +7371,7 @@ Awesome Features Area CSS
   left: 20px;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -7383,7 +7464,7 @@ Testimonials Wrap Area CSS
   color: #ffffff;
   top: 45%;
   -webkit-transform: translateY(-45%);
-          transform: translateY(-45%);
+  transform: translateY(-45%);
   left: 0;
   position: absolute;
   -webkit-transition: 0.5s;
@@ -7428,9 +7509,9 @@ Blog Area CSS
 .single-blog-card .image .date {
   color: #D7A520;
   -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  transform: rotate(90deg);
   -webkit-transform-origin: 0;
-          transform-origin: 0;
+  transform-origin: 0;
   position: absolute;
   padding-left: 60px;
   right: -165px;
@@ -7445,7 +7526,7 @@ Blog Area CSS
   content: '';
   position: absolute;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   background-color: #D7A520;
 }
 
@@ -7658,7 +7739,7 @@ Footer Area CSS
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .footer-area.footer-style-wrap .single-footer-widget .footer-contact-info li {
@@ -7692,4 +7773,5 @@ Footer Area CSS
 .footer-area.footer-style-wrap .copyright-area p a:hover {
   color: #D7A520;
 }
+
 /*# sourceMappingURL=style.css.map */
