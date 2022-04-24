@@ -14,7 +14,7 @@ class Footer extends Component {
                                     <Link href="/">
                                         <a><img src="/images/cl9neLogo.png" alt="logo" /></a>
                                     </Link>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+                                    <p>Cl9nePay makes it easier, faster, and more cost efficient to transfer money across borders. Get started today!</p>
                                 </div>
 
                                 <ul className="social-links">

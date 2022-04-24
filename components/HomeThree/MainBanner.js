@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Modal from "react-bootstrap/Modal";
-import { Card } from 'react-bootstrap'
+import { Card, ModalFooter } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import {Dropdown,DropdownToggle,DropdownMenu} from 'react-bootstrap'
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 // import './styles.scss'
@@ -11,7 +11,9 @@ class MainBanner extends Component {
     state = {
         modal: false,
         mobileModal: false,
-        bankModal: false
+        mobileRecieveModel: false,
+        bankModal: false,
+        bankRecieveModel: false
     }
 
     setModalShow = (e) => {
@@ -31,7 +33,19 @@ class MainBanner extends Component {
             modal: !this.state.modal
         })
     }
-
+    setMobileRecieve = (e) => {
+        this.setState({
+            mobileRecieveModel: !this.state.mobileRecieveModel,
+            mobileModal: !this.state.mobileModal
+        })
+        console.log('jj')
+    }
+    setBankRecieve = (e) => {
+        this.setState({
+            bankRecieveModel: !this.state.bankRecieveModel,
+            bankModal: !this.state.bankModal,
+        })
+    }
     render() {
         return (
             <>
@@ -42,8 +56,8 @@ class MainBanner extends Component {
                                 <div className="row align-items-center">
                                     <div className="col-lg-7 col-md-12">
                                         <div className="banner-content">
-                                            <h1>Lorem ipsum dolor sit amet, consectetur</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            <h1>The cheap, fast way to send money abroad. Trusted for low-cost money transfers.</h1>
+                                            <p>Whether you’re paying someone overseas or making international business payments, Cl9nePay has modern-day payment solutions to fit your needs.</p>
 
                                         </div>
                                     </div>
@@ -133,21 +147,187 @@ class MainBanner extends Component {
                         <Button style={{ border: "none", padding: 50 }} variant="primary" onClick={this.setBankModalShow}>Bank Transfer</Button>
                     </Modal.Footer>
                 </Modal>
+
                 <Modal show={this.state.mobileModal} onHide={this.setMobileModalShow} centered>
                     <Modal.Header closeButton>
                         Mobile Top Up - Sender Information
                     </Modal.Header>
+                    <Modal.Body style={{ width: "100%" }}>
+                        
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Enter Name"
+                                className="form-control"
+                            />
+                            <input
+                                type="numer"
+                                name="name"
+                                placeholder="Enter Phone No."
+                                className="form-control"
+                            />
+                            <input
+                                type="email"
+                                name="name"
+                                placeholder="Enter E-mail"
+                                className="form-control"
+                            />
+                    </Modal.Body>
                     <Modal.Footer>
-                        <input placeholder='name' />
+                        {/* <Button style={{ border: "none" }}>SEND</Button> */}
+                        <Button onClick={this.setMobileRecieve} style={{ border: "none" }}>NEXT</Button>
                     </Modal.Footer>
                 </Modal>
+
+                <Modal show={this.state.mobileRecieveModel} onHide={this.setMobileRecieve} centered>
+                    <Modal.Header closeButton>
+                        Mobile Top_up - Sender Information
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter Name"
+                            className="form-control"
+                        />
+                        <input
+                            type="number"
+                            name="name"
+                            placeholder="Enter Phone No."
+                            className="form-control"
+                        />
+                        <p>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                Dropdown Button
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        </p>
+                        <p>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                Dropdown Button
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        </p>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Account IBAN Number"
+                            className="form-control"
+                        />
+                        <input
+                            type="number"
+                            name="name"
+                            placeholder="Enter Amount"
+                            className="form-control"
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button style={{ border: "none" }}>SEND</Button>
+                    </Modal.Footer>
+                </Modal>
+
                 <Modal show={this.state.bankModal} onHide={this.setBankModalShow} centered>
                     <Modal.Header closeButton>
                         Bank - Sender Information
                     </Modal.Header>
+                    <Modal.Body style={{ width: "100%" }}>
+                        
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Enter Name"
+                                className="form-control"
+                            />
+                            <input
+                                type="numer"
+                                name="name"
+                                placeholder="Enter Phone No."
+                                className="form-control"
+                            />
+                            <input
+                                type="email"
+                                name="name"
+                                placeholder="Enter E-mail"
+                                className="form-control"
+                            />
+                    </Modal.Body>
                     <Modal.Footer>
+                        <Button style={{ border:"none" }}>NEXT</Button>
+                    </Modal.Footer>
+                </Modal>
 
-                        <input placeholder='name' />
+                <Modal show={this.state.bankRecieveModel} onHide={this.setBankRecieve} centered>
+                    <Modal.Header closeButton>
+                        Bank - Reciever Information
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter Name"
+                            className="form-control"
+                        />
+                        <input
+                            type="number"
+                            name="name"
+                            placeholder="Enter Phone No."
+                            className="form-control"
+                        />
+                        <p>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                Dropdown Button
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        </p>
+                        <p>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                Dropdown Button
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        </p>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Account IBAN Number"
+                            className="form-control"
+                        />
+                        <input
+                            type="number"
+                            name="name"
+                            placeholder="Enter Amount"
+                            className="form-control"
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button style={{ border:"none" }}>SEND</Button>
                     </Modal.Footer>
                 </Modal>
             </>

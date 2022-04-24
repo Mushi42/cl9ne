@@ -20,12 +20,12 @@ class CustomersFeedback extends Component {
 
     _isMounted = false;
     state = {
-        display:false
+        display: false
     }
 
-    componentDidMount(){ 
+    componentDidMount() {
         this._isMounted = true;
-        this.setState({ display: true }) 
+        this.setState({ display: true })
     }
 
     componentWillUnmount() {
@@ -39,18 +39,19 @@ class CustomersFeedback extends Component {
                     <div className="section-title">
                         <h2>What customers say about Us</h2>
                         <div className="bar"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>With over several years combined foreign exchange experience, we know how to deliver an ‘Excellent’ services
+                        </p>
                     </div>
 
-                    {this.state.display ? <OwlCarousel 
+                    {this.state.display ? <OwlCarousel
                         className="feedback-slides owl-carousel owl-theme"
                         {...options}
-                    > 
+                    >
                         <div className="item">
                             <div className="single-feedback">
                                 <i className="fas fa-quote-left quote-icon"></i>
                                 <p>
-                                    <q>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                                    <q>Excellent site very well designed, very convenient to use. Transfers are reliable and safe. The team is great, very flexible, always listening and helping you. I can’t even consider using another platform as Currency Transfer!</q>
                                 </p>
 
                                 <div className="client-img">
@@ -60,12 +61,12 @@ class CustomersFeedback extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="item">
                             <div className="single-feedback">
                                 <i className="fas fa-quote-left quote-icon"></i>
                                 <p>
-                                    <q>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                                    <q>OUTSTANDING! Amazing service and super speed, smooth and efficient. I have a direct link to my account officer if I need. Only a simpleton would use the main banks for any currency transfers.</q>
                                 </p>
 
                                 <div className="client-img">
@@ -75,12 +76,12 @@ class CustomersFeedback extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="item">
                             <div className="single-feedback">
                                 <i className="fas fa-quote-left quote-icon"></i>
                                 <p>
-                                    <q>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                                    <q>“Simply the best money transfer service, Exchange rates are far better than another exchange. Highly Recommended.”</q>
                                 </p>
 
                                 <div className="client-img">
@@ -90,12 +91,12 @@ class CustomersFeedback extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="item">
                             <div className="single-feedback">
                                 <i className="fas fa-quote-left quote-icon"></i>
                                 <p>
-                                    <q>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</q>
+                                    <q>Transaction went smoother, and additionally the transactional charges are way cheaper than sending through any local bank.</q>
                                 </p>
 
                                 <div className="client-img">
@@ -105,7 +106,7 @@ class CustomersFeedback extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="item">
                             <div className="single-feedback">
                                 <i className="fas fa-quote-left quote-icon"></i>
