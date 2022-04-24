@@ -292,9 +292,10 @@ p:last-child {
   display: none;
   position: absolute;
   background-color: #0e314c;
-  min-width: 100px;
+  min-width: 95px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  border-radius: 0 5px 5px 0;
 }
 
 .dropdown-content a {
@@ -1105,6 +1106,10 @@ Navbar Area CSS
 
   .navbar-area .luvion-nav .navbar .navbar-nav .nav-item a {
     color: #fff;
+  }
+
+  .navbar-area .luvion-nav .navbar .navbar-nav .nav-item a:hover {
+    color: #D7A520;
   }
 
   .navbar-area .luvion-nav .navbar .others-options .login-btn {

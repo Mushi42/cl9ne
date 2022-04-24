@@ -66,10 +66,9 @@ class Navbar extends Component {
                                 <div className={classOne} id="navbarSupportedContent">
                                     <ul className="navbar-nav">
                                         <li className="nav-item">
-                                            <Link href="/">
-                                                <a className="nav-link" onClick={e => e.preventDefault()}>
+                                            <Link href="/" >
+                                                <a className="nav-link">
                                                     Home
-                                                     {/* <i className="fas fa-chevron-down"></i> */}
                                                 </a>
                                             </Link>
 
@@ -84,11 +83,11 @@ class Navbar extends Component {
                                                         <a className="nav-link">Home Demo - 2</a>
                                                     </Link>
                                                 </li> */}
-                                                {/* <li className="nav-item">
+                                                <li className="nav-item">
                                                     <Link href="/index3" activeClassName="active">
                                                         <a className="nav-link">Home Demo - 3</a>
                                                     </Link>
-                                                </li> */}
+                                                </li>
                                                 {/* <li className="nav-item">
                                                     <Link href="/index4" activeClassName="active">
                                                         <a className="nav-link">Home Demo - 4</a>

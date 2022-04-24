@@ -53,22 +53,22 @@ const ContactForm = () => {
     };
 
     return (
-    
+
         <div className="contact-form">
             <form id="contactForm" onSubmit={handleSubmit(onSubmit)}>
                 <div className="row">
                     <div className="col-lg-6 col-md-6">
                         <div className="form-group">
-                            <input 
-                                type="text" 
-                                name="name" 
-                                placeholder="Name" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Name"
+                                className="form-control"
                                 value={contact.name}
                                 onChange={handleChange}
                                 ref={register({ required: true })}
                             />
-                            <div className='invalid-feedback' style={{display: 'block'}}>
+                            <div className='invalid-feedback' style={{ display: 'block' }}>
                                 {errors.name && 'Please enter your name'}
                             </div>
                         </div>
@@ -76,16 +76,16 @@ const ContactForm = () => {
 
                     <div className="col-lg-6 col-md-6">
                         <div className="form-group">
-                            <input 
-                                type="email" 
-                                name="email" 
-                                placeholder="Email" 
-                                className="form-control" 
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                className="form-control"
                                 value={contact.email}
                                 onChange={handleChange}
                                 ref={register({ required: true, pattern: /^\S+@\S+$/i })}
                             />
-                            <div className='invalid-feedback' style={{display: 'block'}}>
+                            <div className='invalid-feedback' style={{ display: 'block' }}>
                                 {errors.email && 'Please enter your email'}
                             </div>
                         </div>
@@ -93,16 +93,16 @@ const ContactForm = () => {
 
                     <div className="col-lg-6 col-md-6">
                         <div className="form-group">
-                            <input 
-                                type="text" 
-                                name="number" 
-                                placeholder="Phone" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                name="number"
+                                placeholder="Phone"
+                                className="form-control"
                                 value={contact.number}
                                 onChange={handleChange}
                                 ref={register({ required: true })}
                             />
-                            <div className='invalid-feedback' style={{display: 'block'}}>
+                            <div className='invalid-feedback' style={{ display: 'block' }}>
                                 {errors.number && 'Please enter your number'}
                             </div>
                         </div>
@@ -110,16 +110,16 @@ const ContactForm = () => {
 
                     <div className="col-lg-6 col-md-6">
                         <div className="form-group">
-                            <input 
-                                type="text" 
-                                name="subject" 
-                                placeholder="Subject" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                name="subject"
+                                placeholder="Subject"
+                                className="form-control"
                                 value={contact.subject}
                                 onChange={handleChange}
                                 ref={register({ required: true })}
                             />
-                            <div className='invalid-feedback' style={{display: 'block'}}>
+                            <div className='invalid-feedback' style={{ display: 'block' }}>
                                 {errors.subject && 'Please enter your number'}
                             </div>
                         </div>
@@ -127,24 +127,24 @@ const ContactForm = () => {
 
                     <div className="col-lg-12 col-md-12">
                         <div className="form-group">
-                            <textarea 
-                                name="text" 
-                                cols="30" 
-                                rows="5" 
-                                placeholder="Write your message..." 
-                                className="form-control" 
+                            <textarea
+                                name="text"
+                                cols="30"
+                                rows="5"
+                                placeholder="Write your message..."
+                                className="form-control"
                                 value={contact.text}
                                 onChange={handleChange}
                                 ref={register({ required: true })}
                             />
-                            <div className='invalid-feedback' style={{display: 'block'}}>
+                            <div className='invalid-feedback' style={{ display: 'block' }}>
                                 {errors.text && 'Write your message'}
                             </div>
                         </div>
                     </div>
 
                     <div className="col-lg-12 col-sm-12">
-                        <button type="submit" className="btn btn-primary">Send Message</button>
+                        <button type="submit" style={{ border: 'none' }} className="btn btn-primary">Send Message</button>
                     </div>
                 </div>
             </form>
