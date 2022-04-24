@@ -142,7 +142,7 @@ class MainBanner extends Component {
                         <Modal.Title>Transfer Option</Modal.Title>
                     </Modal.Header>
 
-                    <Modal.Footer style={{ display: 'flex', margin: 10 }}>
+                    <Modal.Footer style={{ display: 'flex' }}>
                         <Button style={{ border: "none", padding: 50 }} variant="secondary" onClick={this.setMobileModalShow}>Mobile Top-up</Button>
                         <Button style={{ border: "none", padding: 50 }} variant="primary" onClick={this.setBankModalShow}>Bank Transfer</Button>
                     </Modal.Footer>
