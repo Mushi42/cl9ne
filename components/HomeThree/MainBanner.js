@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from "react-bootstrap/Modal";
 import { Card, ModalFooter } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Dropdown,DropdownToggle,DropdownMenu} from 'react-bootstrap'
+import { Dropdown, DropdownToggle, DropdownMenu } from 'react-bootstrap'
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 // import './styles.scss'
@@ -13,7 +13,7 @@ class MainBanner extends Component {
         mobileModal: false,
         mobileRecieveModel: false,
         bankModal: false,
-        bankRecieveModel: false
+        bankRecieveModel: false,
     }
 
     setModalShow = (e) => {
@@ -38,13 +38,13 @@ class MainBanner extends Component {
             mobileRecieveModel: !this.state.mobileRecieveModel,
             mobileModal: !this.state.mobileModal
         })
-        console.log('jj')
     }
     setBankRecieve = (e) => {
         this.setState({
             bankRecieveModel: !this.state.bankRecieveModel,
             bankModal: !this.state.bankModal,
         })
+        console.log('jj')
     }
     render() {
         return (
@@ -153,25 +153,25 @@ class MainBanner extends Component {
                         Mobile Top Up - Sender Information
                     </Modal.Header>
                     <Modal.Body style={{ width: "100%" }}>
-                        
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Enter Name"
-                                className="form-control"
-                            />
-                            <input
-                                type="numer"
-                                name="name"
-                                placeholder="Enter Phone No."
-                                className="form-control"
-                            />
-                            <input
-                                type="email"
-                                name="name"
-                                placeholder="Enter E-mail"
-                                className="form-control"
-                            />
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter Name"
+                            className="form-control"
+                        />
+                        <input
+                            type="numer"
+                            name="name"
+                            placeholder="Enter Phone No."
+                            className="form-control"
+                        />
+                        <input
+                            type="email"
+                            name="name"
+                            placeholder="Enter E-mail"
+                            className="form-control"
+                        />
                     </Modal.Body>
                     <Modal.Footer>
                         {/* <Button style={{ border: "none" }}>SEND</Button> */}
@@ -196,32 +196,32 @@ class MainBanner extends Component {
                             placeholder="Enter Phone No."
                             className="form-control"
                         />
-                        <p>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
-                                Dropdown Button
-                            </Dropdown.Toggle>
+                        <div className='Dropdown-grid'>
+                            <Dropdown >
+                                <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                    YOUR COUNTRY
+                                </Dropdown.Toggle>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        </p>
-                        <p>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
-                                Dropdown Button
-                            </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">Dropdown Item 1</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Dropdown Item 2</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">Dropdown Item 3</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        </p>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                    BANK NAME
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">Dropdown Item 1</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Dropdown Item 2</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">Dropdown Item 3</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
+
                         <input
                             type="text"
                             name="name"
@@ -245,28 +245,28 @@ class MainBanner extends Component {
                         Bank - Sender Information
                     </Modal.Header>
                     <Modal.Body style={{ width: "100%" }}>
-                        
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Enter Name"
-                                className="form-control"
-                            />
-                            <input
-                                type="numer"
-                                name="name"
-                                placeholder="Enter Phone No."
-                                className="form-control"
-                            />
-                            <input
-                                type="email"
-                                name="name"
-                                placeholder="Enter E-mail"
-                                className="form-control"
-                            />
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter Name"
+                            className="form-control"
+                        />
+                        <input
+                            type="numer"
+                            name="name"
+                            placeholder="Enter Phone No."
+                            className="form-control"
+                        />
+                        <input
+                            type="email"
+                            name="name"
+                            placeholder="Enter E-mail"
+                            className="form-control"
+                        />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button style={{ border:"none" }}>NEXT</Button>
+                        <Button onClick={this.setBankRecieve} style={{ border: "none" }}>NEXT</Button>
                     </Modal.Footer>
                 </Modal>
 
@@ -287,32 +287,31 @@ class MainBanner extends Component {
                             placeholder="Enter Phone No."
                             className="form-control"
                         />
-                        <p>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
-                                Dropdown Button
-                            </Dropdown.Toggle>
+                        <div className='Dropdown-grid'>
+                            <Dropdown >
+                                <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                    YOUR COUNTRY
+                                </Dropdown.Toggle>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        </p>
-                        <p>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
-                                Dropdown Button
-                            </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">Dropdown Item 1</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Dropdown Item 2</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">Dropdown Item 3</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        </p>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                    BANK NAME
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">Dropdown Item 1</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Dropdown Item 2</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">Dropdown Item 3</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
                         <input
                             type="text"
                             name="name"
@@ -327,7 +326,7 @@ class MainBanner extends Component {
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button style={{ border:"none" }}>SEND</Button>
+                        <Button style={{ border: "none" }}>SEND</Button>
                     </Modal.Footer>
                 </Modal>
             </>

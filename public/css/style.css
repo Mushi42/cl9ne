@@ -1654,6 +1654,32 @@ Main Banner Area CSS
   color: #ffffff !important;
 }
 
+.modal .modal-dialog .modal-footer {
+  justify-content: space-around;
+}
+
+.modal .modal-dialog .modal-content .modal-body .Dropdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin-bottom: 10px;
+}
+
+.modal .modal-dialog .modal-content .modal-body .Dropdown-grid .dropdown .btn-success:focus {
+ box-shadow: none; 
+ border-color: #00B2FF;
+}
+
+.modal .modal-dialog .modal-content .modal-body .Dropdown-grid .btn-success {
+  background-color: white;
+  border-color: #ced4da;
+  color: #6e7377;
+  width: 100%;
+}
+.modal .modal-dialog .modal-content .modal-body .Dropdown-grid .dropdown-menu {
+  width: 100%;
+}
+
 /*================================================
 About Area CSS
 =================================================*/
