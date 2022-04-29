@@ -149,7 +149,7 @@ p:last-child {
 .btn-primary {
   background-color: transparent;
   color: #ffffff;
-  margin-right: 15px;
+  /* margin-right: 15px; */
   border: none;
 }
 
@@ -1039,7 +1039,7 @@ Navbar Area CSS
   width: 35px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  background: #221638;
+  background: #fff;
   height: 4px;
   display: block;
   border-radius: 3px;
@@ -1654,8 +1654,14 @@ Main Banner Area CSS
   color: #ffffff !important;
 }
 
-.modal .modal-dialog .modal-footer {
-  justify-content: space-around;
+.col-lg-5 .money-transfer-form .calculate-btn-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-lg-5 .money-transfer-form .calculate-btn-grid .btn-success {
+  font-size: 15px;
+  background-color: #d8a521;
 }
 
 .modal .modal-dialog .modal-content .modal-body .Dropdown-grid {
