@@ -317,6 +317,17 @@ p:last-child {
   background-color: #0e314c;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /*================================================
 Preloader Area CSS
 =================================================*/
@@ -1664,25 +1675,29 @@ Main Banner Area CSS
   background-color: #d8a521;
 }
 
-.modal .modal-dialog .modal-content .modal-body .Dropdown-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  margin-bottom: 10px;
+.col-lg-5 .money-transfer-form .calculate-btn-grid .btn-success:focus {
+  box-shadow: none;
 }
 
-.modal .modal-dialog .modal-content .modal-body .Dropdown-grid .dropdown .btn-success:focus {
+.modal .modal-dialog .modal-content .modal-body .dropdown .btn-success:focus {
  box-shadow: none; 
- border-color: #00B2FF;
+ border-color: #3D3D3D;
 }
 
-.modal .modal-dialog .modal-content .modal-body .Dropdown-grid .btn-success {
+.modal .modal-dialog .modal-content .modal-body .dropdown {
+  width: 100%;
+}
+
+.modal .modal-dialog .modal-content .modal-body .btn-success {
   background-color: white;
   border-color: #ced4da;
   color: #6e7377;
   width: 100%;
+  margin-bottom: 10px;
+  text-align: start;
+  height: 50px;
 }
-.modal .modal-dialog .modal-content .modal-body .Dropdown-grid .dropdown-menu {
+.modal .modal-dialog .modal-content .modal-body .dropdown-menu {
   width: 100%;
 }
 

@@ -7,6 +7,7 @@ import ServicesContent from '../components/HomeThree/ServicesContent';
 import FunFacts from '../components/HomeThree/FunFacts';
 import CustomersFeedback from '../components/Common/CustomersFeedback';
 import AccountCreateArea from '../components/Common/AccountCreateArea';
+import "antd/dist/antd.css";
 import Footer from '../components/Layouts/Footer';
 import Rates from '../components/Rates/Rates';
 

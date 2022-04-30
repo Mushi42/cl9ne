@@ -5,8 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Dropdown, DropdownToggle, DropdownMenu } from 'react-bootstrap'
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-// import './styles.scss'
-
+import { Select } from 'antd';
+const { Option } = Select;
+import 'antd/dist/antd.css';
+// import { Modal, Button } from 'antd';
 class MainBanner extends Component {
     state = {
         mobileModal: false,
@@ -38,9 +40,23 @@ class MainBanner extends Component {
             bankRecieveModel: !this.state.bankRecieveModel,
             bankModal: !this.state.bankModal,
         })
-        console.log('jj')
     }
+
+
+
+    onChange = (value) => {
+        console.log(`selected ${value}`);
+    }
+
+    onSearch = (val) => {
+        console.log('search:', val);
+    }
+
+
+
     render() {
+
+
         return (
             <>
                 <div className="main-banner-section">
@@ -140,24 +156,23 @@ class MainBanner extends Component {
                         <input
                             type="text"
                             name="name"
-                            placeholder="Receiver Number"
-                            className="form-control"
-                        />
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Service Provider"
+                            placeholder="Enter Name"
                             className="form-control"
                         />
                         <input
                             type="number"
+                            name="name"
+                            placeholder="Enter Phone No."
+                            className="form-control"
+                        />
+                        <input
+                            type="email"
                             name="amount"
-                            placeholder="Amount"
+                            placeholder="Enter Email"
                             className="form-control"
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        {/* <Button style={{ border: "none" }}>SEND</Button> */}
                         <Button onClick={this.setMobileRecieve} style={{ border: "none" }}>NEXT</Button>
                     </Modal.Footer>
                 </Modal>
@@ -168,55 +183,29 @@ class MainBanner extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <input
-                            type="text"
+                            type="number"
                             name="name"
-                            placeholder="Enter Name"
+                            placeholder="Reciever Number"
                             className="form-control"
                         />
+                        <Dropdown >
+                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                                Service Provider
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">MTN, Globacom</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Airtel</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">9Mobile</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                         <input
                             type="number"
                             name="name"
-                            placeholder="Enter Phone No."
+                            placeholder="Amount"
                             className="form-control"
                         />
-                        <div className='Dropdown-grid'>
-                            <Dropdown >
-                                <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
-                                    YOUR COUNTRY
-                                </Dropdown.Toggle>
 
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Dropdown Item 1</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Dropdown Item 2</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Dropdown Item 3</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-
-                            <Dropdown>
-                                <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
-                                    BANK NAME
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Dropdown Item 1</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Dropdown Item 2</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Dropdown Item 3</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </div>
-
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Account IBAN Number"
-                            className="form-control"
-                        />
-                        <input
-                            type="number"
-                            name="name"
-                            placeholder="Enter Amount"
-                            className="form-control"
-                        />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button style={{ border: "none" }}>SEND</Button>
@@ -228,7 +217,6 @@ class MainBanner extends Component {
                         Bank - Sender Information
                     </Modal.Header>
                     <Modal.Body style={{ width: "100%" }}>
-
                         <input
                             type="text"
                             name="name"
@@ -236,17 +224,18 @@ class MainBanner extends Component {
                             className="form-control"
                         />
                         <input
-                            type="numer"
+                            type="text"
                             name="name"
                             placeholder="Enter Phone No."
                             className="form-control"
                         />
                         <input
-                            type="email"
+                            type="number"
                             name="name"
-                            placeholder="Enter E-mail"
+                            placeholder="Enter Email"
                             className="form-control"
                         />
+
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.setBankRecieve} style={{ border: "none" }}>NEXT</Button>
@@ -270,32 +259,40 @@ class MainBanner extends Component {
                             placeholder="Enter Phone No."
                             className="form-control"
                         />
-                        <div className='Dropdown-grid'>
-                            <Dropdown >
-                                <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
-                                    YOUR COUNTRY
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Dropdown Item 1</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Dropdown Item 2</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Dropdown Item 3</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-
-                            <Dropdown>
-                                <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
-                                    BANK NAME
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Dropdown Item 1</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Dropdown Item 2</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Dropdown Item 3</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </div>
-                        <input
+                        
+                        <Select
+                            showSearch
+                            style={{ width: 200 }}
+                            placeholder="Search to Select"
+                            optionFilterProp="children"
+                            filterOption={(input, option) =>
+                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            }
+                            filterSort={(optionA, optionB) =>
+                                optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+                            }
+                        >
+                            <Option value="1">Access Bank Plc</Option>
+                            <Option value="2">Citibank Nigeria Limited</Option>
+                            <Option value="3">Ecobank Nigeria</Option>
+                            <Option value="4">Fidelity Bank Plc</Option>
+                            <Option value="5">First City Monument Bank Limited</Option>
+                            <Option value="6">First Bank of Nigeria Limited</Option>
+                            <Option value="tom">Guaraty Trust Holding Company Plc</Option>
+                            <Option value="tom">Heritage Bank Plc</Option>
+                            <Option value="tom">Keystone Bank Limited</Option>
+                            <Option value="tom">Polaris Bank Limited. The Successor to Skye Bank Plc.</Option>
+                            <Option value="tom">Stanbic IBTC Bank Plc</Option>
+                            <Option value="tom">Standard Chartered</Option>
+                            <Option value="tom">Sterling Bank Plc</Option>
+                            <Option value="tom">Titan Trust Bank Limited</Option>
+                            <Option value="tom">Unity Bank Plc</Option>
+                            <Option value="tom">Union Bank of Nigeria Plc</Option>
+                            <Option value="tom">United Bank of Nigeria</Option>
+                            <Option value="tom">Wema Bank Plc</Option>
+                            <Option value="tom">Zenith Bank Plc</Option>
+                        </Select>
+                        {/* <input
                             type="text"
                             name="name"
                             placeholder="Account IBAN Number"
@@ -306,7 +303,8 @@ class MainBanner extends Component {
                             name="name"
                             placeholder="Enter Amount"
                             className="form-control"
-                        />
+                        /> */}
+
                     </Modal.Body>
                     <Modal.Footer>
                         <Button style={{ border: "none" }}>SEND</Button>
