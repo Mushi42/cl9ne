@@ -9,18 +9,17 @@ import { Button } from 'react-bootstrap';
 
 class MainBanner extends Component {
     state = {
-        modal: false,
         mobileModal: false,
         mobileRecieveModel: false,
         bankModal: false,
         bankRecieveModel: false,
     }
 
-    setModalShow = (e) => {
-        this.setState({
-            modal: !this.state.modal
-        })
-    }
+    // setModalShow = (e) => {
+    //     this.setState({
+    //         modal: !this.state.modal
+    //     })
+    // }
     setMobileModalShow = (e) => {
         this.setState({
             mobileModal: !this.state.mobileModal,
@@ -64,7 +63,6 @@ class MainBanner extends Component {
 
                                     <div className="col-lg-5 col-md-12">
                                         <div className="money-transfer-form">
-                                            {/* <form> */}
                                             <div className="form-group">
                                                 <label>You Send</label>
                                                 <div className="money-transfer-field">
@@ -95,7 +93,6 @@ class MainBanner extends Component {
                                             <div className="currency-info">
                                                 <div className="bar"></div>
                                                 <span><strong>415.3</strong> Exchange Rate</span>
-                                                {/* <span><strong>$4.50</strong> Transition Fees</span> */}
                                             </div>
 
                                             <div className="form-group">
@@ -121,14 +118,16 @@ class MainBanner extends Component {
                                                 <span>You could save vs banks <strong>1,010.32 USD</strong></span>
                                             </div>
 
-                                            <button className="btn btn-primary" onClick={this.setModalShow}>Send Money</button>
-
-                                            <button type="submit" className="btn btn-success calculate"> Calculate </button>
+                                            <div className='calculate-btn-grid'>
+                                                <button className="btn btn-success calculate" type="submit"> Calculate </button>
+                                                <Button className="btn btn-success calculate" variant="secondary" onClick={this.setMobileModalShow}>Mobile Top-up</Button>
+                                                <Button className="btn btn-success calculate" variant="secondary" onClick={this.setBankModalShow}>Bank Transfer</Button>
+                                            </div>
 
                                             <div className="terms-info">
                                                 <p>By clicking continue, I agree with <Link href="/terms-policy"><a>Terms & Policy</a></Link></p>
                                             </div>
-                                            {/* </form> */}
+
                                         </div>
                                     </div>
                                 </div>
@@ -136,17 +135,6 @@ class MainBanner extends Component {
                         </div>
                     </div>
                 </div>
-
-                <Modal show={this.state.modal} onHide={this.setModalShow} centered>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Transfer Option</Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Footer style={{ display: 'flex' }}>
-                        <Button style={{ border: "none", padding: 50 }} variant="secondary" onClick={this.setMobileModalShow}>Mobile Top-up</Button>
-                        <Button style={{ border: "none", padding: 50 }} variant="primary" onClick={this.setBankModalShow}>Bank Transfer</Button>
-                    </Modal.Footer>
-                </Modal>
 
                 <Modal show={this.state.mobileModal} onHide={this.setMobileModalShow} centered>
                     <Modal.Header closeButton>
@@ -157,19 +145,19 @@ class MainBanner extends Component {
                         <input
                             type="text"
                             name="name"
-                            placeholder="Enter Name"
+                            placeholder="Receiver Number"
                             className="form-control"
                         />
                         <input
-                            type="numer"
+                            type="text"
                             name="name"
-                            placeholder="Enter Phone No."
+                            placeholder="Service Provider"
                             className="form-control"
                         />
                         <input
-                            type="email"
-                            name="name"
-                            placeholder="Enter E-mail"
+                            type="number"
+                            name="amount"
+                            placeholder="Amount"
                             className="form-control"
                         />
                     </Modal.Body>
@@ -181,7 +169,7 @@ class MainBanner extends Component {
 
                 <Modal show={this.state.mobileRecieveModel} onHide={this.setMobileRecieve} centered>
                     <Modal.Header closeButton>
-                        Mobile Top_up - Sender Information
+                        Mobile Top_up - Reciever Information
                     </Modal.Header>
                     <Modal.Body>
                         <input
