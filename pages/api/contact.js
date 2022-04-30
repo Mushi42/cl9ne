@@ -1,37 +1,28 @@
-import nodemailer from 'nodemailer';
-import sgTransport from 'nodemailer-sendgrid-transport';
+import axios from 'axios'
+import { BASE_URL } from '../../constants'
+axios.defaults.baseURL = BASE_URL;
 
-const transporter = {
-    auth: {
-        // Use SendGrid API key 
-        api_key: '###'
-    }
-}
+// import nodemailer from 'nodemailer';
+// import sgTransport from 'nodemailer-sendgrid-transport';
 
-const mailer = nodemailer.createTransport(sgTransport(transporter));
+// const transporter = {
+//     auth: {
+//         // Use SendGrid API key 
+//         api_key: '###'
+//     }
+// }
 
-export default async (req, res) => {
-    // console.log(req.body)
-    const {name, email, number, subject, text} = req.body;
+// const mailer = nodemailer.createTransport(sgTransport(transporter));
 
-    const data = {
-        to: 'example@gmail.com',
-        from: email,
-        subject: 'Hi there',
-        text: text,
-        html: `
-            <b>From:</b> ${name} <br /> 
-            <b>Number:</b> ${number} <br /> 
-            <b>Subject:</b> ${subject} <br /> 
-            <b>Message:</b> ${text} 
-        ` 
-    };
+export const postMessage = async (body) => {
     try {
-        const response = await mailer.sendMail(data);
+        console.log(body)
+        const response = await axios.post('/contact', body);
+
         console.log(response)
-        res.status(200).send("Email send successfully")
+        if (response)
+            return response.data.data
     } catch (error) {
         console.log(error);
-        res.status(500).send("Error proccessing charge");
     }
 }

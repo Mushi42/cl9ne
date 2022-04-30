@@ -1,41 +1,33 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { getCurrenyData } from '../../pages/api/currency'
 
 class Rates extends Component {
     state = {
-        rates: {},
+        tablHead: [],
+        tableData: [],
         updateDate: null,
-        APIKEY: '658af92787955c43f78e4e899c439181'
     }
 
     componentDidMount() {
-        axios.get(`http://api.exchangeratesapi.io/v1/latest?access_key=${this.state.APIKEY}&format=1`)
-            .then((res) => {
-                // console.log(res.data);
-                this.setState({
-                    rates: res.data.rates,
-                    updateDate: res.data.date
-                })
+        getCurrenyData().then(resp => {
+            let head = [];
+            let body = [];
+            resp && resp.length > 1 && resp.forEach(rate => {
+                head.push(rate.name);
+                body.push(rate.convertRate)
             });
+
+            this.setState({ tablHead: head, tableData: body })
+        })
     }
     render() {
-        let { rates, updateDate } = this.state;
-        let tablHead = [];
-        let tableData = [];
-        Object.keys(rates).forEach(function (rate) {
-            if (rate == 'USD' || rate == 'GBP' || rate == 'EUR') {
-
-                tablHead.push(rate); // key
-                tableData.push(rates[rate])
-            }
-        });
         return (
             <section className="currency-rates-area pt-70">
                 <div className="container">
                     <div className="section-title">
                         <h2>Currency Rates</h2>
                         <div className="bar"></div>
-                        <p>Latest Currency Rates Based on <strong>EUR</strong></p>
+                        <p>Latest Currency Rates Based on <strong>NGR</strong></p>
                     </div>
 
                     <div className="table-responsive currency-rates-table">
@@ -43,7 +35,7 @@ class Rates extends Component {
                             <thead>
                                 <tr>
                                     {
-                                        tablHead.length ? tablHead.map((head, i) => (
+                                        this.state.tablHead.length ? this.state.tablHead.map((head, i) => (
                                             <th key={i} scope="col">{head}</th>
                                         )) : null
                                     }
@@ -52,7 +44,7 @@ class Rates extends Component {
                             <tbody>
                                 <tr>
                                     {
-                                        tableData.length ? tableData.map((data, i) => (
+                                        this.state.tableData.length ? this.state.tableData.map((data, i) => (
                                             <td key={i}>{data.toFixed(3)}</td>
                                         )) : null
                                     }
@@ -62,13 +54,6 @@ class Rates extends Component {
                     </div>
 
                     <div className="row currency-rates-info">
-                        {/* <div className="col-lg-6 col-md-6 col-6">
-                            <a href="https://exchangeratesapi.io/" target="_blank">Source</a>
-                        </div> */}
-
-                        {/* <div className="col-lg-6 col-md-6 col-6 text-right">
-                            <p>Date: {updateDate}</p>
-                        </div> */}
                     </div>
                 </div>
             </section>
