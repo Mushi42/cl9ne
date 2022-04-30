@@ -16,12 +16,9 @@ axios.defaults.baseURL = BASE_URL;
 
 export const postMessage = async (body) => {
     try {
-        console.log(body)
         const response = await axios.post('/contact', body);
-
-        console.log(response)
         if (response)
-            return response.data.data
+            return response.data
     } catch (error) {
         console.log(error);
     }
