@@ -33,11 +33,6 @@ class Footer extends Component {
                                             <i className="fab fa-instagram"></i>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="https://www.linkedin.com/" target="_blank">
-                                            <i className="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>

@@ -31,7 +31,7 @@ class Rates extends Component {
                     </div>
 
                     <div className="table-responsive currency-rates-table">
-                        <table className="table">
+                        <table className="table text-center">
                             <thead>
                                 <tr>
                                     {
