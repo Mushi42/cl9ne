@@ -15,11 +15,6 @@ class MainBanner extends Component {
         bankRecieveModel: false,
     }
 
-    // setModalShow = (e) => {
-    //     this.setState({
-    //         modal: !this.state.modal
-    //     })
-    // }
     setMobileModalShow = (e) => {
         this.setState({
             mobileModal: !this.state.mobileModal,
@@ -55,7 +50,7 @@ class MainBanner extends Component {
                                 <div className="row align-items-center">
                                     <div className="col-lg-7 col-md-12">
                                         <div className="banner-content">
-                                            <h1>The cheap, fast way to send money abroad. Trusted for low-cost money transfers.</h1>
+                                            <h1>The cheap, fast way of sending money to Nigeria with 0% fee.</h1>
                                             <p>Whether you’re paying someone overseas or making international business payments, Cl9nePay has modern-day payment solutions to fit your needs.</p>
 
                                         </div>
