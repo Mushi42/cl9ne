@@ -7,6 +7,6 @@ export const chargePayment = async (body) => {
     const response = await axios.post('/stripe/charge', body);
     if (response) return response.data;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };

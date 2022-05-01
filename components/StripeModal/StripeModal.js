@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ModalComponent from '../Modal';
+import Swal from 'sweetalert2';
+
 import {
   Elements,
   CardElement,
@@ -31,19 +33,15 @@ const StripeModal = ({ initState, show, close }) => {
 
 
   return (
-    <ModalComponent
-      title="Transaction Details"
-      show={show}
-      close={close}
-    >
+    <ModalComponent title="Transaction Details" show={show} close={close}>
       <Elements stripe={stripe}>
-      <CheckoutForm payload={payload} />
-    </Elements>
+        <CheckoutForm payload={payload} close={close} />
+      </Elements>
     </ModalComponent>
   );
 };
 
-function CheckoutForm({ payload }) {
+function CheckoutForm({ payload, close }) {
   const [isPaymentLoading, setPaymentLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
@@ -60,12 +58,37 @@ function CheckoutForm({ payload }) {
     const result = await stripe.createToken(card);
 
     if (result.error) {
-      // Show error to your customer.
       console.log(result.error.message);
     } else {
       const paymentData = { token: result.token.id, transaction: payload };
       chargePayment(paymentData).then((res) => {
-        console.log('------After Patment charge', res);
+        Swal.fire({
+          title: 'You can track your transaction by Transaction ID',
+          text: `TransactionID: #${res.data._id}`,
+          icon: 'success',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, I copied Transaction ID!',
+        })
+          .then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Completed!',
+                'You transaction completed',
+                'success'
+              );
+              close();
+            }
+          })
+          .catch((err) => {
+            Swal.fire(
+                'Failed!',
+                'Your transaction has been faild!',
+                'error'
+              );
+            close();
+          });
       });
     }
   };

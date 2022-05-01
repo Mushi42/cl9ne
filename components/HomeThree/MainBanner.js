@@ -35,7 +35,38 @@ const currencyOptions = {
             'https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8=',
     },
 };
-
+const initState = {
+  mobileModal: false,
+        mobileRecieveModel: false,
+        bankModal: false,
+        bankRecieveModel: false,
+        selectedFlagValue: 'USD',
+        currencyList: [],
+        transaction: {
+            sender: {
+                name: '',
+                phone: '',
+                email: '',
+            },
+            receiver: {
+                name: '',
+                phone: '',
+                bank: '',
+                IBAN: '',
+                receiverNumber: '',
+                serviceProvider: '',
+            },
+            amount: '',
+            convertedAmount: '',
+            currency: 'USD',
+            transactionType: '',
+            status: 'pending',
+        },
+        stripeModal: false,
+        inputAmount: '',
+        exchangeRate: '',
+        calculatedPrice: '',
+}
 class MainBanner extends Component {
     state = {
         mobileModal: false,
@@ -80,7 +111,7 @@ class MainBanner extends Component {
         this.setState({ stripeModal: true });
     };
     closeStripModal = () => {
-        this.setState({ stripeModal: false });
+        this.setState({ ...initState });
     };
 
     handleTransactionType = (value) => {
@@ -454,8 +485,8 @@ class MainBanner extends Component {
                                             </div>
 
                                             <div className="money-transfer-info">
-                                                <span>
-                                                    You could save vs banks <strong>2 USD</strong>
+                                                <span style={{color: "white"}}>
+                                                    You could save vs banks <strong style={{color: "white"}}>2 USD</strong>
                                                 </span>
                                             </div>
 
@@ -470,7 +501,7 @@ class MainBanner extends Component {
                                                 <Button
                                                     className="btn btn-success calculate"
                                                     variant="secondary"
-                                                    disabled={this.state.calculatedPrice ? true : false}
+                                                    disabled={!this.state.calculatedPrice ? true : false}
                                                     onClick={this.setMobileModalShow}
                                                 >
                                                     Mobile Top-up
@@ -478,7 +509,7 @@ class MainBanner extends Component {
                                                 <Button
                                                     className="btn btn-success calculate"
                                                     variant="secondary"
-                                                    disabled={this.state.calculatedPrice ? true : false}
+                                                    disabled={!this.state.calculatedPrice ? true : false}
                                                     onClick={this.setBankModalShow}
                                                 >
                                                     Bank Transfer
@@ -486,12 +517,12 @@ class MainBanner extends Component {
                                             </div>
 
                                             <div className="terms-info">
-                                                <p>
+                                                {/* <p>
                                                     By clicking continue, I agree with{' '}
                                                     <Link href="/terms-policy">
                                                         <a>Terms & Policy</a>
                                                     </Link>
-                                                </p>
+                                                </p> */}
                                             </div>
                                         </div>
                                     </div>
