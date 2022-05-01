@@ -18,22 +18,22 @@ import 'antd/dist/antd.css';
 
 const { Option } = Select;
 const currencyOptions = {
-  EUR: {
-    img:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png',
-  },
-  GBP: {
-    img:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_the_United_Kingdom.png/1200px-Flag_of_the_United_Kingdom.png',
-  },
-  USD: {
-    img:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png',
-  },
-  NG: {
-    img:
-      'https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8=',
-  },
+    EUR: {
+        img:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png',
+    },
+    GBP: {
+        img:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_the_United_Kingdom.png/1200px-Flag_of_the_United_Kingdom.png',
+    },
+    USD: {
+        img:
+            'https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png',
+    },
+    NG: {
+        img:
+            'https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8=',
+    },
 };
 
 class MainBanner extends Component {
@@ -43,7 +43,7 @@ class MainBanner extends Component {
         bankModal: false,
         bankRecieveModel: false,
         selectedFlagValue: 'USD',
-        currencyList:[],
+        currencyList: [],
         transaction: {
             sender: {
                 name: '',
@@ -62,7 +62,10 @@ class MainBanner extends Component {
             transactionType: '',
             status: 'pending'
         },
-        stripeModal: false
+        stripeModal: false,
+        inputAmount: '',
+        exchangeRate: '',
+        calculatedPrice: ''
 
     }
 
@@ -73,8 +76,8 @@ class MainBanner extends Component {
         })
     }
 
-    showStripModal = () => {this.setState({ stripeModal: true })}
-    closeStripModal = () => {this.setState({ stripeModal: false })}
+    showStripModal = () => { this.setState({ stripeModal: true }) }
+    closeStripModal = () => { this.setState({ stripeModal: false }) }
 
     handleTransactionType = (value) => {
         this.setState(prevState => ({
@@ -96,14 +99,8 @@ class MainBanner extends Component {
 
     componentDidMount() {
         getCurrenyData().then(resp => {
-            let head = [];
-            let body = [];
-            resp && resp.length > 1 && resp.forEach(rate => {
-                head.push(rate.name);
-                body.push(rate.convertRate)
-            });
-
-            this.setState({ tablHead: head, tableData: body })
+            this.setState({ currencyList: resp })
+            this.setState({ exchangeRate: resp.find(el => el.name == 'USD').convertRate })
         })
     }
 
@@ -133,10 +130,10 @@ class MainBanner extends Component {
             console.log(this.state.transaction)
             alert('Please fill all fields')
         } else {
-          const newTrasaction = {...this.state.transaction, transactionType: 'bank'}
-          this.setState({ transaction: newTrasaction });
-          this.clearModal();
-          this.showStripModal();
+            const newTrasaction = { ...this.state.transaction, transactionType: 'bank' }
+            this.setState({ transaction: newTrasaction });
+            this.clearModal();
+            this.showStripModal();
         }
     }
 
@@ -260,377 +257,382 @@ class MainBanner extends Component {
     ]
 
     handlFlagSelect = (evt) => {
-        this.setState({ selectedFlagValue: evt.target.title })
+        this.setState({ selectedFlagValue: evt.target.title, inputAmount: '' })
+        this.setState({ exchangeRate: this.state.currencyList.find(el => el.name == evt.target.title).convertRate })
     }
-    
 
-
+    onChangeAmountOnCal = (evt) => {
+        this.setState({ inputAmount: evt.target.value, calculatedPrice: parseInt(evt.target.value) * parseInt(this.state.exchangeRate) })
+    }
     render() {
         return (
-          <>
-            <div className="main-banner-section">
-              <div className="d-table">
-                <div className="d-table-cell">
-                  <div className="container">
-                    <div className="row align-items-center">
-                      <div className="col-lg-7 col-md-12">
-                        <div className="banner-content">
-                          <h1>
-                            The cheap, fast way of sending money to Nigeria with
-                            0% fee.
-                          </h1>
-                          <p>
-                            Whether you’re paying someone overseas or making
-                            international business payments, Cl9nePay has
-                            modern-day payment solutions to fit your needs.
-                          </p>
-                        </div>
-                      </div>
+            <>
+                <div className="main-banner-section">
+                    <div className="d-table">
+                        <div className="d-table-cell">
+                            <div className="container">
+                                <div className="row align-items-center">
+                                    <div className="col-lg-7 col-md-12">
+                                        <div className="banner-content">
+                                            <h1>
+                                                The cheap, fast way of sending money to Nigeria with
+                                                0% fee.
+                                            </h1>
+                                            <p>
+                                                Whether you’re paying someone overseas or making
+                                                international business payments, Cl9nePay has
+                                                modern-day payment solutions to fit your needs.
+                                            </p>
+                                        </div>
+                                    </div>
 
-                      <div className="col-lg-5 col-md-12">
-                        <div className="money-transfer-form">
-                          <div className="form-group">
-                            <label>You Send</label>
-                            <div className="money-transfer-field">
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder="1,000"
-                              />
-                              <div className="amount-currency-select dropdown">
-                                <button className="dropbtn ">
-                                   <img
-                                      src={currencyOptions[this.state.selectedFlagValue].img}
-                                      width="20"
-                                      height="15"
-                                    />
-                                </button>
+                                    <div className="col-lg-5 col-md-12">
+                                        <div className="money-transfer-form">
+                                            <div className="form-group">
+                                                <label>You Send</label>
+                                                <div className="money-transfer-field">
+                                                    <input
+                                                        type="text"
+                                                        value={this.state.inputAmount}
+                                                        onChange={this.onChangeAmountOnCal}
+                                                        className="form-control"
+                                                        placeholder="-"
+                                                    />
+                                                    <div className="amount-currency-select dropdown">
+                                                        <button className="dropbtn ">
+                                                            <img
+                                                                src={currencyOptions[this.state.selectedFlagValue].img}
+                                                                width="20"
+                                                                height="15"
+                                                            />
+                                                        </button>
 
-                                <div className="dropdown-content">
-                                  <a title="EUR" onClick={this.handlFlagSelect}>
-                                    <img
-                                      title="EUR"
-                                      src={currencyOptions.EUR.img}
-                                      width="20"
-                                      height="15"
-                                    />
-                                  </a>
-                                  <a title="GBP" onClick={this.handlFlagSelect}>
-                                    <img
-                                      title="GBP"
-                                      src={currencyOptions.GBP.img}
-                                      width="20"
-                                      height="15"
-                                    />
-                                  </a>
-                                  <a title="USD" onClick={this.handlFlagSelect}>
-                                    <img
-                                      title="USD"
-                                      src={currencyOptions.USD.img}
-                                      width="20"
-                                      height="15"
-                                    />{' '}
-                                  </a>
+                                                        <div className="dropdown-content">
+                                                            <a title="EUR" onClick={this.handlFlagSelect}>
+                                                                <img
+                                                                    title="EUR"
+                                                                    src={currencyOptions.EUR.img}
+                                                                    width="20"
+                                                                    height="15"
+                                                                />
+                                                            </a>
+                                                            <a title="GBP" onClick={this.handlFlagSelect}>
+                                                                <img
+                                                                    title="GBP"
+                                                                    src={currencyOptions.GBP.img}
+                                                                    width="20"
+                                                                    height="15"
+                                                                />
+                                                            </a>
+                                                            <a title="USD" onClick={this.handlFlagSelect}>
+                                                                <img
+                                                                    title="USD"
+                                                                    src={currencyOptions.USD.img}
+                                                                    width="20"
+                                                                    height="15"
+                                                                />{' '}
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="currency-info">
+                                                <div className="bar"></div>
+                                                <span>
+                                                    <strong>{this.state.exchangeRate}</strong> Exchange Rate
+                                                </span>
+                                            </div>
+
+                                            <div className="form-group">
+                                                <label>Recipient gets</label>
+                                                <div className="money-transfer-field">
+                                                    <input
+                                                        type="text"
+                                                        disabled
+                                                        className="form-control"
+                                                        placeholder={this.state.calculatedPrice}
+                                                    />
+                                                    <div className="amount-currency-select">
+                                                        <button className="dropbtn" styles={{ width: "90px" }}>
+                                                            <img
+                                                                src={currencyOptions.NG.img}
+                                                                width="20"
+                                                                height="15"
+                                                            />
+                                                        </button>
+
+                                                        <div className="dropdown-content">
+                                                            <a href="#">
+                                                                <img
+                                                                    src={currencyOptions.NG.img}
+                                                                    width="20"
+                                                                    height="15"
+                                                                />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="money-transfer-info">
+                                                <span>
+                                                    You could save vs banks{' '}
+                                                    <strong>2 USD</strong>
+                                                </span>
+                                            </div>
+
+                                            <div className="calculate-btn-grid">
+                                                {/* <button
+                                                    className="btn btn-success calculate"
+                                                    type="submit"
+                                                >
+                                                    {' '}
+                                                    Calculate{' '}
+                                                </button> */}
+                                                <Button
+                                                    className="btn btn-success calculate"
+                                                    variant="secondary"
+                                                    onClick={this.setMobileModalShow}
+                                                >
+                                                    Mobile Top-up
+                                                </Button>
+                                                <Button
+                                                    className="btn btn-success calculate"
+                                                    variant="secondary"
+                                                    onClick={this.setBankModalShow}
+                                                >
+                                                    Bank Transfer
+                                                </Button>
+                                            </div>
+
+                                            <div className="terms-info">
+                                                <p>
+                                                    By clicking continue, I agree with{' '}
+                                                    <Link href="/terms-policy">
+                                                        <a>Terms & Policy</a>
+                                                    </Link>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
-
-                          <div className="currency-info">
-                            <div className="bar"></div>
-                            <span>
-                              <strong>415.3</strong> Exchange Rate
-                            </span>
-                          </div>
-
-                          <div className="form-group">
-                            <label>Recipient gets</label>
-                            <div className="money-transfer-field">
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder="1,000"
-                              />
-                              <div className="amount-currency-select">
-                                <button className="dropbtn" styles={{width: "90px"}}>
-                                  <img
-                                      src={currencyOptions.NG.img}
-                                      width="20"
-                                      height="15"
-                                    />
-                                </button>
-
-                                <div className="dropdown-content">
-                                  <a href="#">
-                                    <img
-                                      src={currencyOptions.NG.img}
-                                      width="20"
-                                      height="15"
-                                    />
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="money-transfer-info">
-                            <span>
-                              You could save vs banks{' '}
-                              <strong>1,010.32 USD</strong>
-                            </span>
-                          </div>
-
-                          <div className="calculate-btn-grid">
-                            <button
-                              className="btn btn-success calculate"
-                              type="submit"
-                            >
-                              {' '}
-                              Calculate{' '}
-                            </button>
-                            <Button
-                              className="btn btn-success calculate"
-                              variant="secondary"
-                              onClick={this.setMobileModalShow}
-                            >
-                              Mobile Top-up
-                            </Button>
-                            <Button
-                              className="btn btn-success calculate"
-                              variant="secondary"
-                              onClick={this.setBankModalShow}
-                            >
-                              Bank Transfer
-                            </Button>
-                          </div>
-
-                          <div className="terms-info">
-                            <p>
-                              By clicking continue, I agree with{' '}
-                              <Link href="/terms-policy">
-                                <a>Terms & Policy</a>
-                              </Link>
-                            </p>
-                          </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-            </div>
 
-            <Modal
-              show={this.state.mobileModal}
-              onHide={this.setMobileModalShow}
-              centered
-            >
-              <Modal.Header closeButton>
-                Mobile Top Up - Sender Information
-              </Modal.Header>
-              <Modal.Body style={{ width: '100%' }}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Enter Name"
-                  value={this.state.transaction.sender.name}
-                  onChange={this.handleSenderChange}
-                  className="form-control"
-                />
-                <input
-                  type="number"
-                  name="phone"
-                  value={this.state.transaction.sender.phone}
-                  onChange={this.handleSenderChange}
-                  placeholder="Enter Phone No."
-                  className="form-control"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={this.state.transaction.sender.email}
-                  onChange={this.handleSenderChange}
-                  placeholder="Enter Email"
-                  className="form-control"
-                />
-              </Modal.Body>
-              <Modal.Footer>
-                <Button
-                  onClick={this.setMobileRecieve}
-                  style={{ border: 'none' }}
+                <Modal
+                    show={this.state.mobileModal}
+                    onHide={this.setMobileModalShow}
+                    centered
                 >
-                  NEXT
-                </Button>
-              </Modal.Footer>
-            </Modal>
+                    <Modal.Header closeButton>
+                        Mobile Top Up - Sender Information
+                    </Modal.Header>
+                    <Modal.Body style={{ width: '100%' }}>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter Name"
+                            value={this.state.transaction.sender.name}
+                            onChange={this.handleSenderChange}
+                            className="form-control"
+                        />
+                        <input
+                            type="number"
+                            name="phone"
+                            value={this.state.transaction.sender.phone}
+                            onChange={this.handleSenderChange}
+                            placeholder="Enter Phone No."
+                            className="form-control"
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            value={this.state.transaction.sender.email}
+                            onChange={this.handleSenderChange}
+                            placeholder="Enter Email"
+                            className="form-control"
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button
+                            onClick={this.setMobileRecieve}
+                            style={{ border: 'none' }}
+                        >
+                            NEXT
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
 
-            <Modal
-              show={this.state.mobileRecieveModel}
-              onHide={this.setMobileRecieve}
-              centered
-            >
-              <Modal.Header closeButton>
-                Mobile Top_up - Reciever Information
-              </Modal.Header>
-              <Modal.Body>
-                <input
-                  type="number"
-                  name="phone"
-                  value={this.state.transaction.receiver.phone}
-                  onChange={this.handleReceiver}
-                  placeholder="Reciever Number"
-                  className="form-control"
-                />
-                <DropdownButton
-                  onSelect={this.handleSelect}
-                  title="Select Provider"
-                  name="serviceProvider"
-                  variant="success"
+                <Modal
+                    show={this.state.mobileRecieveModel}
+                    onHide={this.setMobileRecieve}
+                    centered
                 >
-                  <Dropdown.Menu>
-                    <Dropdown.Item eventKey="MTN">MTN</Dropdown.Item>
-                    <Dropdown.Item eventKey="Globacom">Globacom</Dropdown.Item>
-                    <Dropdown.Item eventKey="Airtel">Airtel</Dropdown.Item>
-                    <Dropdown.Item eventKey="9Mobile">9Mobile</Dropdown.Item>
-                  </Dropdown.Menu>
-                </DropdownButton>
-                <input
-                  type="number"
-                  name="amount"
-                  value={this.state.transaction.amount}
-                  onChange={this.handleChange}
-                  placeholder="Amount"
-                  className="form-control"
-                />
-              </Modal.Body>
-              <Modal.Footer>
-                <Button
-                  onClick={this.handleMobileTransaction}
-                  style={{ border: 'none' }}
+                    <Modal.Header closeButton>
+                        Mobile Top_up - Reciever Information
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input
+                            type="number"
+                            name="phone"
+                            value={this.state.transaction.receiver.phone}
+                            onChange={this.handleReceiver}
+                            placeholder="Reciever Number"
+                            className="form-control"
+                        />
+                        <DropdownButton
+                            onSelect={this.handleSelect}
+                            title="Select Provider"
+                            name="serviceProvider"
+                            variant="success"
+                        >
+                            <Dropdown.Menu>
+                                <Dropdown.Item eventKey="MTN">MTN</Dropdown.Item>
+                                <Dropdown.Item eventKey="Globacom">Globacom</Dropdown.Item>
+                                <Dropdown.Item eventKey="Airtel">Airtel</Dropdown.Item>
+                                <Dropdown.Item eventKey="9Mobile">9Mobile</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </DropdownButton>
+                        <input
+                            type="number"
+                            name="amount"
+                            value={this.state.transaction.amount}
+                            onChange={this.handleChange}
+                            placeholder="Amount"
+                            className="form-control"
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button
+                            onClick={this.handleMobileTransaction}
+                            style={{ border: 'none' }}
+                        >
+                            SEND
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+
+                <Modal
+                    show={this.state.bankModal}
+                    onHide={this.setBankModalShow}
+                    centered
                 >
-                  SEND
-                </Button>
-              </Modal.Footer>
-            </Modal>
+                    <Modal.Header closeButton>Bank - Sender Information</Modal.Header>
+                    <Modal.Body style={{ width: '100%' }}>
+                        <input
+                            type="text"
+                            name="name"
+                            required
+                            value={this.state.transaction.sender.name}
+                            onChange={this.handleSenderChange}
+                            placeholder="Enter Name"
+                            className="form-control"
+                        />
+                        <input
+                            type="number"
+                            name="phone"
+                            required
+                            value={this.state.transaction.sender.phone}
+                            onChange={this.handleSenderChange}
+                            placeholder="Enter Phone No."
+                            className="form-control"
+                        />
+                        <input
+                            type="email"
+                            required
+                            name="email"
+                            value={this.state.transaction.sender.email}
+                            onChange={this.handleSenderChange}
+                            placeholder="Enter Email"
+                            className="form-control"
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button
+                            onClick={this.setBankRecieve}
+                            style={{ border: 'none' }}
+                        >
+                            NEXT
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
 
-            <Modal
-              show={this.state.bankModal}
-              onHide={this.setBankModalShow}
-              centered
-            >
-              <Modal.Header closeButton>Bank - Sender Information</Modal.Header>
-              <Modal.Body style={{ width: '100%' }}>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={this.state.transaction.sender.name}
-                  onChange={this.handleSenderChange}
-                  placeholder="Enter Name"
-                  className="form-control"
-                />
-                <input
-                  type="number"
-                  name="phone"
-                  required
-                  value={this.state.transaction.sender.phone}
-                  onChange={this.handleSenderChange}
-                  placeholder="Enter Phone No."
-                  className="form-control"
-                />
-                <input
-                  type="email"
-                  required
-                  name="email"
-                  value={this.state.transaction.sender.email}
-                  onChange={this.handleSenderChange}
-                  placeholder="Enter Email"
-                  className="form-control"
-                />
-              </Modal.Body>
-              <Modal.Footer>
-                <Button
-                  onClick={this.setBankRecieve}
-                  style={{ border: 'none' }}
+                <AntModal
+                    visible={this.state.bankRecieveModel}
+                    title="Bank - Reciever Information"
+                    onCancel={this.setBankRecieve}
+                    okType={'ghost'}
+                    onOk={this.handleBankTransaction}
+                    okText="Send"
                 >
-                  NEXT
-                </Button>
-              </Modal.Footer>
-            </Modal>
+                    <input
+                        type="text"
+                        name="name"
+                        required
+                        value={this.state.transaction.receiver.name}
+                        onChange={this.handleReceiver}
+                        placeholder="Enter Name"
+                        className="form-control"
+                    />
+                    <input
+                        type="number"
+                        name="phone"
+                        value={this.state.transaction.receiver.phone}
+                        onChange={this.handleReceiver}
+                        placeholder="Enter Phone No."
+                        className="form-control"
+                    />
 
-            <AntModal
-              visible={this.state.bankRecieveModel}
-              title="Bank - Reciever Information"
-              onCancel={this.setBankRecieve}
-              okType={'ghost'}
-              onOk={this.handleBankTransaction}
-              okText="Send"
-            >
-              <input
-                type="text"
-                name="name"
-                required
-                value={this.state.transaction.receiver.name}
-                onChange={this.handleReceiver}
-                placeholder="Enter Name"
-                className="form-control"
-              />
-              <input
-                type="number"
-                name="phone"
-                value={this.state.transaction.receiver.phone}
-                onChange={this.handleReceiver}
-                placeholder="Enter Phone No."
-                className="form-control"
-              />
+                    <Select
+                        showSearch
+                        style={{ width: '100%', marginTop: 5, marginBottom: 5 }}
+                        size={'large'}
+                        placeholder="Select Bank"
+                        optionFilterProp="children"
+                        onChange={this.onChange}
+                        filterOption={(input, option) =>
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                            0
+                        }
+                        filterSort={(optionA, optionB) =>
+                            optionA.children
+                                .toLowerCase()
+                                .localeCompare(optionB.children.toLowerCase())
+                        }
+                    >
+                        {this.banks.map((el) => (
+                            <Option value={el.value}>{el.name}</Option>
+                        ))}
+                    </Select>
+                    <input
+                        type="text"
+                        name="IBAN"
+                        value={this.state.transaction.receiver.IBAN}
+                        onChange={this.handleReceiver}
+                        placeholder="Account IBAN Number"
+                        className="form-control"
+                    />
+                    <input
+                        type="number"
+                        name="amount"
+                        value={this.state.transaction.amount}
+                        onChange={this.handleChange}
+                        placeholder="Enter Amount"
+                        className="form-control"
+                    />
 
-              <Select
-                showSearch
-                style={{ width: '100%', marginTop: 5, marginBottom: 5 }}
-                size={'large'}
-                placeholder="Select Bank"
-                optionFilterProp="children"
-                onChange={this.onChange}
-                filterOption={(input, option) =>
-                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
-                  0
-                }
-                filterSort={(optionA, optionB) =>
-                  optionA.children
-                    .toLowerCase()
-                    .localeCompare(optionB.children.toLowerCase())
-                }
-              >
-                {this.banks.map((el) => (
-                  <Option value={el.value}>{el.name}</Option>
-                ))}
-              </Select>
-              <input
-                type="text"
-                name="IBAN"
-                value={this.state.transaction.receiver.IBAN}
-                onChange={this.handleReceiver}
-                placeholder="Account IBAN Number"
-                className="form-control"
-              />
-              <input
-                type="number"
-                name="amount"
-                value={this.state.transaction.amount}
-                onChange={this.handleChange}
-                placeholder="Enter Amount"
-                className="form-control"
-              />
+                    {/* <Button style={{ border: "none" }}>SEND</Button> */}
+                </AntModal>
 
-              {/* <Button style={{ border: "none" }}>SEND</Button> */}
-            </AntModal>
-
-            <StripeModal
-              show={this.state.stripeModal}
-              close={this.closeStripModal}
-              initState={this.state.transaction}
-            />
-          </>
+                <StripeModal
+                    show={this.state.stripeModal}
+                    close={this.closeStripModal}
+                    initState={this.state.transaction}
+                />
+            </>
         );
     }
 }
