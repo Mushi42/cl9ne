@@ -48,7 +48,7 @@ class MainBanner extends Component {
             sender: {
                 name: '',
                 phone: '',
-                email: ''
+                email: '',
             },
             receiver: {
                 name: '',
@@ -56,37 +56,41 @@ class MainBanner extends Component {
                 bank: '',
                 IBAN: '',
                 receiverNumber: '',
-                serviceProvider: ''
+                serviceProvider: '',
             },
             amount: 0,
+            convertedAmount: 0,
+            currency: 'USD',
             transactionType: '',
-            status: 'pending'
+            status: 'pending',
         },
         stripeModal: false,
-        inputAmount: '',
+        inputAmount: 0,
         exchangeRate: '',
-        calculatedPrice: ''
-
-    }
+        calculatedPrice: '',
+    };
 
     componentDidMount() {
-        getCurrenyData().then(resp => {
-
-            this.setState({ currencyList: resp })
-        })
+        getCurrenyData().then((resp) => {
+            this.setState({ currencyList: resp });
+        });
     }
 
-    showStripModal = () => { this.setState({ stripeModal: true }) }
-    closeStripModal = () => { this.setState({ stripeModal: false }) }
+    showStripModal = () => {
+        this.setState({ stripeModal: true });
+    };
+    closeStripModal = () => {
+        this.setState({ stripeModal: false });
+    };
 
     handleTransactionType = (value) => {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
             transaction: {
                 ...prevState.transaction,
-                'transactionType': value
-            }
-        }))
-    }
+                transactionType: value,
+            },
+        }));
+    };
 
     clearModal = () => {
         this.setState({
@@ -94,23 +98,28 @@ class MainBanner extends Component {
             mobileRecieveModel: false,
             bankModal: false,
             bankRecieveModel: false,
-        })
-    }
+        });
+    };
 
     componentDidMount() {
-        getCurrenyData().then(resp => {
-            this.setState({ currencyList: resp })
-            this.setState({ exchangeRate: resp.find(el => el.name == 'USD').convertRate })
-        })
+        getCurrenyData().then((resp) => {
+            this.setState({ currencyList: resp });
+            this.setState({
+                exchangeRate: resp.find((el) => el.name == 'USD')?.convertRate,
+            });
+        });
     }
 
     handleMobileTransaction = () => {
-        if (this.state.transaction.receiver.phone == '' || this.state.transaction.receiver.serviceProvider == ''
-            || this.state.transaction.amount == '') {
-            alert('Please fill all fields')
+        if (
+            this.state.transaction.receiver.phone == '' ||
+            this.state.transaction.receiver.serviceProvider == '' ||
+            this.state.transaction.amount == ''
+        ) {
+            alert('Please fill all fields');
         } else {
-            makeTransaction(this.state.transaction, 'mobile').then(resp => {
-                this.clearModal()
+            makeTransaction(this.state.transaction, 'mobile').then((resp) => {
+                this.clearModal();
                 MySwal.fire({
                     title: 'Sent',
                     text: 'Your transaction has been made. Thanks',
@@ -118,133 +127,177 @@ class MainBanner extends Component {
                     timer: 2000,
                     timerProgressBar: true,
                     showConfirmButton: false,
-                })
-                console.log('Mobile response', resp)
-            })
+                });
+                console.log('Mobile response', resp);
+            });
         }
-    }
+    };
 
     handleBankTransaction = () => {
-        if (this.state.transaction.receiver.bank == '' || this.state.transaction.receiver.IBAN == ''
-            || this.state.transaction.receiver.phone == '' || this.state.transaction.receiver.name == '' || this.state.transaction.amount == '') {
-            console.log(this.state.transaction)
-            alert('Please fill all fields')
+        if (
+            this.state.transaction.receiver.bank == '' ||
+            this.state.transaction.receiver.IBAN == '' ||
+            this.state.transaction.receiver.phone == '' ||
+            this.state.transaction.receiver.name == '' ||
+            this.state.transaction.amount == ''
+        ) {
+            console.log(this.state.transaction);
+            alert('Please fill all fields');
         } else {
-            const newTrasaction = { ...this.state.transaction, transactionType: 'bank' }
+            const newTrasaction = {
+                ...this.state.transaction,
+                transactionType: 'bank',
+            };
             this.setState({ transaction: newTrasaction });
             this.clearModal();
             this.showStripModal();
         }
-    }
+    };
 
     setMobileModalShow = (e) => {
         this.setState({
             mobileModal: !this.state.mobileModal,
-            modal: !this.state.modal
-        })
-    }
+            modal: !this.state.modal,
+        });
+    };
     setBankModalShow = (e) => {
         this.setState({
             bankModal: !this.state.bankModal,
-            modal: !this.state.modal
-        })
-    }
+            modal: !this.state.modal,
+        });
+    };
     setMobileRecieve = (e) => {
-        if (this.state.transaction.sender.name == '' || this.state.transaction.sender.phone == '' || this.state.transaction.sender.email == '') {
-            alert('Please fill all fields')
+        if (
+            this.state.transaction.sender.name == '' ||
+            this.state.transaction.sender.phone == '' ||
+            this.state.transaction.sender.email == ''
+        ) {
+            alert('Please fill all fields');
         } else {
             this.setState({
                 mobileRecieveModel: !this.state.mobileRecieveModel,
-                mobileModal: !this.state.mobileModal
-            })
+                mobileModal: !this.state.mobileModal,
+            });
         }
-    }
+    };
     setBankRecieve = (e) => {
-        if (this.state.transaction.sender.name == '' || this.state.transaction.sender.phone == '' || this.state.transaction.sender.email == '') {
-            alert('Please fill all fields')
+        if (
+            this.state.transaction.sender.name == '' ||
+            this.state.transaction.sender.phone == '' ||
+            this.state.transaction.sender.email == ''
+        ) {
+            alert('Please fill all fields');
         } else {
             this.setState({
                 bankRecieveModel: !this.state.bankRecieveModel,
                 bankModal: !this.state.bankModal,
-            })
+            });
         }
-    }
+    };
 
     onChange = (value) => {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
             transaction: {
                 ...prevState.transaction,
                 receiver: {
                     ...prevState.transaction.receiver,
-                    'bank': this.banks.find((el) => el.value === value).name,
-                }
-            }
-        }))
-    }
+                    bank: this.banks.find((el) => el.value === value).name,
+                },
+            },
+        }));
+    };
+
+    onChange2 = (value) => {
+        this.setState((prevState) => ({
+            transaction: {
+                ...prevState.transaction,
+                receiver: {
+                    ...prevState.transaction.receiver,
+                    serviceProvider: this.serviceProvider.find((el) => el.value === value).name,
+                },
+            },
+        }));
+    };
 
     onSearch = (val) => {
         console.log('search:', val);
-    }
+    };
 
     handleSenderChange = (evt) => {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
             transaction: {
                 ...prevState.transaction,
-                sender:
-                {
+                sender: {
                     ...prevState.transaction.sender,
-                    [evt.target.name]: evt.target.value
-                }
-            }
-        }))
-    }
+                    [evt.target.name]: evt.target.value,
+                },
+            },
+        }));
+    };
 
     handleReceiver = (evt) => {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
             transaction: {
                 ...prevState.transaction,
                 receiver: {
                     ...prevState.transaction.receiver,
-                    [evt.target.name]: evt.target.value
-                }
-            }
-        }))
-
-    }
+                    [evt.target.name]: evt.target.value,
+                },
+            },
+        }));
+    };
 
     handleChange = (evt) => {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
             transaction: {
                 ...prevState.transaction,
-                [evt.target.name]: evt.target.value
-            }
-        }))
-    }
+                [evt.target.name]: evt.target.value,
+            },
+        }));
+    };
 
     handleSelect = (e) => {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
             transaction: {
                 ...prevState.transaction,
                 receiver: {
                     ...prevState.transaction.receiver,
-                    'serviceProvider': e
-                }
-            }
-        }))
-    }
+                    serviceProvider: e,
+                },
+            },
+        }));
+    };
 
+    serviceProvider = [
+        { value: 'MTN', name: 'MTN' },
+        { value: 'Globacam', name: 'Globacam' },
+        { value: 'Airtel', name: 'Airtel' },
+        { value: '9Mobile', name: '9Mobile' }
+    ]
 
     banks = [
         { value: 'Access Bank Plc', name: 'Access Bank Plc' },
         { value: 'Citibank Nigeria Limited', name: 'Citibank Nigeria Limited' },
         { value: 'Ecobank Nigeria', name: 'Ecobank Nigeria' },
         { value: 'Fidelity Bank Plc', name: 'Fidelity Bank Plc' },
-        { value: 'First City Monument Bank Limited', name: 'First City Monument Bank Limited' },
-        { value: 'First Bank of Nigeria Limited', name: 'First Bank of Nigeria Limited' },
-        { value: 'Guaraty Trust Holding Company Plc', name: 'Guaraty Trust Holding Company Plc' },
+        {
+            value: 'First City Monument Bank Limited',
+            name: 'First City Monument Bank Limited',
+        },
+        {
+            value: 'First Bank of Nigeria Limited',
+            name: 'First Bank of Nigeria Limited',
+        },
+        {
+            value: 'Guaraty Trust Holding Company Plc',
+            name: 'Guaraty Trust Holding Company Plc',
+        },
         { value: 'Heritage Bank Plc', name: 'Heritage Bank Plc' },
         { value: 'Keystone Bank Limited', name: 'Keystone Bank Limited' },
-        { value: 'Polaris Bank Limited. The Successor to Skye Bank Plc.', name: 'Polaris Bank Limited. The Successor to Skye Bank Plc.' },
+        {
+            value: 'Polaris Bank Limited. The Successor to Skye Bank Plc.',
+            name: 'Polaris Bank Limited. The Successor to Skye Bank Plc.',
+        },
         { value: 'Stanbic IBTC Bank Plc', name: 'Stanbic IBTC Bank Plc' },
         { value: 'Standard Chartered', name: 'Standard Chartered' },
         { value: 'Sterling Bank Plc', name: 'Sterling Bank Plc' },
@@ -254,19 +307,34 @@ class MainBanner extends Component {
         { value: 'United Bank of Nigeria', name: 'United Bank of Nigeria' },
         { value: 'Wema Bank Plc', name: 'Wema Bank Plc' },
         { value: 'Zenith Bank Plc', name: 'Zenith Bank Plc' },
-    ]
+    ];
 
     handlFlagSelect = (evt) => {
-        this.setState({ selectedFlagValue: evt.target.title, inputAmount: '' })
-        this.setState({ exchangeRate: this.state.currencyList.find(el => el.name == evt.target.title).convertRate })
-    }
-    handlFlagSelect2 = (evt) => {
-        this.setState({ selectedFlagValue2: evt.target.title })
-    }
+        this.setState({ selectedFlagValue: evt.target.title, inputAmount: '' });
+        this.setState({
+            exchangeRate: this.state.currencyList.find(
+                (el) => el.name == evt.target.title
+            ).convertRate,
+        });
+    };
 
     onChangeAmountOnCal = (evt) => {
-        this.setState({ inputAmount: evt.target.value, calculatedPrice: parseInt(evt.target.value) * parseInt(this.state.exchangeRate) })
-    }
+        const calculatedAmount = {
+            inputAmount: evt.target.value,
+            calculatedPrice: evt.target.value
+                ? parseInt(evt.target.value) * parseInt(this.state.exchangeRate)
+                : 0,
+        };
+        this.setState((prevState) => ({
+            transaction: {
+                ...prevState.transaction,
+                amount: calculatedAmount.inputAmount,
+                convertedAmount: calculatedAmount.calculatedPrice,
+                currency: this.state.selectedFlagValue,
+            },
+        }));
+        this.setState(calculatedAmount);
+    };
     render() {
         return (
             <>
@@ -278,13 +346,13 @@ class MainBanner extends Component {
                                     <div className="col-lg-7 col-md-12">
                                         <div className="banner-content">
                                             <h1>
-                                                The cheap, fast way of sending money to Nigeria with
-                                                0% fee.
+                                                The cheap, fast way of sending money to Nigeria with 0%
+                                                fee.
                                             </h1>
                                             <p>
                                                 Whether you’re paying someone overseas or making
-                                                international business payments, Cl9nePay has
-                                                modern-day payment solutions to fit your needs.
+                                                international business payments, Cl9nePay has modern-day
+                                                payment solutions to fit your needs.
                                             </p>
                                         </div>
                                     </div>
@@ -299,12 +367,15 @@ class MainBanner extends Component {
                                                         value={this.state.inputAmount}
                                                         onChange={this.onChangeAmountOnCal}
                                                         className="form-control"
-                                                        placeholder="-"
+                                                        placeholder="0"
                                                     />
                                                     <div className="amount-currency-select dropdown">
                                                         <button className="dropbtn ">
                                                             <img
-                                                                src={currencyOptions[this.state.selectedFlagValue].img}
+                                                                src={
+                                                                    currencyOptions[this.state.selectedFlagValue]
+                                                                        .img
+                                                                }
                                                                 width="20"
                                                                 height="15"
                                                             />
@@ -343,7 +414,8 @@ class MainBanner extends Component {
                                             <div className="currency-info">
                                                 <div className="bar"></div>
                                                 <span>
-                                                    <strong>{this.state.exchangeRate}</strong> Exchange Rate
+                                                    <strong>{this.state.exchangeRate}</strong> Exchange
+                                                    Rate
                                                 </span>
                                             </div>
 
@@ -357,7 +429,10 @@ class MainBanner extends Component {
                                                         placeholder={this.state.calculatedPrice}
                                                     />
                                                     <div className="amount-currency-select">
-                                                        <button className="dropbtn" styles={{ width: "90px" }}>
+                                                        <button
+                                                            className="dropbtn"
+                                                            styles={{ width: '90px' }}
+                                                        >
                                                             <img
                                                                 src={currencyOptions.NG.img}
                                                                 width="20"
@@ -380,8 +455,7 @@ class MainBanner extends Component {
 
                                             <div className="money-transfer-info">
                                                 <span>
-                                                    You could save vs banks{' '}
-                                                    <strong>2 USD</strong>
+                                                    You could save vs banks <strong>2 USD</strong>
                                                 </span>
                                             </div>
 
@@ -396,6 +470,7 @@ class MainBanner extends Component {
                                                 <Button
                                                     className="btn btn-success calculate"
                                                     variant="secondary"
+                                                    disabled={this.state.calculatedPrice ? true : false}
                                                     onClick={this.setMobileModalShow}
                                                 >
                                                     Mobile Top-up
@@ -403,6 +478,7 @@ class MainBanner extends Component {
                                                 <Button
                                                     className="btn btn-success calculate"
                                                     variant="secondary"
+                                                    disabled={this.state.calculatedPrice ? true : false}
                                                     onClick={this.setBankModalShow}
                                                 >
                                                     Bank Transfer
@@ -460,63 +536,59 @@ class MainBanner extends Component {
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button
-                            onClick={this.setMobileRecieve}
-                            style={{ border: 'none' }}
-                        >
+                        <Button onClick={this.setMobileRecieve} style={{ border: 'none' }}>
                             NEXT
                         </Button>
                     </Modal.Footer>
                 </Modal>
 
-                <Modal
-                    show={this.state.mobileRecieveModel}
-                    onHide={this.setMobileRecieve}
-                    centered
+                <AntModal
+                    visible={this.state.mobileRecieveModel}
+                    title="Mobile-TopUp - Reciever Information"
+                    onCancel={this.setMobileRecieve}
+                    okType={'ghost'}
+                    onOk={this.handleMobileTransaction}
+                    okText="Send"
                 >
-                    <Modal.Header closeButton>
-                        Mobile Top_up - Reciever Information
-                    </Modal.Header>
-                    <Modal.Body>
-                        <input
-                            type="number"
-                            name="phone"
-                            value={this.state.transaction.receiver.phone}
-                            onChange={this.handleReceiver}
-                            placeholder="Reciever Number"
-                            className="form-control"
-                        />
-                        <DropdownButton
-                            onSelect={this.handleSelect}
-                            title="Select Provider"
-                            name="serviceProvider"
-                            variant="success"
-                        >
-                            <Dropdown.Menu>
-                                <Dropdown.Item eventKey="MTN">MTN</Dropdown.Item>
-                                <Dropdown.Item eventKey="Globacom">Globacom</Dropdown.Item>
-                                <Dropdown.Item eventKey="Airtel">Airtel</Dropdown.Item>
-                                <Dropdown.Item eventKey="9Mobile">9Mobile</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </DropdownButton>
-                        <input
-                            type="number"
-                            name="amount"
-                            value={this.state.transaction.amount}
-                            onChange={this.handleChange}
-                            placeholder="Amount"
-                            className="form-control"
-                        />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button
-                            onClick={this.handleMobileTransaction}
-                            style={{ border: 'none' }}
-                        >
-                            SEND
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
+
+                    <input
+                        type="number"
+                        name="phone"
+                        value={this.state.transaction.receiver.phone}
+                        onChange={this.handleReceiver}
+                        placeholder="Reciever Number"
+                        className="form-control"
+                    />
+                    <Select
+                        showSearch
+                        style={{ width: '100%', marginTop: 5, marginBottom: 10 }}
+                        size={'large'}
+                        placeholder="Select Bank"
+                        optionFilterProp="children"
+                        onChange={this.onChange2}
+                        filterOption={(input, option) =>
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }
+                        filterSort={(optionA, optionB) =>
+                            optionA.children
+                                .toLowerCase()
+                                .localeCompare(optionB.children.toLowerCase())
+                        }
+                    >
+                        {this.serviceProvider.map((el) => (
+                            <Option value={el.value}>{el.name}</Option>
+                        ))}
+                    </Select>
+                    <input
+                        type="number"
+                        name="amount"
+                        value={this.state.transaction.amount}
+                        onChange={this.handleChange}
+                        placeholder="Amount"
+                        className="form-control"
+                    />
+
+                </AntModal>
 
                 <Modal
                     show={this.state.bankModal}
@@ -554,10 +626,7 @@ class MainBanner extends Component {
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button
-                            onClick={this.setBankRecieve}
-                            style={{ border: 'none' }}
-                        >
+                        <Button onClick={this.setBankRecieve} style={{ border: 'none' }}>
                             NEXT
                         </Button>
                     </Modal.Footer>
@@ -591,14 +660,13 @@ class MainBanner extends Component {
 
                     <Select
                         showSearch
-                        style={{ width: '100%', marginTop: 5, marginBottom: 5 }}
+                        style={{ width: '100%', marginTop: 5, marginBottom: 10 }}
                         size={'large'}
                         placeholder="Select Bank"
                         optionFilterProp="children"
                         onChange={this.onChange}
                         filterOption={(input, option) =>
-                            option.children.toLowerCase().indexOf(input.toLowerCase()) >=
-                            0
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                         }
                         filterSort={(optionA, optionB) =>
                             optionA.children
@@ -621,6 +689,7 @@ class MainBanner extends Component {
                     <input
                         type="number"
                         name="amount"
+                        disabled
                         value={this.state.transaction.amount}
                         onChange={this.handleChange}
                         placeholder="Enter Amount"
