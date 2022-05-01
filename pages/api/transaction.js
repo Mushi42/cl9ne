@@ -9,3 +9,10 @@ export const makeTransaction = async (body, type) => {
     if (resp)
         return resp.data.data
 }
+
+export const findTransactionById = async (id) => {
+    const resp = await axios.get(`/transactions/${id}`)
+    if (resp)
+        return resp.data.data
+
+}
