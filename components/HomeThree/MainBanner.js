@@ -1,20 +1,63 @@
-import React, { Component } from 'react';
-import Modal from "react-bootstrap/Modal";
-import { Card, ModalFooter } from 'react-bootstrap'
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Dropdown, DropdownToggle, DropdownMenu } from 'react-bootstrap'
 import Link from 'next/link';
+import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import { Select } from 'antd';
-const { Option } = Select;
+import Modal from "react-bootstrap/Modal";
+import { Dropdown } from 'react-bootstrap'
+import { Select, Modal as AntModal } from 'antd';
+
+import { makeTransaction } from '../../pages/api/transaction'
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import 'antd/dist/antd.css';
-// import { Modal, Button } from 'antd';
+
+const { Option } = Select;
+
 class MainBanner extends Component {
     state = {
         mobileModal: false,
         mobileRecieveModel: false,
         bankModal: false,
         bankRecieveModel: false,
+        transaction: {
+            senderDetails: {
+                name: '',
+                phone: '',
+                email: ''
+            },
+            receiverDetails: {
+                name: '',
+                phone: '',
+                bank: '',
+                IBAN: '',
+                receiverNumber: '',
+                serviceProvider: ''
+            },
+            amount: 0,
+            transactionType: '',
+            status: 'pending'
+        }
+
+    }
+    handleTransactionType = (value) => {
+        this.setState(prevState => ({
+            transaction: {
+                ...prevState.transaction,
+                'transactionType': value
+            }
+        }))
+    }
+
+    handleMobileTransaction = () => {
+        makeTransaction(this.state.transaction, 'mobile').then(resp => {
+            console.log('Mobile response', resp)
+        })
+    }
+
+    handleBankTransaction = () => {
+        makeTransaction(this.state.transaction, 'bank').then(resp => {
+            console.log('Bank response', resp)
+        })
+
     }
 
     setMobileModalShow = (e) => {
@@ -30,6 +73,7 @@ class MainBanner extends Component {
         })
     }
     setMobileRecieve = (e) => {
+        console.log('State Values', this.state.transaction)
         this.setState({
             mobileRecieveModel: !this.state.mobileRecieveModel,
             mobileModal: !this.state.mobileModal
@@ -42,14 +86,51 @@ class MainBanner extends Component {
         })
     }
 
-
-
     onChange = (value) => {
         console.log(`selected ${value}`);
     }
 
     onSearch = (val) => {
         console.log('search:', val);
+    }
+
+    handleSenderChange = (evt) => {
+        this.setState(prevState => ({
+            transaction: {
+                ...prevState.transaction,
+                senderDetails:
+                {
+                    ...prevState.transaction.senderDetails,
+                    [evt.target.name]: evt.target.value
+                }
+            }
+        }))
+    }
+
+    handleReceiverDetails = (evt) => {
+        this.setState(prevState => ({
+            transaction: {
+                ...prevState.transaction,
+                receiverDetails: {
+                    ...prevState.transaction.receiverDetails,
+                    [evt.target.name]: evt.target.value
+                }
+            }
+        }))
+
+    }
+
+    handleChange = (evt) => {
+        this.setState(prevState => ({
+            transaction: {
+                ...prevState.transaction,
+                [evt.target.name]: evt.target.value
+            }
+        }))
+    }
+
+    handleSelect = (e) => {
+        console.log(e);
     }
 
 
@@ -157,17 +238,23 @@ class MainBanner extends Component {
                             type="text"
                             name="name"
                             placeholder="Enter Name"
+                            value={this.state.transaction.senderDetails.name}
+                            onChange={this.handleSenderChange}
                             className="form-control"
                         />
                         <input
                             type="number"
-                            name="name"
+                            name="phone"
+                            value={this.state.transaction.senderDetails.phone}
+                            onChange={this.handleSenderChange}
                             placeholder="Enter Phone No."
                             className="form-control"
                         />
                         <input
-                            type="email"
-                            name="amount"
+                            type="text"
+                            name="email"
+                            value={this.state.transaction.senderDetails.email}
+                            onChange={this.handleSenderChange}
                             placeholder="Enter Email"
                             className="form-control"
                         />
@@ -184,31 +271,41 @@ class MainBanner extends Component {
                     <Modal.Body>
                         <input
                             type="number"
-                            name="name"
+                            name="phone"
+                            value={this.state.transaction.receiverDetails.phone}
+                            onChange={this.handleReceiverDetails}
                             placeholder="Reciever Number"
                             className="form-control"
                         />
                         <Dropdown >
-                            <Dropdown.Toggle variant="success" className='dropdownTogglebtn' id="dropdown-basic">
+                            <Dropdown.Toggle
+                                variant="success"
+                                className='dropdownTogglebtn'
+                                id="dropdown-basic"
+                                onSelect={this.handleSelect}
+                            >
                                 Service Provider
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">MTN, Globacom</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Airtel</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">9Mobile</Dropdown.Item>
+                                <Dropdown.Item value='MTN'>MTN</Dropdown.Item>
+                                <Dropdown.Item value='Globacom'>Globacom</Dropdown.Item>
+                                <Dropdown.Item value='Airtel'>Airtel</Dropdown.Item>
+                                <Dropdown.Item value='9Mobile'>9Mobile</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                         <input
                             type="number"
-                            name="name"
+                            name="amount"
+                            value={this.state.transaction.amount}
+                            onChange={this.handleChange}
                             placeholder="Amount"
                             className="form-control"
                         />
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button style={{ border: "none" }}>SEND</Button>
+                        <Button onClick={this.handleMobileTransaction} style={{ border: "none" }}>SEND</Button>
                     </Modal.Footer>
                 </Modal>
 
@@ -242,74 +339,70 @@ class MainBanner extends Component {
                     </Modal.Footer>
                 </Modal>
 
-                <Modal show={this.state.bankRecieveModel} onHide={this.setBankRecieve} centered>
-                    <Modal.Header closeButton>
-                        Bank - Reciever Information
-                    </Modal.Header>
-                    <Modal.Body>
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Enter Name"
-                            className="form-control"
-                        />
-                        <input
-                            type="number"
-                            name="name"
-                            placeholder="Enter Phone No."
-                            className="form-control"
-                        />
-                        
-                        <Select
-                            showSearch
-                            style={{ width: 200 }}
-                            placeholder="Search to Select"
-                            optionFilterProp="children"
-                            filterOption={(input, option) =>
-                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                            }
-                            filterSort={(optionA, optionB) =>
-                                optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                            }
-                        >
-                            <Option value="1">Access Bank Plc</Option>
-                            <Option value="2">Citibank Nigeria Limited</Option>
-                            <Option value="3">Ecobank Nigeria</Option>
-                            <Option value="4">Fidelity Bank Plc</Option>
-                            <Option value="5">First City Monument Bank Limited</Option>
-                            <Option value="6">First Bank of Nigeria Limited</Option>
-                            <Option value="tom">Guaraty Trust Holding Company Plc</Option>
-                            <Option value="tom">Heritage Bank Plc</Option>
-                            <Option value="tom">Keystone Bank Limited</Option>
-                            <Option value="tom">Polaris Bank Limited. The Successor to Skye Bank Plc.</Option>
-                            <Option value="tom">Stanbic IBTC Bank Plc</Option>
-                            <Option value="tom">Standard Chartered</Option>
-                            <Option value="tom">Sterling Bank Plc</Option>
-                            <Option value="tom">Titan Trust Bank Limited</Option>
-                            <Option value="tom">Unity Bank Plc</Option>
-                            <Option value="tom">Union Bank of Nigeria Plc</Option>
-                            <Option value="tom">United Bank of Nigeria</Option>
-                            <Option value="tom">Wema Bank Plc</Option>
-                            <Option value="tom">Zenith Bank Plc</Option>
-                        </Select>
-                        {/* <input
-                            type="text"
-                            name="name"
-                            placeholder="Account IBAN Number"
-                            className="form-control"
-                        />
-                        <input
-                            type="number"
-                            name="name"
-                            placeholder="Enter Amount"
-                            className="form-control"
-                        /> */}
+                <AntModal visible={this.state.bankRecieveModel} title='Bank - Reciever Information' onCancel={this.setBankRecieve} okText="Send">
 
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button style={{ border: "none" }}>SEND</Button>
-                    </Modal.Footer>
-                </Modal>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter Name"
+                        className="form-control"
+                    />
+                    <input
+                        type="number"
+                        name="name"
+                        placeholder="Enter Phone No."
+                        className="form-control"
+                    />
+
+                    <Select
+                        showSearch
+                        style={{ width: '100%', marginTop: 5, marginBottom: 5 }}
+                        placeholder="Select Bank"
+                        optionFilterProp="children"
+                        filterOption={(input, option) =>
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }
+                        filterSort={(optionA, optionB) =>
+                            optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+                        }
+                    >
+                        <Option value="1">Access Bank Plc</Option>
+                        <Option value="2">Citibank Nigeria Limited</Option>
+                        <Option value="3">Ecobank Nigeria</Option>
+                        <Option value="4">Fidelity Bank Plc</Option>
+                        <Option value="5">First City Monument Bank Limited</Option>
+                        <Option value="6">First Bank of Nigeria Limited</Option>
+                        <Option value="7">Guaraty Trust Holding Company Plc</Option>
+                        <Option value="8">Heritage Bank Plc</Option>
+                        <Option value="9">Keystone Bank Limited</Option>
+                        <Option value="10">Polaris Bank Limited. The Successor to Skye Bank Plc.</Option>
+                        <Option value="11">Stanbic IBTC Bank Plc</Option>
+                        <Option value="12">Standard Chartered</Option>
+                        <Option value="13">Sterling Bank Plc</Option>
+                        <Option value="14">Titan Trust Bank Limited</Option>
+                        <Option value="15">Unity Bank Plc</Option>
+                        <Option value="16">Union Bank of Nigeria Plc</Option>
+                        <Option value="17">United Bank of Nigeria</Option>
+                        <Option value="18">Wema Bank Plc</Option>
+                        <Option value="19">Zenith Bank Plc</Option>
+                    </Select>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Account IBAN Number"
+                        className="form-control"
+                    />
+                    <input
+                        type="number"
+                        name="name"
+                        placeholder="Enter Amount"
+                        className="form-control"
+                    />
+
+
+                    {/* <Button style={{ border: "none" }}>SEND</Button> */}
+
+                </AntModal>
             </>
         );
     }

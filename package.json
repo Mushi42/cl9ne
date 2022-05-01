@@ -30,6 +30,7 @@
         "react-image-lightbox": "^5.1.4",
         "react-modal-video": "^1.2.8",
         "react-owl-carousel3": "^2.2.5",
+        "react-select-search": "^3.0.9",
         "react-visibility-sensor": "^5.1.1",
         "sass": "^1.35.2",
         "stripe": "^8.219.0",
