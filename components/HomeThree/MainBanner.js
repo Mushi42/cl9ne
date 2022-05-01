@@ -1,23 +1,40 @@
 import Link from 'next/link';
 import React, { Component } from 'react';
 import { Button, DropdownButton } from 'react-bootstrap';
+import StripeModal from '../StripeModal/StripeModal';
 import Modal from "react-bootstrap/Modal";
 import { Dropdown } from 'react-bootstrap'
 import { Select, Modal as AntModal } from 'antd';
 import Swal from 'sweetalert2'
 
 import withReactContent from 'sweetalert2-react-content'
-
 const MySwal = withReactContent(Swal)
-
-
 import { makeTransaction } from '../../pages/api/transaction'
+import { getCurrenyData } from '../../pages/api/currency'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'antd/dist/antd.css';
 
 
 const { Option } = Select;
+const currencyOptions = {
+    EUR: {
+        img:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png',
+    },
+    GBP: {
+        img:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_the_United_Kingdom.png/1200px-Flag_of_the_United_Kingdom.png',
+    },
+    USD: {
+        img:
+            'https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png',
+    },
+    NG: {
+        img:
+            'https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8=',
+    },
+};
 
 class MainBanner extends Component {
     state = {
@@ -25,8 +42,8 @@ class MainBanner extends Component {
         mobileRecieveModel: false,
         bankModal: false,
         bankRecieveModel: false,
-        selectedFlagValue: 'Currency',
-        selectedFlagValue2: 'Currency',
+        selectedFlagValue: 'USD',
+        currencyList: [],
         transaction: {
             sender: {
                 name: '',
@@ -44,9 +61,24 @@ class MainBanner extends Component {
             amount: 0,
             transactionType: '',
             status: 'pending'
-        }
+        },
+        stripeModal: false,
+        inputAmount: '',
+        exchangeRate: '',
+        calculatedPrice: ''
 
     }
+
+    componentDidMount() {
+        getCurrenyData().then(resp => {
+
+            this.setState({ currencyList: resp })
+        })
+    }
+
+    showStripModal = () => { this.setState({ stripeModal: true }) }
+    closeStripModal = () => { this.setState({ stripeModal: false }) }
+
     handleTransactionType = (value) => {
         this.setState(prevState => ({
             transaction: {
@@ -62,6 +94,13 @@ class MainBanner extends Component {
             mobileRecieveModel: false,
             bankModal: false,
             bankRecieveModel: false,
+        })
+    }
+
+    componentDidMount() {
+        getCurrenyData().then(resp => {
+            this.setState({ currencyList: resp })
+            this.setState({ exchangeRate: resp.find(el => el.name == 'USD').convertRate })
         })
     }
 
@@ -91,18 +130,10 @@ class MainBanner extends Component {
             console.log(this.state.transaction)
             alert('Please fill all fields')
         } else {
-            makeTransaction(this.state.transaction, 'bank').then(resp => {
-                this.clearModal()
-                MySwal.fire({
-                    title: 'Sent',
-                    text: 'Your transaction has been made. Thanks',
-                    icon: 'success',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    showConfirmButton: false,
-                })
-                console.log('Mobile response', resp)
-            })
+            const newTrasaction = { ...this.state.transaction, transactionType: 'bank' }
+            this.setState({ transaction: newTrasaction });
+            this.clearModal();
+            this.showStripModal();
         }
     }
 
@@ -226,13 +257,16 @@ class MainBanner extends Component {
     ]
 
     handlFlagSelect = (evt) => {
-        this.setState({ selectedFlagValue: evt.target.title })
+        this.setState({ selectedFlagValue: evt.target.title, inputAmount: '' })
+        this.setState({ exchangeRate: this.state.currencyList.find(el => el.name == evt.target.title).convertRate })
     }
     handlFlagSelect2 = (evt) => {
         this.setState({ selectedFlagValue2: evt.target.title })
     }
 
-
+    onChangeAmountOnCal = (evt) => {
+        this.setState({ inputAmount: evt.target.value, calculatedPrice: parseInt(evt.target.value) * parseInt(this.state.exchangeRate) })
+    }
     render() {
         return (
             <>
@@ -243,9 +277,15 @@ class MainBanner extends Component {
                                 <div className="row align-items-center">
                                     <div className="col-lg-7 col-md-12">
                                         <div className="banner-content">
-                                            <h1>The cheap, fast way of sending money to Nigeria with 0% fee.</h1>
-                                            <p>Whether you’re paying someone overseas or making international business payments, Cl9nePay has modern-day payment solutions to fit your needs.</p>
-
+                                            <h1>
+                                                The cheap, fast way of sending money to Nigeria with
+                                                0% fee.
+                                            </h1>
+                                            <p>
+                                                Whether you’re paying someone overseas or making
+                                                international business payments, Cl9nePay has
+                                                modern-day payment solutions to fit your needs.
+                                            </p>
                                         </div>
                                     </div>
 
@@ -254,25 +294,47 @@ class MainBanner extends Component {
                                             <div className="form-group">
                                                 <label>You Send</label>
                                                 <div className="money-transfer-field">
-                                                    <input type="text" className="form-control" placeholder="1,000" />
+                                                    <input
+                                                        type="text"
+                                                        value={this.state.inputAmount}
+                                                        onChange={this.onChangeAmountOnCal}
+                                                        className="form-control"
+                                                        placeholder="-"
+                                                    />
                                                     <div className="amount-currency-select dropdown">
-                                                        <button className="dropbtn">
-                                                            {this.state.selectedFlagValue}
+                                                        <button className="dropbtn ">
+                                                            <img
+                                                                src={currencyOptions[this.state.selectedFlagValue].img}
+                                                                width="20"
+                                                                height="15"
+                                                            />
                                                         </button>
 
                                                         <div className="dropdown-content">
-                                                            <a title='EUR' onClick={this.handlFlagSelect}>
-                                                                <img title='EUR' src=
-                                                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png"
-                                                                    width="20" height="15" /></a>
-                                                            <a title='GBP' onClick={this.handlFlagSelect}>
-                                                                <img title='GBP' src=
-                                                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_the_United_Kingdom.png/1200px-Flag_of_the_United_Kingdom.png"
-                                                                    width="20" height="15" /></a>
-                                                            <a title='USD' onClick={this.handlFlagSelect}>
-                                                                <img title='USD' src=
-                                                                    "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png"
-                                                                    width="20" height="15" /> </a>
+                                                            <a title="EUR" onClick={this.handlFlagSelect}>
+                                                                <img
+                                                                    title="EUR"
+                                                                    src={currencyOptions.EUR.img}
+                                                                    width="20"
+                                                                    height="15"
+                                                                />
+                                                            </a>
+                                                            <a title="GBP" onClick={this.handlFlagSelect}>
+                                                                <img
+                                                                    title="GBP"
+                                                                    src={currencyOptions.GBP.img}
+                                                                    width="20"
+                                                                    height="15"
+                                                                />
+                                                            </a>
+                                                            <a title="USD" onClick={this.handlFlagSelect}>
+                                                                <img
+                                                                    title="USD"
+                                                                    src={currencyOptions.USD.img}
+                                                                    width="20"
+                                                                    height="15"
+                                                                />{' '}
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -280,42 +342,81 @@ class MainBanner extends Component {
 
                                             <div className="currency-info">
                                                 <div className="bar"></div>
-                                                <span><strong>415.3</strong> Exchange Rate</span>
+                                                <span>
+                                                    <strong>{this.state.exchangeRate}</strong> Exchange Rate
+                                                </span>
                                             </div>
 
                                             <div className="form-group">
                                                 <label>Recipient gets</label>
                                                 <div className="money-transfer-field">
-                                                    <input type="text" className="form-control" placeholder="1,000" />
-                                                    <div className="amount-currency-select dropdown">
-                                                        <button className="dropbtn">
-                                                        {this.state.selectedFlagValue2}
+                                                    <input
+                                                        type="text"
+                                                        disabled
+                                                        className="form-control"
+                                                        placeholder={this.state.calculatedPrice}
+                                                    />
+                                                    <div className="amount-currency-select">
+                                                        <button className="dropbtn" styles={{ width: "90px" }}>
+                                                            <img
+                                                                src={currencyOptions.NG.img}
+                                                                width="20"
+                                                                height="15"
+                                                            />
                                                         </button>
 
                                                         <div className="dropdown-content">
-                                                            <a title='NGR' onClick={this.handlFlagSelect2}>
-                                                                <img src=
-                                                                    "https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8="
-                                                                    width="20" height="15" /></a>
+                                                            <a href="#">
+                                                                <img
+                                                                    src={currencyOptions.NG.img}
+                                                                    width="20"
+                                                                    height="15"
+                                                                />
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div className="money-transfer-info">
-                                                <span>You could save vs banks <strong>1,010.32 USD</strong></span>
+                                                <span>
+                                                    You could save vs banks{' '}
+                                                    <strong>2 USD</strong>
+                                                </span>
                                             </div>
 
-                                            <div className='calculate-btn-grid'>
-                                                <button className="btn btn-success calculate" type="submit"> Calculate </button>
-                                                <Button className="btn btn-success calculate" variant="secondary" onClick={this.setMobileModalShow}>Mobile Top-up</Button>
-                                                <Button className="btn btn-success calculate" variant="secondary" onClick={this.setBankModalShow}>Bank Transfer</Button>
+                                            <div className="calculate-btn-grid">
+                                                {/* <button
+                                                    className="btn btn-success calculate"
+                                                    type="submit"
+                                                >
+                                                    {' '}
+                                                    Calculate{' '}
+                                                </button> */}
+                                                <Button
+                                                    className="btn btn-success calculate"
+                                                    variant="secondary"
+                                                    onClick={this.setMobileModalShow}
+                                                >
+                                                    Mobile Top-up
+                                                </Button>
+                                                <Button
+                                                    className="btn btn-success calculate"
+                                                    variant="secondary"
+                                                    onClick={this.setBankModalShow}
+                                                >
+                                                    Bank Transfer
+                                                </Button>
                                             </div>
 
                                             <div className="terms-info">
-                                                <p>By clicking continue, I agree with <Link href="/terms-policy"><a>Terms & Policy</a></Link></p>
+                                                <p>
+                                                    By clicking continue, I agree with{' '}
+                                                    <Link href="/terms-policy">
+                                                        <a>Terms & Policy</a>
+                                                    </Link>
+                                                </p>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -324,12 +425,15 @@ class MainBanner extends Component {
                     </div>
                 </div>
 
-                <Modal show={this.state.mobileModal} onHide={this.setMobileModalShow} centered>
+                <Modal
+                    show={this.state.mobileModal}
+                    onHide={this.setMobileModalShow}
+                    centered
+                >
                     <Modal.Header closeButton>
                         Mobile Top Up - Sender Information
                     </Modal.Header>
-                    <Modal.Body style={{ width: "100%" }}>
-
+                    <Modal.Body style={{ width: '100%' }}>
                         <input
                             type="text"
                             name="name"
@@ -356,11 +460,20 @@ class MainBanner extends Component {
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.setMobileRecieve} style={{ border: "none" }}>NEXT</Button>
+                        <Button
+                            onClick={this.setMobileRecieve}
+                            style={{ border: 'none' }}
+                        >
+                            NEXT
+                        </Button>
                     </Modal.Footer>
                 </Modal>
 
-                <Modal show={this.state.mobileRecieveModel} onHide={this.setMobileRecieve} centered>
+                <Modal
+                    show={this.state.mobileRecieveModel}
+                    onHide={this.setMobileRecieve}
+                    centered
+                >
                     <Modal.Header closeButton>
                         Mobile Top_up - Reciever Information
                     </Modal.Header>
@@ -373,12 +486,17 @@ class MainBanner extends Component {
                             placeholder="Reciever Number"
                             className="form-control"
                         />
-                        <DropdownButton onSelect={this.handleSelect} title='Select Provider' name='serviceProvider' variant='success'>
+                        <DropdownButton
+                            onSelect={this.handleSelect}
+                            title="Select Provider"
+                            name="serviceProvider"
+                            variant="success"
+                        >
                             <Dropdown.Menu>
-                                <Dropdown.Item eventKey='MTN'>MTN</Dropdown.Item>
-                                <Dropdown.Item eventKey='Globacom'>Globacom</Dropdown.Item>
-                                <Dropdown.Item eventKey='Airtel'>Airtel</Dropdown.Item>
-                                <Dropdown.Item eventKey='9Mobile'>9Mobile</Dropdown.Item>
+                                <Dropdown.Item eventKey="MTN">MTN</Dropdown.Item>
+                                <Dropdown.Item eventKey="Globacom">Globacom</Dropdown.Item>
+                                <Dropdown.Item eventKey="Airtel">Airtel</Dropdown.Item>
+                                <Dropdown.Item eventKey="9Mobile">9Mobile</Dropdown.Item>
                             </Dropdown.Menu>
                         </DropdownButton>
                         <input
@@ -389,18 +507,24 @@ class MainBanner extends Component {
                             placeholder="Amount"
                             className="form-control"
                         />
-
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.handleMobileTransaction} style={{ border: "none" }}>SEND</Button>
+                        <Button
+                            onClick={this.handleMobileTransaction}
+                            style={{ border: 'none' }}
+                        >
+                            SEND
+                        </Button>
                     </Modal.Footer>
                 </Modal>
 
-                <Modal show={this.state.bankModal} onHide={this.setBankModalShow} centered>
-                    <Modal.Header closeButton>
-                        Bank - Sender Information
-                    </Modal.Header>
-                    <Modal.Body style={{ width: "100%" }}>
+                <Modal
+                    show={this.state.bankModal}
+                    onHide={this.setBankModalShow}
+                    centered
+                >
+                    <Modal.Header closeButton>Bank - Sender Information</Modal.Header>
+                    <Modal.Body style={{ width: '100%' }}>
                         <input
                             type="text"
                             name="name"
@@ -428,15 +552,25 @@ class MainBanner extends Component {
                             placeholder="Enter Email"
                             className="form-control"
                         />
-
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.setBankRecieve} style={{ border: "none" }}>NEXT</Button>
+                        <Button
+                            onClick={this.setBankRecieve}
+                            style={{ border: 'none' }}
+                        >
+                            NEXT
+                        </Button>
                     </Modal.Footer>
                 </Modal>
 
-                <AntModal visible={this.state.bankRecieveModel} title='Bank - Reciever Information' onCancel={this.setBankRecieve} okType={'ghost'} onOk={this.handleBankTransaction} okText="Send">
-
+                <AntModal
+                    visible={this.state.bankRecieveModel}
+                    title="Bank - Reciever Information"
+                    onCancel={this.setBankRecieve}
+                    okType={'ghost'}
+                    onOk={this.handleBankTransaction}
+                    okText="Send"
+                >
                     <input
                         type="text"
                         name="name"
@@ -458,14 +592,18 @@ class MainBanner extends Component {
                     <Select
                         showSearch
                         style={{ width: '100%', marginTop: 5, marginBottom: 5 }}
+                        size={'large'}
                         placeholder="Select Bank"
                         optionFilterProp="children"
                         onChange={this.onChange}
                         filterOption={(input, option) =>
-                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                            0
                         }
                         filterSort={(optionA, optionB) =>
-                            optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+                            optionA.children
+                                .toLowerCase()
+                                .localeCompare(optionB.children.toLowerCase())
                         }
                     >
                         {this.banks.map((el) => (
@@ -489,10 +627,14 @@ class MainBanner extends Component {
                         className="form-control"
                     />
 
-
                     {/* <Button style={{ border: "none" }}>SEND</Button> */}
-
                 </AntModal>
+
+                <StripeModal
+                    show={this.state.stripeModal}
+                    close={this.closeStripModal}
+                    initState={this.state.transaction}
+                />
             </>
         );
     }

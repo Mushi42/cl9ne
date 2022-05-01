@@ -20,7 +20,7 @@ class FeaturesOne extends Component {
 
                 <ServicesCard />
 
-                <PartnerContent />
+                {/* <PartnerContent /> */}
 
                 <AppDownloadContent />
 
