@@ -32,7 +32,7 @@ class AppDownloadContent extends Component {
 
                                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
 
-                                <div className="btn-box">
+                                {/* <div className="btn-box">
                                     <Link href="/index3#">
                                         <a className="app-store-btn">
                                             <i className="flaticon-apple"></i>
@@ -48,7 +48,7 @@ class AppDownloadContent extends Component {
                                             <span>Google play</span>
                                         </a>
                                     </Link>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
