@@ -25,6 +25,7 @@ class MainBanner extends Component {
         mobileRecieveModel: false,
         bankModal: false,
         bankRecieveModel: false,
+        selectedFlagValue: 'Currency',
         transaction: {
             sender: {
                 name: '',
@@ -223,11 +224,12 @@ class MainBanner extends Component {
         { value: 'Zenith Bank Plc', name: 'Zenith Bank Plc' },
     ]
 
+    handlFlagSelect = (evt) => {
+        this.setState({ selectedFlagValue: evt.target.title })
+    }
 
 
     render() {
-
-
         return (
             <>
                 <div className="main-banner-section">
@@ -251,21 +253,21 @@ class MainBanner extends Component {
                                                     <input type="text" className="form-control" placeholder="1,000" />
                                                     <div className="amount-currency-select dropdown">
                                                         <button className="dropbtn">
-                                                            Currency
+                                                            {this.state.selectedFlagValue}
                                                         </button>
 
                                                         <div className="dropdown-content">
-                                                            <a href="#">
-                                                                <img src=
-                                                                    "https://media.geeksforgeeks.org/wp-content/uploads/20200630132504/uflag.jpg"
+                                                            <a title='EUR' onClick={this.handlFlagSelect}>
+                                                                <img title='EUR' src=
+                                                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png"
                                                                     width="20" height="15" /></a>
-                                                            <a href="#">
-                                                                <img src=
-                                                                    "https://media.geeksforgeeks.org/wp-content/uploads/20200630132502/eflag.jpg"
+                                                            <a title='GBP' onClick={this.handlFlagSelect}>
+                                                                <img title='GBP' src=
+                                                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_the_United_Kingdom.png/1200px-Flag_of_the_United_Kingdom.png"
                                                                     width="20" height="15" /></a>
-                                                            <a href="#">
-                                                                <img src=
-                                                                    "https://media.geeksforgeeks.org/wp-content/uploads/20200630132500/bflag.jpg"
+                                                            <a title='USD' onClick={this.handlFlagSelect}>
+                                                                <img title='USD' src=
+                                                                    "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png"
                                                                     width="20" height="15" /> </a>
                                                         </div>
                                                     </div>
@@ -289,7 +291,7 @@ class MainBanner extends Component {
                                                         <div className="dropdown-content">
                                                             <a href="#">
                                                                 <img src=
-                                                                    "https://media.geeksforgeeks.org/wp-content/uploads/20200630132504/uflag.jpg"
+                                                                    "https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8="
                                                                     width="20" height="15" /></a>
                                                         </div>
                                                     </div>
