@@ -149,18 +149,13 @@ class MainBanner extends Component {
         ) {
             alert('Please fill all fields');
         } else {
-            makeTransaction(this.state.transaction, 'mobile').then((resp) => {
-                this.clearModal();
-                MySwal.fire({
-                    title: 'Sent',
-                    text: 'Your transaction has been made. Thanks',
-                    icon: 'success',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    showConfirmButton: false,
-                });
-                console.log('Mobile response', resp);
-            });
+            const newTrasaction = {
+              ...this.state.transaction,
+              transactionType: 'mobile',
+            };
+            this.setState({ transaction: newTrasaction });
+            this.clearModal();
+            this.showStripModal();
         }
     };
 
@@ -613,6 +608,7 @@ class MainBanner extends Component {
                     <input
                         type="number"
                         name="amount"
+                        disabled
                         value={this.state.transaction.amount}
                         onChange={this.handleChange}
                         placeholder="Amount"
