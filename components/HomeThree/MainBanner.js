@@ -26,6 +26,7 @@ class MainBanner extends Component {
         bankModal: false,
         bankRecieveModel: false,
         selectedFlagValue: 'Currency',
+        selectedFlagValue2: 'Currency',
         transaction: {
             sender: {
                 name: '',
@@ -227,6 +228,9 @@ class MainBanner extends Component {
     handlFlagSelect = (evt) => {
         this.setState({ selectedFlagValue: evt.target.title })
     }
+    handlFlagSelect2 = (evt) => {
+        this.setState({ selectedFlagValue2: evt.target.title })
+    }
 
 
     render() {
@@ -285,11 +289,11 @@ class MainBanner extends Component {
                                                     <input type="text" className="form-control" placeholder="1,000" />
                                                     <div className="amount-currency-select dropdown">
                                                         <button className="dropbtn">
-                                                            Currency
+                                                        {this.state.selectedFlagValue2}
                                                         </button>
 
                                                         <div className="dropdown-content">
-                                                            <a href="#">
+                                                            <a title='NGR' onClick={this.handlFlagSelect2}>
                                                                 <img src=
                                                                     "https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8="
                                                                     width="20" height="15" /></a>
