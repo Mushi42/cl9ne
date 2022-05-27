@@ -5,8 +5,7 @@ class ServicesContent extends Component {
     render() {
         return (
             <>
-                {/* Service One */}
-                {/* <div className="services-area ptb-70 pt-0">
+                <div className="services-area ptb-70 pt-0">
                     <div className="container-fluid p-0">
                         <div className="overview-box">
                             <div className="overview-content">
@@ -14,7 +13,7 @@ class ServicesContent extends Component {
                                     <span className="sub-title">Fast & Easy Online Banking</span>
                                     <h2>Freelancers, entrepreneurs, and sole traders</h2>
                                     <div className="bar"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                    <p>Cl9nePay is an excellent service for entrepreneurs and freelancers as it provides fast transactions and rapid withdrawals. As these users are the ones having to dealing all around the world.</p>
 
                                     <ul className="features-list">
                                         <li>
@@ -54,24 +53,20 @@ class ServicesContent extends Component {
                                             </span>
                                         </li>
                                     </ul>
-
-                                    <Link href="/contact">
-                                        <a className="btn btn-primary">Apply Now</a>
-                                    </Link>
                                 </div>
                             </div>
 
                             <div className="overview-image">
                                 <div className="image">
-                                    <img src="/images/feature4.jpg" alt="image" />
+                                    <img src="/images/feature1.png" alt="image" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
                
-                {/* <div className="services-area ptb-70 bg-f7fafd">
+                <div className="services-area ptb-70 bg-f7fafd">
                     <div className="container-fluid p-0">
                         <div className="overview-box">
                             <div className="overview-image">
@@ -88,7 +83,7 @@ class ServicesContent extends Component {
                                     <span className="sub-title">Top Security</span>
                                     <h2>Smal to medium-sized businesses</h2>
                                     <div className="bar"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                    <p>Small and medium sized businesses can also benefit from CL9nePay as we offer multiple transactions with nearly no fees at all.</p>
 
                                     <ul className="features-list">
                                         <li>
@@ -127,10 +122,6 @@ class ServicesContent extends Component {
                                             </span>
                                         </li>
                                     </ul>
-
-                                    <Link href="/contact">
-                                        <a className="btn btn-primary">Apply Now</a>
-                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +137,7 @@ class ServicesContent extends Component {
                                     <span className="sub-title">Price Transparency</span>
                                     <h2>Large or enterprise level businesses</h2>
                                     <div className="bar"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                    <p>Larger Enterprise can also services from Cl9nePay as we offer enterprise packages for the large scale businesses. </p>
 
                                     <ul className="features-list">
                                         <li>
@@ -186,84 +177,17 @@ class ServicesContent extends Component {
                                             </span>
                                         </li>
                                     </ul>
-
-                                    <Link href="/contact">
-                                        <a className="btn btn-primary">Apply Now</a>
-                                    </Link>
                                 </div>
                             </div>
 
                             <div className="overview-image">
                                 <div className="image">
-                                    <img src="/images/feature6.jpg" alt="image" />
+                                    <img src="/images/feature3.png" alt="image" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                
-                <div className="services-area ptb-70 bg-f7fafd">
-                    <div className="container-fluid p-0">
-                        <div className="overview-box">
-                            <div className="overview-image">
-                                <div className="image">
-                                    <img src="/images/feature7.jpg" alt="image" />
-                                </div>
-                            </div>
-
-                            <div className="overview-content">
-                                <div className="content">
-                                    <span className="sub-title">Automated Accounting</span>
-                                    <h2>Save 24 hours per week on accounting</h2>
-                                    <div className="bar"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-
-                                    <ul className="features-list">
-                                        <li>
-                                            <span>
-                                                <i className="flaticon-check-mark"></i> 
-                                                Easy transfers
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span><i className="flaticon-check-mark"></i> 
-                                            Deposit checks instantly
-                                        </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <i className="flaticon-check-mark"></i> 
-                                                A powerful open API
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <i className="flaticon-check-mark"></i> 
-                                                Coverage around the world
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <i className="flaticon-check-mark"></i> 
-                                                Business without borders
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <i className="flaticon-check-mark"></i> Affiliates and partnerships
-                                            </span>
-                                        </li>
-                                    </ul>
-
-                                    <Link href="/contact">
-                                        <a className="btn btn-primary">Apply Now</a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
             </>
         );
     }

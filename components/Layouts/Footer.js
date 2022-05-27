@@ -7,48 +7,25 @@ import 'antd/dist/antd.css';
 
 
 const Footer = () => {
-    const [trackId, setTrackId] = useState('')
-    const [showTrackModal, setShowTrackModal] = useState(false)
-    const [showAlert, setShowAlert] = useState(false)
-    const [recordTran, setRecordTrans] = useState({})
+    // const [trackId, setTrackId] = useState('')
+    // const [showTrackModal, setShowTrackModal] = useState(false)
+    // const [showAlert, setShowAlert] = useState(false)
+    // const [recordTran, setRecordTrans] = useState({})
 
     let currentYear = new Date().getFullYear();
 
-    const trackNow = () => {
-        if (trackId == '') {
-            setShowAlert(true)
-        } else {
-            findTransactionById(trackId).then(resp => {
-                setRecordTrans(resp)
-            })
-        }
-    }
+    // const trackNow = () => {
+    //     if (trackId == '') {
+    //         setShowAlert(true)
+    //     } else {
+    //         findTransactionById(trackId).then(resp => {
+    //             setRecordTrans(resp)
+    //         })
+    //     }
+    // }
 
     return (
         <footer className="footer-area">
-            <Modal
-                visible={showTrackModal}
-                title="Bank - Reciever Information"
-                onCancel={() => setShowTrackModal(false)}
-                okType={'ghost'}
-                onOk={trackNow}
-                okText="Track Now"
-            >
-                <div>
-                    {showAlert && <Alert message="Please provide track Id" type="warning" />}
-
-                    <input value={trackId} className="form-control" placeholder='Please type your transaction id' required onChange={evt => {
-                        setShowAlert(false)
-                        setTrackId(evt.target.value)
-                    }} />
-                </div>
-
-                <div>
-                    <p>Status : {recordTran.status}</p>
-                    <p>Date : {recordTran.createdAt}</p>
-                    <p>Amount : {recordTran.amount}</p>
-                </div>
-            </Modal>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-sm-6 col-md-6">
@@ -86,7 +63,7 @@ const Footer = () => {
 
                     <div className="col-lg-4">
                         <div >
-                            <button title='Track your transaction' className='btn btn-success' onClick={() => setShowTrackModal(!showTrackModal)} >Track your transaction</button>
+                            {/* <button title='Track your transaction' className='btn btn-success' onClick={() => setShowTrackModal(!showTrackModal)} >Track your transaction</button> */}
                         </div>
                     </div>
 
