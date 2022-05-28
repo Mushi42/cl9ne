@@ -29,7 +29,7 @@ class Index3 extends Component {
 
                 <FunFacts />
 
-                <CustomersFeedback />
+                {/* <CustomersFeedback /> */}
 
                 <AccountCreateArea />
 

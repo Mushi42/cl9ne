@@ -18,37 +18,37 @@ class ServicesContent extends Component {
                                     <ul className="features-list">
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Free plan available
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Full data privacy compliance
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 100% transparent costs
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Commitment-free
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Real-time spending overview
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Debit Mastercard included
                                             </span>
                                         </li>
@@ -65,8 +65,8 @@ class ServicesContent extends Component {
                     </div>
                 </div>
 
-               
-                <div className="services-area ptb-70 bg-f7fafd">
+
+                {/* <div className="services-area ptb-70 bg-f7fafd">
                     <div className="container-fluid p-0">
                         <div className="overview-box">
                             <div className="overview-image">
@@ -126,12 +126,18 @@ class ServicesContent extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-            
-                <div className="services-area ptb-70">
+
+                {/* <div className="services-area ptb-70">
                     <div className="container-fluid p-0">
                         <div className="overview-box">
+                            <div className="overview-image">
+                                <div className="image">
+                                    <img src="/images/feature3.png" alt="image" />
+                                </div>
+                            </div>
+
                             <div className="overview-content">
                                 <div className="content left-content">
                                     <span className="sub-title">Price Transparency</span>
@@ -142,37 +148,37 @@ class ServicesContent extends Component {
                                     <ul className="features-list">
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Corporate Cards
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 International Payments
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Automated accounting
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Request Features
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Premium Support
                                             </span>
                                         </li>
                                         <li>
                                             <span>
-                                                <i className="flaticon-check-mark"></i> 
+                                                <i className="flaticon-check-mark"></i>
                                                 Direct Debit
                                             </span>
                                         </li>
@@ -180,14 +186,10 @@ class ServicesContent extends Component {
                                 </div>
                             </div>
 
-                            <div className="overview-image">
-                                <div className="image">
-                                    <img src="/images/feature3.png" alt="image" />
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                </div>
+                </div> */}
             </>
         );
     }

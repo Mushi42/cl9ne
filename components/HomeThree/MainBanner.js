@@ -385,11 +385,11 @@ class MainBanner extends Component {
                         The cheap, fast way of sending money to Nigeria with 0%
                         fee.
                       </h1>
-                      <p>
+                      {/* <p>
                         Whether you’re paying someone overseas or making
                         international business payments, Cl9nePay has modern-day
                         payment solutions to fit your needs.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
@@ -606,7 +606,7 @@ class MainBanner extends Component {
             showSearch
             style={{ width: '100%', marginTop: 5, marginBottom: 10 }}
             size={'large'}
-            placeholder="Select Bank"
+            placeholder="Select Metwork Provider"
             optionFilterProp="children"
             onChange={this.onChange2}
             filterOption={(input, option) =>
@@ -726,7 +726,7 @@ class MainBanner extends Component {
             name="IBAN"
             value={this.state.transaction.receiver.IBAN}
             onChange={this.handleReceiver}
-            placeholder="Account IBAN Number"
+            placeholder="Bank Account Number"
             className="form-control"
           />
           <input

@@ -1671,7 +1671,8 @@ Main Banner Area CSS
 
 .col-lg-5 .money-transfer-form .calculate-btn-grid {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  grid-gap: 12px;
 }
 
 .col-lg-5 .money-transfer-form .calculate-btn-grid .btn-success {
