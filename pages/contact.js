@@ -12,8 +12,8 @@ class Contact extends Component {
                 <Navbar />
 
                 <PageBannerContent 
-                    pageTitle="Term & Conditions" 
-                    pageCaption="This Agreement sets forth the general terms and conditions of your use of the cl9nepay.com." 
+                    pageTitle="Contact" 
+                    pageCaption="If you have an idea, we would love to hear about it." 
                 />
 
                 <ContactContent />

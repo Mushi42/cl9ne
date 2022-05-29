@@ -72,8 +72,8 @@ class Navbar extends Component {
                                                 </a>
                                             </Link>
 
-                                            <ul className="dropdown-menu">
-                                                {/* <li className="nav-item">
+                                            {/* <ul className="dropdown-menu">
+                                                <li className="nav-item">
                                                     <Link href="/" activeClassName="active">
                                                         <a className="nav-link">Home Demo - 1</a>
                                                     </Link>
@@ -82,13 +82,13 @@ class Navbar extends Component {
                                                     <Link href="/index2" activeClassName="active">
                                                         <a className="nav-link">Home Demo - 2</a>
                                                     </Link>
-                                                </li> */}
+                                                </li>
                                                 <li className="nav-item">
                                                     <Link href="/index3" activeClassName="active">
                                                         <a className="nav-link">Home Demo - 3</a>
                                                     </Link>
                                                 </li>
-                                                {/* <li className="nav-item">
+                                                <li className="nav-item">
                                                     <Link href="/index4" activeClassName="active">
                                                         <a className="nav-link">Home Demo - 4</a>
                                                     </Link>
@@ -102,14 +102,8 @@ class Navbar extends Component {
                                                     <Link href="/index6" activeClassName="active">
                                                         <a className="nav-link">Home Demo - 6</a>
                                                     </Link>
-                                                </li> */}
-                                            </ul>
-                                        </li>
-
-                                        <li className="nav-item">
-                                            <Link href="/terms-condition" activeClassName="active">
-                                                <a className="nav-link">Terms & Conditions</a>
-                                            </Link>
+                                                </li>
+                                            </ul> */}
                                         </li>
  
                                         {/* <li className="nav-item">
@@ -215,15 +209,21 @@ class Navbar extends Component {
                                                     </Link>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> */}
  
                                         <li className="nav-item">
-                                            <Link href="/pricing" activeClassName="active">
-                                                <a className="nav-link">Pricing</a>
+                                            <Link href="/terms-condition" activeClassName="active">
+                                                <a className="nav-link">Terms & Conditions</a>
                                             </Link>
                                         </li>
 
                                         <li className="nav-item">
+                                            <Link href="/contact" activeClassName="active">
+                                                <a className="nav-link">Contact</a>
+                                            </Link>
+                                        </li>
+
+                                        {/* <li className="nav-item">
                                             <Link href="#">
                                                 <a className="nav-link" onClick={e => e.preventDefault()}>
                                                     Blog <i className="fas fa-chevron-down"></i>

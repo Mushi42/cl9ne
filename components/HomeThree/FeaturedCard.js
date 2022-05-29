@@ -17,9 +17,9 @@ class FeaturedCard extends Component {
                                     <h3>Transparent Pricing</h3>
                                     <p>We offer better exchange rates and lower fees than most conventional banks and money transfer services.</p>
 
-                                    <Link href="/features-one">
+                                    {/* <Link href="/features-one">
                                         <a className="read-more-btn">Read More</a>
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             </div>
 
@@ -32,9 +32,9 @@ class FeaturedCard extends Component {
                                     <h3>Fully Encrypted</h3>
                                     <p>Security is our top priority, We use industry-leading technology to protect your money.</p>
 
-                                    <Link href="/features-one">
+                                    {/* <Link href="/features-one">
                                         <a className="read-more-btn">Read More</a>
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             </div>
 
@@ -47,9 +47,9 @@ class FeaturedCard extends Component {
                                     <h3>Instant Cashout</h3>
                                     <p>Up to 95% of our transfers are ready to cash out in minutes.</p>
 
-                                    <Link href="/features-one">
+                                    {/* <Link href="/features-one">
                                         <a className="read-more-btn">Read More</a>
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             </div>
 
@@ -62,9 +62,9 @@ class FeaturedCard extends Component {
                                     <h3>Safe and Secure</h3>
                                     <p>With us you can enjoy a simple, easy, and better secured global money transfer experience.</p>
 
-                                    <Link href="/features-one">
+                                    {/* <Link href="/features-one">
                                         <a className="read-more-btn">Read More</a>
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             </div>
                         </div>
