@@ -22,18 +22,22 @@ const currencyOptions = {
     EUR: {
         img:
             'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png',
+            name:"EUR",
     },
     GBP: {
         img:
             'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_the_United_Kingdom.png/1200px-Flag_of_the_United_Kingdom.png',
+            name:"GBP",
     },
     USD: {
         img:
             'https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png',
+            name:"USD",
     },
     NG: {
         img:
             'https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8=',
+            name:"NG",
     },
 };
 const initState = {
@@ -392,6 +396,7 @@ class MainBanner extends Component {
                       </p> */}
                     </div>
                   </div>
+                  
 
                   <div className="col-lg-5 col-md-12">
                     <div className="money-transfer-form">
@@ -415,32 +420,39 @@ class MainBanner extends Component {
                                 width="20"
                                 height="15"
                               />
+                                {currencyOptions[this.state.selectedFlagValue].name}
                             </button>
 
                             <div className="dropdown-content">
-                              <a title="EUR" onClick={this.handlFlagSelect}>
+                              <a title="EUR" onClick={this.handlFlagSelect} className="dropdown-flags">
                                 <img
                                   title="EUR"
                                   src={currencyOptions.EUR.img}
                                   width="20"
                                   height="15"
+                                  style={{ marginRight: 3 }}
                                 />
+                                {currencyOptions.EUR.name}
                               </a>
-                              <a title="GBP" onClick={this.handlFlagSelect}>
+                              <a title="GBP" onClick={this.handlFlagSelect} className="dropdown-flags">
                                 <img
                                   title="GBP"
                                   src={currencyOptions.GBP.img}
                                   width="20"
                                   height="15"
+                                  style={{ marginRight: 3 }}
                                 />
+                                {currencyOptions.GBP.name}
                               </a>
-                              <a title="USD" onClick={this.handlFlagSelect}>
+                              <a title="USD" onClick={this.handlFlagSelect} className="dropdown-flags">
                                 <img
                                   title="USD"
                                   src={currencyOptions.USD.img}
                                   width="20"
                                   height="15"
-                                />{' '}
+                                  style={{ marginRight: 3 }}
+                                />
+                                {currencyOptions.USD.name}
                               </a>
                             </div>
                           </div>
@@ -474,6 +486,7 @@ class MainBanner extends Component {
                                 width="20"
                                 height="15"
                               />
+                              {currencyOptions.NG.name}
                             </button>
 
                             <div className="dropdown-content">

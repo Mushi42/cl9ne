@@ -106,13 +106,13 @@ class Navbar extends Component {
                                             </ul>
                                         </li>
 
-                                        {/* <li className="nav-item">
-                                            <Link href="/about-us" activeClassName="active">
-                                                <a className="nav-link">About Us</a>
+                                        <li className="nav-item">
+                                            <Link href="/terms-condition" activeClassName="active">
+                                                <a className="nav-link">Terms & Conditions</a>
                                             </Link>
                                         </li>
  
-                                        <li className="nav-item">
+                                        {/* <li className="nav-item">
                                             <Link href="#">
                                                 <a className="nav-link" onClick={e => e.preventDefault()}>
                                                     Features <i className="fas fa-chevron-down"></i>

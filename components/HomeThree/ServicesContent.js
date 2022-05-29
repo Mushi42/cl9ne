@@ -66,7 +66,7 @@ class ServicesContent extends Component {
                 </div>
 
 
-                {/* <div className="services-area ptb-70 bg-f7fafd">
+                <div className="services-area ptb-70 bg-f7fafd">
                     <div className="container-fluid p-0">
                         <div className="overview-box">
                             <div className="overview-image">
@@ -126,10 +126,10 @@ class ServicesContent extends Component {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
 
-                {/* <div className="services-area ptb-70">
+                <div className="services-area ptb-70">
                     <div className="container-fluid p-0">
                         <div className="overview-box">
                             <div className="overview-image">
@@ -189,7 +189,7 @@ class ServicesContent extends Component {
 
                         </div>
                     </div>
-                </div> */}
+                </div>
             </>
         );
     }

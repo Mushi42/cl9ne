@@ -61,5 +61,12 @@ input[type=number] {
 .transaction {
   background-color: black !important;
   color: white !important;
+}
 
+.dropdown-flags {
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 }
