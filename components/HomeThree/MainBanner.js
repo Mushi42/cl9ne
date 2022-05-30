@@ -408,7 +408,7 @@ class MainBanner extends Component {
                             value={this.state.inputAmount}
                             onChange={this.onChangeAmountOnCal}
                             className="form-control"
-                            placeholder="0"
+                            placeholder="5 - 3000"
                           />
                           <div className="amount-currency-select dropdown">
                             <button className="dropbtn ">
