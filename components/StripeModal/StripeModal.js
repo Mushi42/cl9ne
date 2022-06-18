@@ -29,6 +29,9 @@ const StripeModal = ({ initState, show, close }) => {
     inputStyle: { width: 300 },
   };
 
+  function refreshPage() {
+    window.location.reload();
+  }
 
 
 
@@ -69,7 +72,7 @@ function CheckoutForm({ payload, close }) {
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, I copied Transaction ID!',
+          confirmButtonText: 'Kindly take a screenshot of TID',
         })
           .then((result) => {
             if (result.isConfirmed) {
@@ -79,6 +82,7 @@ function CheckoutForm({ payload, close }) {
                 'success'
               );
               close();
+              refreshPage();
             }
           })
           .catch((err) => {
@@ -88,6 +92,7 @@ function CheckoutForm({ payload, close }) {
                 'error'
               );
             close();
+            refreshPage();
           });
       });
     }
