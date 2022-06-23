@@ -37,6 +37,8 @@ const StripeModal = ({ initState, show, close }) => {
 
   return (
     <ModalComponent title="Transaction Details" show={show} close={close}>
+      <p style={{color:'red'}}>Keep this modal open until complete, otherwise payment will be cancelled/refreshed</p>
+      <h5>Enter you Debit/Credit Card details</h5>
       <Elements stripe={stripe}>
         <CheckoutForm payload={payload} close={close} />
       </Elements>
@@ -87,10 +89,10 @@ function CheckoutForm({ payload, close }) {
           })
           .catch((err) => {
             Swal.fire(
-                'Failed!',
-                'Your transaction has been faild!',
-                'error'
-              );
+              'Failed!',
+              'Your transaction has been faild!',
+              'error'
+            );
             close();
             refreshPage();
           });

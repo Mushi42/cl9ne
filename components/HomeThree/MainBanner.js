@@ -19,58 +19,58 @@ import 'antd/dist/antd.css';
 
 const { Option } = Select;
 const currencyOptions = {
-    EUR: {
-        img:
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png',
-            name:"EUR",
-    },
-    GBP: {
-        img:
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_the_United_Kingdom.png/1200px-Flag_of_the_United_Kingdom.png',
-            name:"GBP",
-    },
-    USD: {
-        img:
-            'https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png',
-            name:"USD",
-    },
-    NG: {
-        img:
-            'https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8=',
-            name:"NG",
-    },
+  EUR: {
+    img:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png',
+    name: "EUR",
+  },
+  GBP: {
+    img:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Flag_of_the_United_Kingdom.png/1200px-Flag_of_the_United_Kingdom.png',
+    name: "GBP",
+  },
+  USD: {
+    img:
+      'https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png',
+    name: "USD",
+  },
+  NG: {
+    img:
+      'https://media.istockphoto.com/vectors/united-states-rectangle-flat-vector-id1127371674?k=20&m=1127371674&s=612x612&w=0&h=39DI889AEeU51LgDWOr9fMZ5aWuST6ll3G7IjzwPzW8=',
+    name: "NG",
+  },
 };
 const initState = {
   mobileModal: false,
-        mobileRecieveModel: false,
-        bankModal: false,
-        bankRecieveModel: false,
-        selectedFlagValue: 'USD',
-        currencyList: [],
-        transaction: {
-            sender: {
-                name: '',
-                phone: '',
-                email: '',
-            },
-            receiver: {
-                name: '',
-                phone: '',
-                bank: '',
-                IBAN: '',
-                receiverNumber: '',
-                serviceProvider: '',
-            },
-            amount: '',
-            convertedAmount: '',
-            currency: 'USD',
-            transactionType: '',
-            status: 'pending',
-        },
-        stripeModal: false,
-        inputAmount: '',
-        exchangeRate: '',
-        calculatedPrice: '',
+  mobileRecieveModel: false,
+  bankModal: false,
+  bankRecieveModel: false,
+  selectedFlagValue: 'USD',
+  currencyList: [],
+  transaction: {
+    sender: {
+      name: '',
+      phone: '',
+      email: '',
+    },
+    receiver: {
+      name: '',
+      phone: '',
+      bank: '',
+      IBAN: '',
+      receiverNumber: '',
+      serviceProvider: '',
+    },
+    amount: '',
+    convertedAmount: '',
+    currency: 'USD',
+    transactionType: '',
+    status: 'pending',
+  },
+  stripeModal: false,
+  inputAmount: '',
+  exchangeRate: '',
+  calculatedPrice: '',
 }
 class MainBanner extends Component {
   state = {
@@ -125,6 +125,9 @@ class MainBanner extends Component {
   };
   closeStripModal = () => {
     this.setState({ ...initState });
+    alert('Payment Cancelled, redirecting...');
+    window.location.reload();
+
   };
 
   handleTransactionType = (value) => {
@@ -396,7 +399,7 @@ class MainBanner extends Component {
                       </p> */}
                     </div>
                   </div>
-                  
+
 
                   <div className="col-lg-5 col-md-12">
                     <div className="money-transfer-form">
@@ -420,7 +423,7 @@ class MainBanner extends Component {
                                 width="20"
                                 height="15"
                               />
-                                {currencyOptions[this.state.selectedFlagValue].name}
+                              {currencyOptions[this.state.selectedFlagValue].name}
                             </button>
 
                             <div className="dropdown-content">
