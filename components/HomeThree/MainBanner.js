@@ -125,7 +125,6 @@ class MainBanner extends Component {
   };
   closeStripModal = () => {
     this.setState({ ...initState });
-    alert('Payment Cancelled, redirecting...');
     window.location.reload();
 
   };

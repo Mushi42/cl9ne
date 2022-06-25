@@ -29,9 +29,7 @@ const StripeModal = ({ initState, show, close }) => {
     inputStyle: { width: 300 },
   };
 
-  function refreshPage() {
-    window.location.reload();
-  }
+  
 
 
 
@@ -56,7 +54,7 @@ function CheckoutForm({ payload, close }) {
     if (!stripe || !elements) {
       return;
     }
-    // setPaymentLoading(true);
+    setPaymentLoading(true);
     event.preventDefault();
 
     const card = elements.getElement(CardElement);
@@ -64,9 +62,16 @@ function CheckoutForm({ payload, close }) {
 
     if (result.error) {
       console.log(result.error.message);
+      Swal.fire(
+        'Failed!',
+        result.error.message,
+        'error'
+      );
+      setPaymentLoading(false);
     } else {
       const paymentData = { token: result.token.id, transaction: payload };
       chargePayment(paymentData).then((res) => {
+        setPaymentLoading(false);
         Swal.fire({
           title: 'You can track your transaction by Transaction ID',
           text: `TransactionID: #${res.data._id}`,
@@ -84,7 +89,6 @@ function CheckoutForm({ payload, close }) {
                 'success'
               );
               close();
-              refreshPage();
             }
           })
           .catch((err) => {
@@ -94,7 +98,7 @@ function CheckoutForm({ payload, close }) {
               'error'
             );
             close();
-            refreshPage();
+            setPaymentLoading(false);
           });
       });
     }
