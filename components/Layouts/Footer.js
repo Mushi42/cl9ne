@@ -75,11 +75,11 @@ const Footer = () => {
 
                                 <li>
                                     <span className="mr-1">Email:</span>
-                                    info@cl9ne.com
+                                    cl9nepay@gmail.com
                                 </li>
                                 <li>
                                     <span className="mr-1">Phone:</span>
-                                    --
+                                   +1 (205) 406-6578
                                 </li>
 
                             </ul>
